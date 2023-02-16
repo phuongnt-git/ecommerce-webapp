@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment :: page_head('Category - Admin Homepage', 'none')}">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <div th:replace="~{sidebar :: sidebar}"></div>
+
+    <div id="main">
+        <div th:replace="~{header :: header}"></div>
+
+        <div class="main-content container-fluid">
+            <section class="section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">Manage Category</h2>
+
+                        <div th:replace="~{fragment :: create_new_and_export('categories')}"></div>
+                    </div>
+
+                    <div class="card-body">
+                        <div th:replace="~{fragment :: search_form_and_message}"></div>
+
+                        <div class="full-details">
+                            <table class="table table-bordered table-striped table-hover table-responsive-xl">
+                                <thead class="table-dark">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Category Image</th>
+                                    <th th:replace="~{fragment :: column_link('name', 'Category Name', 'none')}"></th>
+                                    <th>Alias</th>
+                                    <th class="hideable-column">Enabled</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr th:each="category : ${listCategories}">
+                                    <td>[[${category.id}]]</td>
+                                    <td>
+                                        <img alt="Image Preview" class="img-fluid" src="" style="width: 100px" th:src="@{${category.imagePath}}"/>
+                                    </td>
+                                    <td>[[${category.name}]]</td>
+                                    <td class="hideable-column">[[${category.alias}]]</td>
+                                    <td>
+                                        <div th:replace="~{fragment :: status(${category.enabled}, 'category', '/categories/' + ${category.id})}"></div>
+                                    </td>
+                                    <td>
+                                        <div th:replace="~{fragment :: edit('category', '/categories/edit/' + ${category.id})}"></div>
+                                        &nbsp;
+                                        <div th:replace="~{fragment :: delete('category', ${category.id}, '/categories/delete/' + ${category.id}, ${!category.hasChildren})}"></div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="less-details">
+                            <div class="row m-1" th:each="category : ${listCategories}">
+                                <div class="col-4">
+                                    <img alt="Image Preview" class="img-fluid" src="" style="width: 100px"
+                                         th:src="@{${category.imagePath}}"/>
+                                </div>
+                                <div class="col-8">
+                                    <div>[[${category.name}]]</div>
+                                    <div class="mt-2">
+                                        <div th:replace="~{fragment :: status(${category.enabled}, 'category', '/categories/' + ${category.id})}"></div>
+                                        &nbsp;
+                                        <div th:replace="~{fragment :: edit('category', '/categories/edit/' + ${category.id})}"></div>
+                                        &nbsp;
+                                        <div th:replace="~{fragment :: delete('category', ${category.id}, '/categories/delete/' + ${category.id}, ${!category.hasChildren})}"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center" th:if="${keyword != null}">
+                            <span>Search result does not show categories in hierarchical form</span>
+                            <div th:replace="~{fragment :: pagination('categories')}"></div>
+                        </div>
+
+                        <th:block th:unless="${keyword != null}">
+                            <div th:replace="~{fragment :: pagination('top-level categories')}"></div>
+                        </th:block>
+
+                        <div th:replace="~{modal_dialog :: delete_modal}"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div th:replace="~{footer :: footer}"></div>
+    </div>
+</div>
+
+<script th:src="@{/vendors/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+<script th:src="@{/js/feather-icons/feather.min.js}"></script>
+<script th:src="@{/js/app.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/common_list.js}"></script>
+<script type="text/javascript">
+    moduleUrl = "[[@{/categories}]]";
+    entityName = "category";
+</script>
+</body>
+</html>

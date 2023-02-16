@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragment :: page_head(#{title.error}, 'none')}">
+    <title></title>
+</head>
+<body>
+<div id="error">
+    <div class="container text-center pt-32">
+        <p></p>
+        <a th:href="@{/}" class='btn btn-primary'>[[#{btn.go-home}]]</a>
+    </div>
+
+    <div class="footer pt-32">
+        <p class="text-center">[[#{footer.title}]]</p>
+    </div>
+</div>
+</body>
+</html>

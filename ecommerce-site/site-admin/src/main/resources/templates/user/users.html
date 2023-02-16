@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment :: page_head(#{title.user}, 'none')}">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <div th:replace="~{sidebar :: sidebar}"></div>
+
+    <div id="main">
+        <div th:replace="~{header :: header}"></div>
+
+        <div class="main-content container-fluid">
+            <section class="section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">Manage User</h2>
+
+                        <div th:replace="~{fragment :: create_new_and_export('users')}"></div>
+                    </div>
+
+                    <div class="card-body">
+                        <div th:replace="~{fragment :: search_form_and_message}"></div>
+
+                        <div class="full-details">
+                            <table class="table table-bordered table-striped table-hover table-responsive-xl">
+                                <thead class="table-dark">
+                                <tr>
+                                    <th class="hideable-column" th:replace="~{fragment :: column_link('id', 'ID', 'none')}"></th>
+                                    <th>Photos</th>
+                                    <th class="hideable-column" th:replace="~{fragment :: column_link('email', 'Email', 'none')}"></th>
+                                    <th th:replace="~{fragment :: column_link('firstName', 'First Name', 'none')}"></th>
+                                    <th th:replace="~{fragment :: column_link('lastName', 'Last Name', 'none')}"></th>
+                                    <th>Roles</th>
+                                    <th th:replace="~{fragment :: column_link('enabled', 'Enabled', 'none')}"></th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr th:each="user : ${listUsers}">
+                                    <td class="hideable-column">[[${user.id}]]</td>
+                                    <td>
+                                        <div th:replace="~{fragment :: user_photos}"></div>
+                                    </td>
+                                    <td class="hideable-column">[[${user.email}]]</td>
+                                    <td>[[${user.firstName}]]</td>
+                                    <td>[[${user.lastName}]]</td>
+                                    <td>
+                                        <th:block th:each="role : ${user.roles}">
+                                            <span class="badge text-bg-secondary" th:text="${role.name}"></span>
+                                        </th:block>
+                                    </td>
+                                    <td>
+                                        <div th:replace="~{fragment :: status(${user.enabled}, 'user', '/users/' + ${user.id})}"></div>
+                                    </td>
+                                    <td>
+                                        <a class="fa-solid fa-file-alt fa-2x link-detail text-secondary" th:href="@{'/users/detail/' + ${user.id}}" title="View details of this user"></a>
+                                        &nbsp;
+                                        <div th:replace="~{fragment :: edit('user', '/users/edit/' + ${user.id})}"></div>
+                                        &nbsp;&nbsp;
+                                        <div th:replace="~{fragment :: delete('user', ${user.id}, '/users/delete/' + ${user.id}, true)}"></div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="less-details">
+                            <div class="row m-1" th:each="user : ${listUsers}">
+                                <div class="col-4">
+                                    <div th:replace="~{fragment :: user_photos}"></div>
+                                </div>
+                                <div class="col-8">
+                                    <div>[[${user.fullName}]]</div>
+                                    <div>[[${user.roles}]]</div>
+                                    <div class="mt-2">
+                                        <div th:replace="~{fragment :: status(${user.enabled}, 'user', '/users/' + ${user.id})}"></div>
+                                        &nbsp;
+                                        <div th:replace="~{fragment :: edit('user', '/users/edit/' + ${user.id})}"></div>
+                                        &nbsp;
+                                        <div th:replace="~{fragment :: delete('user', ${user.id}, '/users/delete/' + ${user.id}, true)}"></div>
+                                    </div>
+                                </div>
+                                <div>&nbsp;</div>
+                            </div>
+                        </div>
+                        <div th:replace="~{fragment :: pagination('users')}"></div>
+
+                        <div th:replace="~{modal_dialog :: delete_modal}"></div>
+
+                        <div class="modal fade" id="detailModal">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div th:replace="~{footer:: footer}"></div>
+    </div>
+</div>
+
+<script th:src="@{/vendors/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+<script th:src="@{/js/feather-icons/feather.min.js}"></script>
+<script th:src="@{/js/app.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/common_list.js}"></script>
+<script type="text/javascript">
+    moduleUrl = "[[@{/users}]]";
+    entityName = "user";
+
+    $(document).ready(function() {
+        handleDefaultDetailLinkClick();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<div class="modal-header">
+    <h4 class="modal-title">User Details</h4>
+    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+
+<div class="modal-body">
+    <ul class="nav nav-tabs" id="userDetailsTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="pills-general-tab" data-bs-toggle="pill" data-bs-target="#pills-general" data-toggle="tab" href="#general" role="tab" aria-controls="pills-general" aria-selected="true">General</a>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-roles-tab" data-bs-toggle="pill" data-bs-target="#pills-roles" href="#roles" role="tab" aria-controls="pills-roles" aria-selected="false">Roles</a>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show p-3 active" id="pills-general" role="tabpanel" aria-labelledby="pills-general-tab">
+            <div class="form-group row">
+                <label for="userId" class="col-sm-4 col-form-label">User ID:</label>
+                <div class="col-sm-8">
+                    <input type="text" readonly class="form-control" th:value="${user.id}" id="userId"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="firstName" class="col-sm-4 col-form-label">First Name:</label>
+                <div class="col-sm-8">
+                    <input type="text" readonly class="form-control" th:value="${user.firstName}" id="firstName"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="lastName" class="col-sm-4 col-form-label">Full Name:</label>
+                <div class="col-sm-8">
+                    <input type="text" readonly class="form-control" th:value="${user.lastName}" id="lastName"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="fullName" class="col-sm-4 col-form-label">Full Name:</label>
+                <div class="col-sm-8">
+                    <input type="text" readonly class="form-control" th:value="${user.fullName}" id="fullName"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="email" class="col-sm-4 col-form-label">Email:</label>
+                <div class="col-sm-8">
+                    <input type="text" readonly class="form-control" th:value="${user.email}" id="email"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="enabled" class="col-sm-4 col-form-label">Enabled:</label>
+                <div class="col-sm-8">
+                    <input type="checkbox" th:checked="${user.enabled}" disabled="disabled" id="enabled"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade show p-3" id="pills-roles" role="tabpanel" aria-labelledby="pills-roles-tab">
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Roles:</label>
+                <div class="col-sm-8">
+                    <th:block th:each="role : ${user.roles}">
+                        <div class="badge text-bg-secondary" th:text="${role.name}"></div>
+                        <div class="mt-2 mb-2" th:utext="${role.description}"></div>
+                    </th:block>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+</div>

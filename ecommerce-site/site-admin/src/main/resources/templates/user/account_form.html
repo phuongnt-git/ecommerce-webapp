@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment :: page_head(#{title.account}, 'none')}">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <div th:replace="~{sidebar :: sidebar}"></div>
+
+    <div id="main">
+        <div th:replace="~{header :: header}"></div>
+
+        <div class="main-content container-fluid">
+            <section class="section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">[[#{account.details}]]</h2>
+                    </div>
+
+                    <div class="card-body">
+                        <div th:if="${message != null}" class="alert alert-success text-center">[[${message}]]</div>
+
+                        <div class="row">
+                            <form enctype="multipart/form-data" method="post" style="max-width: 700px; margin: 0 auto" th:action="@{/account/update}" th:object="${user}">
+                                <input th:field="*{id}" type="hidden"/>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label" for="email">[[#{account.email}]]</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" readonly="readonly" th:field="*{email}" type="email" id="email"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label" for="firstName">[[#{account.first-name}]]</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" maxlength="64" minlength="3" required th:field="*{firstName}" type="text" id="firstName"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label" for="lastName">[[#{account.last-name}]]</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" maxlength="64" minlength="3" required th:field="*{lastName}" type="text" id="lastName"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label" for="password">[[#{account.password}]]</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" maxlength="64" minlength="6"
+                                               oninput="checkPasswordMatch(document.getElementById('confirmPassword'))"
+                                               th:placeholder="#{account.password.placeholder}" th:field="*{password}"
+                                               type="password" id="password"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label" for="confirmPassword">[[#{account.confirm-password}]]</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" id="confirmPassword" maxlength="64" minlength="6"
+                                               th:placeholder="#{account.password.placeholder}"
+                                               oninput="checkPasswordMatch(this)" type="password"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">[[#{account.assigned-roles}]]</label>
+                                    <div class="col-sm-8">
+                                        <span><b>[[${user.roles}]]</b></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">[[#{account.photo}]]</label>
+                                    <div class="col-sm-8">
+                                        <input th:field="*{photos}" type="hidden"/>
+                                        <input accept="image/png, image/jpeg" class="mb-2" id="fileImage" name="image" type="file"/>
+                                        <img alt="Photos preview" class="img-fluid" id="thumbnail" src="" th:src="@{${user.photosPath}}"/>
+                                    </div>
+                                </div>
+
+                                <div class="text-center">
+                                    <input class="btn btn-primary m-3" type="submit" th:value="#{btn.save}"/>
+                                    <input class="btn btn-secondary" id="buttonCancel" type="button" th:value="#{btn.cancel}"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div th:replace="~{footer :: footer}"></div>
+    </div>
+</div>
+
+<script th:src="@{/vendors/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+<script th:src="@{/js/feather-icons/feather.min.js}"></script>
+<script th:src="@{/js/app.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/common_form.js}"></script>
+<script type="text/javascript">
+    moduleUrl = "[[@{/}]]";
+
+    function checkPasswordMatch(confirmPassword) {
+        if (confirmPassword.value !== $("#password").val()) {
+            confirmPassword.setCustomValidity("Passwords do not match");
+        } else {
+            confirmPassword.setCustomValidity("");
+        }
+    }
+</script>
+</body>
+</html>

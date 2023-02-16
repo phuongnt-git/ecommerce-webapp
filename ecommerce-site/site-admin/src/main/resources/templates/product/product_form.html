@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment :: page_head(${pageTitle}, 'tag')}">
+	<title></title>
+</head>
+<body>
+<div id="app">
+	<div th:replace="~{sidebar :: sidebar}"></div>
+
+	<div id="main">
+		<div th:replace="~{header :: header}"></div>
+
+		<div class="main-content container-fluid">
+			<section class="section">
+				<div class="card">
+					<div class="card-header">
+						<h2 class="text-center">[[${pageTitle}]]</h2>
+					</div>
+
+					<form th:action="@{/products/save}" method="post" onsubmit="return checkUnique(this)"
+						  enctype="multipart/form-data"
+						  th:object="${product}">
+						<input type="hidden" th:field="*{id}" />
+						<input th:if="${product.category != null}" type="hidden" id="categoryId" th:value="${product.category.id}" />
+
+						<div class="card-body">
+							<ul class="nav nav-tabs" id="myTab" role="tablist">
+								<li class="nav-item" role="presentation">
+									<button class="nav-link active" id="pills-overview-tab" data-bs-toggle="pill" data-bs-target="#pills-overview" type="button" role="tab" aria-controls="pills-overview" aria-selected="true">Overview</button>
+								</li>
+
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" id="pills-description-tab" data-bs-toggle="pill" data-bs-target="#pills-description" type="button" role="tab" aria-controls="pills-description" aria-selected="false">Description</button>
+								</li>
+
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" id="pills-images-tab" data-bs-toggle="pill" data-bs-target="#pills-images" type="button" role="tab" aria-controls="pills-images" aria-selected="false">Images</button>
+								</li>
+
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" id="pills-detail-tab" data-bs-toggle="pill" data-bs-target="#pills-detail" type="button" role="tab" aria-controls="pills-detail" aria-selected="false">Details</button>
+								</li>
+
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" id="pills-shipping-tab" data-bs-toggle="pill" data-bs-target="#pills-shipping" type="button" role="tab" aria-controls="pills-shipping" aria-selected="false">Shipping</button>
+								</li>
+							</ul>
+
+							<div class="tab-content" id="pills-tabContent">
+								<div class="tab-pane fade show active" id="pills-overview" role="tabpanel" aria-labelledby="pills-overview-tab">
+									<div th:replace="~{product/product_overview :: content}"></div>
+								</div>
+
+								<div class="tab-pane fade" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+									<th:block th:if="${isReadOnlyForSalesperson}">
+										<div th:replace="~{product/product_description_read_only :: content}"></div>
+									</th:block>
+
+									<th:block th:unless="${isReadOnlyForSalesperson}">
+										<div th:replace="~{product/product_description :: content}"></div>
+									</th:block>
+								</div>
+
+								<div class="tab-pane fade" id="pills-images" role="tabpanel" aria-labelledby="pills-images-tab">
+									<th:block th:if="${isReadOnlyForSalesperson}">
+										<div th:replace="~{product/product_images_read_only :: content}"></div>
+									</th:block>
+
+									<th:block th:unless="${isReadOnlyForSalesperson}">
+										<div th:replace="~{product/product_images :: content}"></div>
+									</th:block>
+								</div>
+
+								<div class="tab-pane p-3" id="pills-detail" role="tabpanel" aria-labelledby="pills-detail-tab">
+									<th:block th:if="${isReadOnlyForSalesperson}">
+										<div th:replace="~{product/product_details_read_only :: content}"></div>
+									</th:block>
+
+									<th:block th:unless="${isReadOnlyForSalesperson}">
+										<div th:replace="~{product/product_details :: content}"></div>
+										<div class="text-center">
+											<input type="button" class="btn btn-secondary" value="Add More Detail" onclick="addNextDetailSection()" />
+										</div>
+									</th:block>
+
+								</div>
+
+								<div class="tab-pane fade" id="pills-shipping" role="tabpanel" aria-labelledby="pills-shipping-tab">
+									<th:block th:if="${isReadOnlyForSalesperson}">
+										<div th:replace="~{product/product_shipping_read_only :: content}"></div>
+									</th:block>
+
+									<th:block th:unless="${isReadOnlyForSalesperson}">
+										<div th:replace="~{product/product_shipping :: content}"></div>
+									</th:block>
+								</div>
+							</div>
+						</div>
+
+						<div class="clearfix">
+							<div class="text-center">
+								<input type="submit" value="Save" class="btn btn-primary m-3" />
+								<input type="button" value="Cancel" class="btn btn-secondary" id="buttonCancel" />
+							</div>
+						</div>
+					</form>
+
+					<div th:replace="~{modal_dialog :: warning_modal}"></div>
+
+					</div>
+			</section>
+		</div>
+		<div th:replace="~{footer :: footer}"></div>
+	</div>
+</div>
+
+<link th:href="@{/webjars/summernote/0.8.20/dist/summernote.css}" rel="stylesheet">
+<script th:src="@{/webjars/summernote/0.8.20/dist/summernote.js}" type="text/javascript"></script>
+<script th:src="@{/vendors/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+<script th:src="@{/js/feather-icons/feather.min.js}"></script>
+<script th:src="@{/js/app.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/product_form_overview.js}"></script>
+<script th:src="@{/js/product_form_images.js}"></script>
+<script th:src="@{/js/product_form_details.js}"></script>
+<script th:src="@{/js/common_form.js}"></script>
+<script type="text/javascript">
+	moduleUrl = "[[@{/products}]]";
+	brandModuleUrl = "[[@{/brands}]]";
+	defaultImageThumbnailSrc = "[[@{/img/image-thumbnail.png}]]";
+	checkUniqueUrl = "[[@{/products/check-unique}]]";
+</script>
+</body>
+</html>

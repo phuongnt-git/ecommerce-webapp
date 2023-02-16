@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment :: page_head('Brand - Admin Homepage', 'none')}">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <div th:replace="~{sidebar :: sidebar}"></div>
+
+    <div id="main">
+        <div th:replace="~{header :: header}"></div>
+
+        <div class="main-content container-fluid">
+            <section class="section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">Manage Brand</h2>
+
+                        <div th:replace="~{fragment :: create_new_and_export('brands')}"></div>
+                    </div>
+
+                    <div class="card-body">
+                        <div th:replace="~{fragment :: search_form_and_message}"></div>
+
+                        <div class="full-details">
+                            <table class="table table-bordered table-striped table-hover table-responsive-xl">
+                                <thead class="table-dark">
+                                <tr>
+                                    <th class="hideable-column" th:replace="~{fragment :: column_link('id', 'ID', 'none')}"></th>
+                                    <th>Logo</th>
+                                    <th th:replace="~{fragment :: column_link('name', 'Brand Name', 'none')}"></th>
+                                    <th>Categories</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr th:each="brand : ${listBrands}">
+                                    <td class="hideable-column">[[${brand.id}]]</td>
+                                    <td>
+                                        <img alt="Image Preview" class="img-fluid" src="" style="width: 100px"
+                                             th:src="@{${brand.logoPath}}"/>
+                                    </td>
+                                    <td>[[${brand.name}]]</td>
+                                    <td>
+                                        <th:block th:each="category : ${brand.categories}">
+                                            <span class="badge text-bg-secondary" th:text="${category.name}"></span>
+                                        </th:block>
+                                    </td>
+                                    <td>
+                                        <div th:replace="~{fragment :: edit('brand', '/brands/edit/' + ${brand.id})}"></div>
+                                        &nbsp;
+                                        <div th:replace="~{fragment :: delete('brand', ${brand.id}, '/brands/delete/' + ${brand.id}, true)}"></div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="less-details">
+                            <div class="row m-1" th:each="brand : ${listBrands}">
+                                <div class="col-6">
+                                    <img alt="Image Preview" class="img-fluid" src="" style="width: 100px" th:src="@{${brand.logoPath}}"/>
+                                </div>
+                                <div class="col-6">
+                                    <div><b>[[${brand.name}]]</b></div>
+                                    <div class="mt-2">
+                                        <div th:replace="~{fragment :: edit('brand', '/brands/edit/' + ${brand.id})}"></div>
+                                        &nbsp;
+                                        <div th:replace="~{fragment :: delete('brand', ${brand.id}, '/brands/delete/' + ${brand.id}, true)}"></div>
+                                    </div>
+                                </div>
+                                <div>&nbsp;</div>
+                            </div>
+                        </div>
+                        <div th:replace="~{fragment :: pagination('brands')}"></div>
+
+                        <div th:replace="~{modal_dialog :: delete_modal}"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div th:replace="~{footer :: footer}"></div>
+    </div>
+</div>
+
+<script th:src="@{/vendors/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+<script th:src="@{/js/feather-icons/feather.min.js}"></script>
+<script th:src="@{/js/app.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/common_list.js}"></script>
+<script type="text/javascript">
+    moduleUrl = "[[@{/brands}]]";
+    entityName = "brand";
+</script>
+</body>
+</html>

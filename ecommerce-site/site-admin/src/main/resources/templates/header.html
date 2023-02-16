@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<body>
+<nav class="navbar navbar-header navbar-expand navbar-light" th:fragment="header">
+    <form th:action="@{/logout}" method="post" th:hidden="true" name="logoutForm">
+        <input type="submit"/>
+    </form>
+
+    <a class="sidebar-toggler" href="#">
+        <span class="navbar-toggler-icon"></span>
+    </a>
+
+    <button class="btn navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <nav class="navbar-nav d-flex align-items-center navbar-light ms-auto">
+
+            <div class="dropdown">
+                <a class="dropdown-toggle" th:href="@{?lang=en}" id="Dropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                    <i class="flag-icon flag-icon-us m-0"></i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="Dropdown">
+                    <li>
+                        <a class="dropdown-item" th:href="@{?lang=en}"><i class="flag-united-kingdom flag"></i>English <i class="fa fa-check text-success ms-2"></i></a>
+                    </li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                        <a class="dropdown-item" th:href="@{?lang=fr}">
+                            <i class="flag-icon flag-icon-fr"></i>
+                            <span>Français</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" th:href="@{?lang=vn}">
+                            <i class="flag-icon flag-icon-vn"></i>
+                            <span>Vietnam</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="dropdown nav-icon">
+                <a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                    <div class="d-lg-inline-block">
+                        <i data-feather="bell"></i>
+                    </div>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-large">
+                    <h6 class='py-2 px-4'>Notifications</h6>
+                    <ul class="list-group rounded-none">
+                        <li class="list-group-item border-0 align-items-start">
+                            <div class="avatar bg-success me-3">
+                                <span class="avatar-content">
+                                    <i data-feather="shopping-cart"></i>
+                                </span>
+                            </div>
+
+                            <div>
+                                <h6 class='text-bold'>Welcome</h6>
+                                <p class='text-xs'>
+                                    <a th:href="@{/account}"
+                                       sec:authentication="principal.fullName"></a> -
+                                    <span sec:authentication="principal.authorities"></span>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <div class="dropdown" sec:authorize="hasAuthority('Admin')">
+                <button id="dropdownMenu" data-bs-toggle="dropdown" class="btn btn-secondary dropdown-toggle">
+                    <span class="d-lg-inline-block">
+                        <i data-feather="settings"></i>
+                    </span>
+                </button>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                    <a type="button" class="dropdown-item" th:href="@{/settings#general}">
+                        <i data-feather="home"></i> General
+                    </a>
+
+                    <a type="button" class="dropdown-item" th:href="@{/settings#countries}">
+                        <i data-feather="map-pin"></i>Countries
+                    </a>
+
+                    <a type="button" class="dropdown-item" th:href="@{/settings#states}">
+                        <i data-feather="navigation"></i>States
+                    </a>
+
+                    <a type="button" class="dropdown-item" th:href="@{/settings#mailServer}">
+                        <i data-feather="mail"></i>Mail Server
+                    </a>
+
+                    <a type="button" class="dropdown-item" th:href="@{/settings#mailTemplate}">
+                        <i data-feather="mail"></i>Mail Templates
+                    </a>
+
+                    <a type="button" class="dropdown-item" th:href="@{/settings#payment}">
+                        <i data-feather="heart"></i>Payment
+                    </a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                    <div class="avatar me-1">
+                        <img th:src="@{/img/avatar/avatar-s-1.png}" alt="Image Preview" srcset="" src="">
+                    </div>
+
+                    <div class="d-none d-md-block d-lg-inline-block">
+                        Hi, <b sec:authentication="principal.fullName"></b>
+                    </div>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-end">
+                    <a class="dropdown-item" th:href="@{/account}">
+                        <i data-feather="user"></i> Account
+                    </a>
+
+                    <div class="dropdown-divider"></div>
+
+                    <a class="dropdown-item" id="logoutLink" href="/logout">
+                        <i data-feather="log-out"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</nav>
+</body>
+</html>

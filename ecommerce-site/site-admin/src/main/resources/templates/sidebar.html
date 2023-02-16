@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="sidebar" id="sidebar" class='active'>
+    <div class="sidebar-wrapper active">
+        <div class="sidebar-header">
+            <a th:href="@{/}">
+                <img th:src="@{/img/logo.png}" alt="Image Preview" src="">
+            </a>
+        </div>
+
+        <div class="sidebar-menu">
+            <ul class="menu">
+                <li class="sidebar-title">Main Menu</li>
+
+                <li class="sidebar-item active">
+                    <a th:href="@{/}" class='sidebar-link'>
+                        <i data-feather="grid" width="20"></i>
+                        <span>[[#{sidebar.dashboard}]]</span>
+                    </a>
+                </li>
+
+                <th:block sec:authorize="hasAuthority('Admin')">
+                    <li class="sidebar-item has-sub">
+                        <a class="sidebar-link">
+                            <i data-feather="triangle" width="20"></i>
+                            <span>[[#{sidebar.user}]]</span>
+                            <i class="dropdown-icon"></i>
+                        </a>
+
+                        <ul class="submenu">
+                            <li>
+                                <a class="sidebar-link" th:href="@{/users/new}">[[#{sidebar.create}]]</a>
+                                <a class="sidebar-link" th:href="@{/users}">[[#{sidebar.view}]]</a>
+                            </li>
+                        </ul>
+                    </li>
+                </th:block>
+
+                <th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+                    <li class="sidebar-item has-sub">
+                        <a class="sidebar-link" th:href="@{/categories}">
+                            <i data-feather="box" width="20"></i>
+                            <span>[[#{sidebar.category}]]</span>
+                            <i class="dropdown-icon"></i>
+                        </a>
+
+                        <ul class="submenu">
+                            <li>
+                                <a class="sidebar-link" th:href="@{/categories/new}">[[#{sidebar.create}]]</a>
+                                <a class="sidebar-link" th:href="@{/categories}">[[#{sidebar.view}]]</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item has-sub">
+                        <a class="sidebar-link" th:href="@{/brands}">
+                            <i data-feather="sunset" width="20"></i>
+                            <span>[[#{sidebar.brand}]]</span>
+                            <i class="dropdown-icon"></i>
+                        </a>
+
+                        <ul class="submenu">
+                            <li>
+                                <a class="sidebar-link" th:href="@{/brands/new}">[[#{sidebar.create}]]</a>
+                                <a class="sidebar-link" th:href="@{/brands}">[[#{sidebar.view}]]</a>
+                            </li>
+                        </ul>
+                    </li>
+                </th:block>
+
+                <th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson', 'Editor', 'Shipper')">
+                    <li class="sidebar-item has-sub">
+                        <a class="sidebar-link" th:href="@{/products}">
+                            <i data-feather="loader" width="20"></i>
+                            <span>[[#{sidebar.product}]]</span>
+                            <i class="dropdown-icon"></i>
+                        </a>
+
+                        <ul class="submenu">
+                            <li>
+                                <a class="sidebar-link" th:href="@{/products/new}" sec:authorize="hasAnyAuthority('Admin', 'Editor')">[[#{sidebar.create}]]</a>
+                                <a class="sidebar-link" th:href="@{/products}">[[#{sidebar.view}]]</a>
+                            </li>
+                        </ul>
+                    </li>
+                </th:block>
+
+                <th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" th:href="@{/customers}">
+                            <i data-feather="user" width="20"></i>
+                            <span>[[#{sidebar.customer}]]</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" th:href="@{/shipping_rates}">
+                            <i data-feather="shopping-bag" width="20"></i>
+                            <span>[[#{sidebar.shipping-rate}]]</span>
+                        </a>
+                    </li>
+                </th:block>
+
+                <th:block sec:authorize="hasAnyAuthority('Admin', 'Assistant')">
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" th:href="@{/questions}">
+                            <i data-feather="help-circle" width="20"></i>
+                            <span>[[#{sidebar.question}]]</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" th:href="@{/reviews}">
+                            <i data-feather="wifi" width="20"></i>
+                            <span>[[#{sidebar.review}]]</span>
+                        </a>
+                    </li>
+                </th:block>
+
+                <th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson', 'Shipper')">
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" th:href="@{/orders}">
+                            <i data-feather="target" width="20"></i>
+                            <span>[[#{sidebar.order}]]</span>
+                        </a>
+                    </li>
+                </th:block>
+
+                <th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" th:href="@{/reports}">
+                            <i data-feather="sun" width="20"></i>
+                            <span>[[#{sidebar.sales-report}]]</span>
+                        </a>
+                    </li>
+                </th:block>
+
+                <th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" th:href="@{/articles}">
+                            <i data-feather="compass" width="20"></i>
+                            <span>[[#{sidebar.article}]]</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" th:href="@{/menus}">
+                            <i data-feather="aperture" width="20"></i>
+                            <span>[[#{sidebar.menu}]]</span>
+                        </a>
+                    </li>
+                </th:block>
+
+                <th:block sec:authorize="hasAuthority('Editor')">
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" th:href="@{/sections}">
+                            <i data-feather="home" width="20"></i>
+                            <span>Home Page</span>
+                        </a>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

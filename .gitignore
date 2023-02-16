@@ -1,0 +1,4 @@
+# Project exclude paths
+/ecommerce-common/target/
+/ecommerce-site/site-admin/target/
+/ecommerce-site/site-shop/target/

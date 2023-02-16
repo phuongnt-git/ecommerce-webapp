@@ -1,0 +1,122 @@
+<div class="modal-header">
+    <h4 class="modal-title">Product Details</h4>
+    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+
+<div class="modal-body">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="pills-overview-tab" data-bs-toggle="pill" data-bs-target="#pills-overview" data-toggle="tab" role="tab" aria-controls="pills-overview" aria-selected="true" href="#overview">Overview</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" id="pills-description-tab" data-bs-toggle="pill" data-bs-target="#pills-description" data-toggle="tab" role="tab" aria-controls="pills-description" aria-selected="false" href="#description">Description</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" id="pills-images-tab" data-bs-toggle="pill" data-bs-target="#pills-images" data-toggle="tab" role="tab" aria-controls="pills-images" aria-selected="false" href="#images">Images</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" id="pills-details-tab" data-bs-toggle="pill" data-bs-target="#pills-details" data-toggle="tab" role="tab" aria-controls="pills-details" aria-selected="false" href="#details">Details</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" id="pills-shipping-tab" data-bs-toggle="pill" data-bs-target="#pills-shipping" data-toggle="tab" role="tab" aria-controls="pills-shipping" aria-selected="false" href="#shipping">Shipping</a>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active p-3" id="pills-overview" role="tabpanel" aria-labelledby="pills-overview-tab">
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="name">Product Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:value="${product.name}" readonly id="name"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="alias">Alias:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:value="${product.alias}" readonly id="alias"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="brand">Brand:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:value="${product.brand.name}" readonly id="brand"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="category">Category:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:value="${product.category.name}" readonly id="category"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="enabled">Enabled:</label>
+                <div class="col-sm-10">
+                    <input type="checkbox" th:checked="${product.enabled}" onclick="return false;" id="enabled"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="inStock">In-Stock:</label>
+                <div class="col-sm-10">
+                    <input type="checkbox" th:checked="${product.inStock}" onclick="return false;" id="inStock"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="cost">Cost:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:value="${product.cost}" readonly id="cost"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="price">Price:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:value="${product.price}" readonly id="price"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="discount">Discount:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:value="${product.discountPercent}" readonly
+                           id="discount"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Updated Time:</label>
+                <div class="col-sm-10">
+                    <span th:text="${#dates.format(product.updatedTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+            <div th:replace="~{product/product_description_read_only :: content}"></div>
+        </div>
+
+        <div class="tab-pane" id="pills-images" role="tabpanel" aria-labelledby="pills-images-tab">
+            <div th:replace="~{product/product_images_read_only :: content}"></div>
+        </div>
+
+        <div class="tab-pane p-3" id="pills-details" role="tabpanel" aria-labelledby="pills-details-tab">
+            <div th:replace="~{product/product_details_read_only :: content}"></div>
+        </div>
+
+        <div class="tab-pane p-3" id="pills-shipping" role="tabpanel" aria-labelledby="pills-shipping-tab">
+            <div th:replace="~{product/product_shipping_read_only :: content}"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+</div>

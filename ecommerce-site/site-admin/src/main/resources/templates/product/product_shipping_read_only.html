@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="content" th:remove="tag">
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" for="length">Length (inch):</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" th:value="${product.length}" readonly id="length"/>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" for="width">Width (inch):</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" th:value="${product.width}" readonly id="width"/>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" for="height">Height (inch):</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" th:value="${product.height}" readonly id="height"/>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<label class="col-sm-2 col-form-label" for="weight">Weight (pounds):</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" th:value="${product.weight}" readonly id="weight"/>
+		</div>
+	</div>	
+</div>		
+</body>
+</html>

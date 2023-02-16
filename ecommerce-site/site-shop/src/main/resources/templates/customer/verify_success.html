@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment :: page_head(${pageTitle}, 'none')}">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <div th:replace="~{sidebar :: sidebar}"></div>
+
+    <div id="main">
+        <div th:replace="~{header :: header}"></div>
+
+        <div class="main-content container-fluid">
+            <section class="section">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="text-center">
+                            <h2>Customer Verification</h2>
+                            <h4>Congratulation! Your account has been verified</h4>
+                            <p><a th:href="@{/login}">Login here</a></p>
+                        </div>
+                    </div>
+
+
+
+                    <div th:replace="~{modal_dialog :: warning_modal}"></div>
+                </div>
+            </section>
+        </div>
+
+        <div th:fragment="~{sidebar :: footer}"></div>
+    </div>
+</div>
+
+<script th:src="@{/vendors/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+<script th:src="@{/js/feather-icons/feather.min.js}"></script>
+<script th:src="@{/js/app.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/common_form.js}"></script>
+<script th:src="@{/js/load_states_form.js}"></script>
+<script type="text/javascript">
+    moduleUrl = "[[@{/customers}]]";
+    contextPath = "[[@{/}]]";
+</script>
+</body>
+</html>
