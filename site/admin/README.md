@@ -2,7 +2,7 @@
 Login page. User will be locked 24h if they fail to log in 5 times
 
 
-<kbd><img src="result/admin-login.png" style="width: 800px;"></kbd>
+<img src="../result/admin-login.png" style="width: 800px;" alt="">
 
 ### 2.User Management (for 'ADMIN' only)
 - In this page you can:
@@ -15,15 +15,15 @@ Login page. User will be locked 24h if they fail to log in 5 times
 
 - List all users:
 
-<kbd><img src="result/view-all-users.png" alt="List all users" style="width: 800px;"></kbd>
+<img src="../result/view-all-users.png" alt="List all users" style="width: 800px;">
 
 - Create new user:
 
-<kbd><img src="result/create-new-user.png" style="width: 800px;"></kbd>
+<img src="../result/create-new-user.png" style="width: 800px;" alt="">
 
 - Edit information of existing user:
 
-<kbd><img src="result/edit-existing-user.png" style="width: 800px;"></kbd>
+<img src="../result/edit-existing-user.png" style="width: 800px;" alt="">
 
 ### 3. Category Management
 - In this page, you can:
@@ -33,15 +33,15 @@ Login page. User will be locked 24h if they fail to log in 5 times
 
 - List all category:
 
-<kbd><img src="result/view-all-category.png" style="width: 800px;"></kbd>
+<img src="../result/view-all-category.png" style="width: 800px;" alt="">
 
 - Create new category:
 
-<kbd><img src="result/create-new-category.png" style="width: 800px;"></kbd>
+<img src="../result/create-new-category.png" style="width: 800px;" alt="">
 
 - Edit category:
 
-<kbd><img src="result/edit-existing-category.png" style="width: 800px;"></kbd>
+<img src="../result/edit-existing-category.png" style="width: 800px;" alt="">
 ### 4. Brand Management
 - In this page you can:
     - Add new brand.
@@ -54,15 +54,15 @@ Login page. User will be locked 24h if they fail to log in 5 times
 
 - View all brands:
 
-<kbd><img src="result/view-all-brands.png" style="width: 800px;"></kbd>
+<img src="../result/view-all-brands.png" style="width: 800px;" alt="">
 
 - Create a new brand:
 
-<kbd><img src="result/create-new-brand.png" style="width: 800px;"></kbd>
+<img src="../result/create-new-brand.png" style="width: 800px;" alt="">
 
 - Edit existing brand:
 
-<kbd><img src="result/edit-existing-brand.png" style="width: 800px;"></kbd>
+<img src="../result/edit-existing-brand.png" style="width: 800px;" alt="">
 
 ### 5. Product Management
 - In this page you can:
@@ -76,19 +76,19 @@ Login page. User will be locked 24h if they fail to log in 5 times
 
 - View all product:
 
-<kbd><img src="result/view-all-products.png" style="width: 800px;"></kbd>
+<img src="../result/view-all-products.png" style="width: 800px;" alt="">
 
 - Create new product (you need to enter all required fields in all tab to submit a new product):
 
-<kbd><img src="result/create-new-product.png" style="width: 800px;"></kbd>
+<img src="../result/create-new-product.png" style="width: 800px;" alt="">
 
 - Quicky view product details:
 
-<kbd><img src="result/view-product-information.png" style="width: 800px;"></kbd>
+<img src="../result/view-product-information.png" style="width: 800px;" alt="">
 
 - Edit product:
 
-<kbd><img src="result/edit-exsting-product.png" style="width: 800px;"></kbd>
+<img src="../result/edit-exsting-product.png" style="width: 800px;" alt="">
 ### 6. Setting Management
 - In this page you can:
     - Change site information, currency in the 'General' tab.
@@ -99,19 +99,19 @@ Login page. User will be locked 24h if they fail to log in 5 times
 
 - General Setting:
 
-<kbd><img src="result/general-setting.png" style="width: 800px;"></kbd>
+<img src="../result/general-setting.png" style="width: 800px;" alt="">
 
 - Countries
 
-<kbd><img src="result/country-setting.png" style="width: 800px;"></kbd>
+<img src="../result/country-setting.png" style="width: 800px;" alt="">
 
 - States Setting
 
-<kbd><img src="result/state-setting.png" style="width: 800px;"></kbd>
+<img src="../result/state-setting.png" style="width: 800px;" alt="">
 
 - Mail Server
 
-<kbd><img src="result/setting-mail-server.png" style="width: 800px;"></kbd>
+<img src="../result/setting-mail-server.png" style="width: 800px;" alt="">
 ### 7. Customer Management
 - In this page you can:
     - Sorting customers by id, full name, city, state, country, enabled status.
@@ -122,11 +122,11 @@ Login page. User will be locked 24h if they fail to log in 5 times
     - Edit a customer.
 - View all customer:
 
-<kbd><img src="result/view-all-customer.png" style="width: 800px;"></kbd>
+<img src="../result/view-all-customer.png" style="width: 800px;" alt="">
 
 - Edit customer:
 
-<kbd><img src="result/edit-existing-customer.png" style="width: 800px;"></kbd>
+<img src="../result/edit-existing-customer.png" style="width: 800px;" alt="">
 
 
 ## Shopping App
@@ -137,14 +137,14 @@ Login page. User will be locked 24h if they fail to log in 5 times
     - Facebook
 - Customer login page.
 
-<kbd><img src="result/customer-login.png" style="width: 800px;"></kbd>
+<img src="../result/customer-login.png" style="width: 800px;" alt="">
 
 - Sign up:
-  After customer submit registration form, they need check their email and click verify link to active their account.
+  After customer submit registration form, they need check their email and click verify link to activate their account.
 
 Sign up page
 
-<kbd><img src="result/customer-registration.png" style="width: 800px;"></kbd>
+<img src="../result/customer-registration.png" style="width: 800px;" alt="">
 
 - Forgot password:
   To reset password, customer need to:
@@ -154,4 +154,4 @@ Sign up page
     - Enter new password.
       Forgot password
 
-<kbd><img src="result/forgot-password.png" style="width: 800px;"></kbd>
+<img src="../result/forgot-password.png" style="width: 800px;" alt="">

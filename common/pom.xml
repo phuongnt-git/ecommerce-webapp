@@ -11,8 +11,8 @@
     <groupId>com.ecommerce</groupId>
     <artifactId>common</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ecommerce-common</name>
-    <description>ecommerce-common</description>
+    <name>common</name>
+    <description>common</description>
     <properties>
         <java.version>17</java.version>
     </properties>

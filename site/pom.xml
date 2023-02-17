@@ -12,8 +12,8 @@
 	<artifactId>site</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>ecommerce-site</name>
-	<description>ecommerce-site</description>
+	<name>site</name>
+	<description>site</description>
 	<modules>
 		<module>admin</module>
 		<module>shop</module>

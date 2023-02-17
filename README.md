@@ -185,7 +185,13 @@ But the pom.xml in each site modules will contain specific dependencies that dep
 ... (In process)
 ***
 ## Results
+[Click here](doc/overview.pptx) to download documents for more details.
+### Diagram
+[Click here](site/README.md) to view diagrams.
 ### Admin application
-[Click here](site/admin/README.md)
+[Click here](site/admin/README.md) for an overview of the admin page functions and UI.
 ### Shop application
-[Click here](site/shop/README.md)
+[Click here](site/shop/README.md) for an overview of the shop page functions and UI.
+***
+## References
+

@@ -9,8 +9,8 @@
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
     <artifactId>shop</artifactId>
-    <name>site-shop</name>
-    <description>site-shop</description>
+    <name>shop</name>
+    <description>shop</description>
     <properties>
         <java.version>17</java.version>
     </properties>
