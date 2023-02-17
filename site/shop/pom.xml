@@ -3,24 +3,24 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>com.ecommerce</groupId>
+        <artifactId>site</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.ecommerce</groupId>
-    <artifactId>ecommerce-webapp</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>ecommerce-webapp</name>
-    <packaging>pom</packaging>
-    <description>ecommerce-webapp</description>
+    <artifactId>shop</artifactId>
+    <name>site-shop</name>
+    <description>site-shop</description>
     <properties>
         <java.version>17</java.version>
     </properties>
-    <modules>
-        <module>common</module>
-        <module>site</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>

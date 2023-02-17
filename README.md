@@ -1,6 +1,6 @@
 # eCommerce Webapp
 Ecommerce webapp developed using Spring Boot and Thymeleaf
-
+***
 ## Used Technologies
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
@@ -12,11 +12,11 @@ Ecommerce webapp developed using Spring Boot and Thymeleaf
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-F2F4F9?style=for-the-badge&logo=spring-boot)
 ![Thymeleaf](https://img.shields.io/badge/Thymeleaf-%23005C0F.svg?style=for-the-badge&logo=Thymeleaf&logoColor=white)
 ![Oracle](https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=black)
-![hibernate](https://img.shields.io/badge/hibernate-%20brightgreen.svg?&style=for-the-badge&logo=hibernate&logoColor=white)
+![Hibernate](https://img.shields.io/badge/hibernate-%20brightgreen.svg?&style=for-the-badge&logo=hibernate&logoColor=white)
 ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
-
+***
 ## GitHub Statistics
 ![GitHub contributors](https://img.shields.io/github/contributors/phuongnt-git/ecommerce-webapp)
 ![GitHub issues](https://img.shields.io/github/issues/phuongnt-git/ecommerce-webapp?color=red)
@@ -29,46 +29,15 @@ Ecommerce webapp developed using Spring Boot and Thymeleaf
 ![GitHub total lines](https://img.shields.io/tokei/lines/github/phuongnt-git/ecommerce-webapp)
 ![GitHub repo file count](https://img.shields.io/github/directory-file-count/phuongnt-git/ecommerce-webapp)
 ![GitHub language count](https://img.shields.io/github/languages/count/phuongnt-git/ecommerce-webapp)
-
+***
 ## Overview
-### Dependencies
-* **Developer Tools**:
-  * [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/3.0.2/reference/htmlsingle/#using.devtools) 
-  * [Lombok](https://projectlombok.org/features/) 
-* **Web**:
-  * [Spring Web](https://docs.spring.io/spring-boot/docs/3.0.2/reference/htmlsingle/#web)
-* **Template Engines**:
-  * [Thymeleaf](https://docs.spring.io/spring-boot/docs/3.0.2/reference/htmlsingle/#web.servlet.spring-mvc.template-engines)
-* **Security**:
-  * [Spring Security](https://docs.spring.io/spring-boot/docs/3.0.2/reference/htmlsingle/#web.security)
-  * [OAuth2 Client](https://docs.spring.io/spring-boot/docs/3.0.2/reference/htmlsingle/#web.security.oauth2.client)
-  * [Jasypt](https://github.com/ulisesbocchio/jasypt-spring-boot) - Jasypt Spring Boot provides Encryption support for property sources in Spring Boot Applications.
-* **SQL**:
-  * [Spring Data JPA](https://docs.spring.io/spring-boot/docs/3.0.2/reference/htmlsingle/#data.sql.jpa-and-spring-data)
-  * [Oracle JDBC Driver](https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8)
-* **I/O**:
-  * [Validation](https://docs.spring.io/spring-boot/docs/3.0.2/reference/htmlsingle/#io.validation)
-  * [Java Mail Sender](https://docs.spring.io/spring-boot/docs/3.0.2/reference/htmlsingle/#io.email)
-* **Build**: 
-  * [Apache Maven](https://maven.apache.org/)
-* **Webjars**:
-  * [Bootstrap](https://getbootstrap.com/) - Powerful, extensible, and feature-packed frontend toolkit.
-  * [jQuery](https://jquery.com/) - jQuery is a fast, small, and feature-rich JavaScript library.
-  * [Font Awesome](https://fontawesome.com/) - Font Awesome is the Internet's icon library and toolkit, used by millions of designers, developers, and content creators.
-  * [Summernote](https://summernote.org/) - Super Simple WYSIWYG Editor on Bootstrap Summernote is a JavaScript library that helps you create WYSIWYG editors online.
-* **Others**:
-  * [Super CSV](https://github.com/super-csv/super-csv) - Super CSV is a fast, programmer-friendly, open-source library for reading and writing CSV files with Java.
-  * [Apache POI](https://poi.apache.org/components/) - The Java API for Microsoft Documents.
-  * [Open PDF](https://github.com/LibrePDF/OpenPDF) - Open PDF is an open source Java library for PDF files
-
-
 ### Application Architecture
 ```mermaid
 flowchart LR
   View <--> Controller <--> Service <--> Repository <--> ConnectDB
   subgraph ConnectDB
     direction TB
-    SpringDataJPA <--> Hibernate <--> JDBC
+    SpringDataJPA <--> HibernateFramework <--> JDBCDriver
   end
   ConnectDB <--> i[(Database)]
 ```
@@ -94,9 +63,9 @@ flowchart LR
 │   │   │   │   │   │   ├── ...
 │   │   │   │   │   ├── validation (Contains custom validation classes)
 ├── ...
-├── <b>ecommerce-site</b> (Site module for containing admin and shop page)
+├── <b>site</b> (Site module for containing admin and shop page)
 │   ├── images (Folder images storage in local)
-│   ├── <b>site-admin</b> (Module for admin site)
+│   ├── <b>admin</b> (Module for admin site)
 │   │   ├── <b>src</b>
 │   │   │   ├── <b>main</b>
 │   │   │   │   ├── <b>java</b>
@@ -125,13 +94,47 @@ flowchart LR
 │   │   │   │   │   ├── ... (.properties)
 │   │   │   │   │   ├── logback-spring.xml
 
-│   ├── <b>site-shop</b>
+│   ├── <b>shop</b>
 │   │   ├── <b>src</b>
 │   │   │   ├── <b>main</b>
 │   │   │   │   ├── <b>java</b>
 │   │   │   │   │   ├── <b>com.ecommerce.site.shop</b>
 ├── ... (The package structure is the same as admin site)
 </pre>
+
+### Dependencies
+The [pom.xml](site/pom.xml) in site module shares general libraries between sites modules.
+But the pom.xml in each site modules will contain specific dependencies that depend on building its own site. Here is a summary dependencies list.
+
+* **Developer Tools**:
+  * [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.devtools)
+  * [Lombok](https://projectlombok.org/features/)
+* **Web**:
+  * [Spring Web](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#web)
+  * [Spring AOP](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aop-api)
+* **Template Engines**:
+  * [Thymeleaf](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#web.servlet.spring-mvc.template-engines)
+* **Security**:
+  * [Spring Security](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#web.security)
+  * [OAuth2 Client](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#web.security.oauth2.client)
+  * [Jasypt](https://github.com/ulisesbocchio/jasypt-spring-boot) - Jasypt Spring Boot provides Encryption support for property sources in Spring Boot Applications.
+* **SQL**:
+  * [Spring Data JPA](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#data.sql.jpa-and-spring-data)
+  * [Oracle JDBC Driver](https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8)
+* **I/O**:
+  * [Validation](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#io.validation)
+  * [Java Mail Sender](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#io.email)
+* **Build**:
+  * [Apache Maven](https://maven.apache.org/)
+* **Webjars**:
+  * [Bootstrap](https://getbootstrap.com/) - Powerful, extensible, and feature-packed frontend toolkit.
+  * [jQuery](https://jquery.com/) - jQuery is a fast, small, and feature-rich JavaScript library.
+  * [Font Awesome](https://fontawesome.com/) - Font Awesome is the Internet's icon library and toolkit, used by millions of designers, developers, and content creators.
+  * [Summernote](https://summernote.org/) - Super Simple WYSIWYG Editor on Bootstrap Summernote is a JavaScript library that helps you create WYSIWYG editors online.
+* **Others**:
+  * [Super CSV](https://github.com/super-csv/super-csv) - Super CSV is a fast, programmer-friendly, open-source library for reading and writing CSV files with Java.
+  * [Apache POI](https://poi.apache.org/components/) - The Java API for Microsoft Documents.
+  * [Open PDF](https://github.com/LibrePDF/OpenPDF) - Open PDF is an open source Java library for PDF files
 
 ### Features
 #### For admin site
@@ -164,7 +167,7 @@ flowchart LR
 * (Optional) Execute schema.sql script to create new schema. Run Spring Boot Application and wait for generate tables (set "spring.jpa.hibernate.ddl-auto=update" if needed) and run data.sql script to insert data.
 * Switch to application_prod.properties to connect Oracle database through Amazon RDS service.
 * Run and enjoy ☺️.
-
+***
 ## Note
 * Password field of users and customers is encrypted by BCrypt. Use this for login:
     - For user: admin@gmail.com | admin
@@ -177,13 +180,12 @@ flowchart LR
 | SMTP_PORT     |    ❌    | The SMTP server port to connect to, if the connect() method doesn't explicitly specify one | 587            |
 | SMTP_USER     |    ✔    | Username for SMTP Authenticator                                                            |                |
 | SMTP_PASSWORD |    ✔    | Password for SMTP Authenticator                                                            |                |
-
+***
 ## Hosting on Heroku
 ... (In process)
-
-
+***
 ## Results
 ### Admin application
-[Click here](ecommerce-site/site-admin/README.md)
+[Click here](site/admin/README.md)
 ### Shop application
-[Click here](ecommerce-site/site-shop/README.md)
+[Click here](site/shop/README.md)
