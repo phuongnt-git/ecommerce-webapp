@@ -1,4 +1,4 @@
-package com.ecommerce.site.admin;
+package com.ecommerce.site.admin.repository;
 
 
 import com.ecommerce.common.model.entity.Brand;

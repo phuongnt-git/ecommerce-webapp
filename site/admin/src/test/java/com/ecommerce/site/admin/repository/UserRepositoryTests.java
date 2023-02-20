@@ -1,9 +1,8 @@
-package com.ecommerce.site.admin;
+package com.ecommerce.site.admin.repository;
 
 
 import com.ecommerce.common.model.entity.Role;
 import com.ecommerce.common.model.entity.User;
-import com.ecommerce.site.admin.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;

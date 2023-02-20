@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="316a79c4-43ba-47a0-8e7d-b6ac146bfef7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/log/backend-logger.log" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/log/backend-logger.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/security/CustomLoginFailureHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/security/CustomLoginFailureHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/main/resources/application_prod.properties" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/resources/application-prod.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/BrandRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/repository/BrandRepositoryTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/PasswordEncoderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/repository/PasswordEncoderTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/ProductRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/repository/ProductRepositoryTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/RoleRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/repository/RoleRepositoryTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/UserRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/repository/UserRepositoryTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/site/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JRebelWorkspace">
+    <option name="jrebelEnabledAutocompile" value="true" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2Lr6bxoirtfs0xen1SMjHgsTGna" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "database.data.extractors.current.export.id": "Pretty-Groovy.txt.groovy",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "spring.configuration.checksum": "cf4279afba2a8141c579c6fd2c21ce5f",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "oracle"
+    ]
+  }
+}]]></component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.ecommerce.site.admin.repository" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.UserServiceTest.getUserByEmailService">
+    <configuration name="RoleRepositoryTests.testCreateFirstRole" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="admin" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ecommerce.site.admin.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ecommerce.site.admin.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.ecommerce.site.admin.repository.RoleRepositoryTests" />
+      <option name="METHOD_NAME" value="testCreateFirstRole" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTest.createTestDatabase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="admin" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ecommerce.site.admin.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ecommerce.site.admin.service" />
+      <option name="MAIN_CLASS_NAME" value="com.ecommerce.site.admin.service.UserServiceTest" />
+      <option name="METHOD_NAME" value="createTestDatabase" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTest.createUserService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="admin" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ecommerce.site.admin.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ecommerce.site.admin.service" />
+      <option name="MAIN_CLASS_NAME" value="com.ecommerce.site.admin.service.UserServiceTest" />
+      <option name="METHOD_NAME" value="createUserService" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTest.getUserByEmailService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="admin" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ecommerce.site.admin.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ecommerce.site.admin.service" />
+      <option name="MAIN_CLASS_NAME" value="com.ecommerce.site.admin.service.UserServiceTest" />
+      <option name="METHOD_NAME" value="getUserByEmailService" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="admin" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ecommerce.site.admin.AdminApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShopApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="shop" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ecommerce.site.shop.ShopApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.UserServiceTest.getUserByEmailService" />
+        <item itemvalue="JUnit.UserServiceTest.createTestDatabase" />
+        <item itemvalue="JUnit.UserServiceTest.createUserService" />
+        <item itemvalue="JUnit.RoleRepositoryTests.testCreateFirstRole" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="316a79c4-43ba-47a0-8e7d-b6ac146bfef7" name="Changes" comment="" />
+      <created>1676616941850</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1676616941850</updated>
+      <workItem from="1676616944546" duration="53000" />
+      <workItem from="1676879873283" duration="12246000" />
+      <workItem from="1676894979617" duration="1601000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

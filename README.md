@@ -48,7 +48,7 @@ flowchart LR
 ├── <b>db</b>
 │   ├── data.sql (File script insert data)
 │   ├── schema.sql (File script create schema)
-├── <b>ecommerce-common</b> (Common module is a shared library between sites)
+├── <b>common</b> (Common module is a shared library between sites)
 │   ├── <b>src</b>
 │   │   ├── <b>main</b>
 │   │   │   ├── <b>java</b>
@@ -92,7 +92,7 @@ flowchart LR
 │   │   │   │   │   │   ├── ...
 │   │   │   │   │   ├── templates
 │   │   │   │   │   ├── ... (.properties)
-│   │   │   │   │   ├── logback-spring.xml
+│   │   │   │   │   ├── logback.xml
 
 │   ├── <b>shop</b>
 │   │   ├── <b>src</b>

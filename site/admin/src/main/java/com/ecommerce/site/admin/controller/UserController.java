@@ -1,5 +1,6 @@
 package com.ecommerce.site.admin.controller;
 
+import com.ecommerce.common.exception.UserNotFoundException;
 import com.ecommerce.common.model.entity.Role;
 import com.ecommerce.common.model.entity.User;
 import com.ecommerce.site.admin.annotation.PagingAndSortingParam;
@@ -15,7 +16,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -109,7 +109,7 @@ public class UserController {
                            @NotNull Model model,
                            RedirectAttributes attributes) {
         try {
-            User user = userService.get(id);
+            User user = userService.findById(id);
             List<Role> listRoles = userService.listRoles();
 
             model.addAttribute("user", user);
@@ -117,7 +117,7 @@ public class UserController {
             model.addAttribute("listRoles", listRoles);
 
             return "user/user_form";
-        } catch (UsernameNotFoundException e) {
+        } catch (UserNotFoundException e) {
             attributes.addFlashAttribute("message", e.getMessage());
             return "redirect:/users";
         }
@@ -128,18 +128,18 @@ public class UserController {
                              @NotNull RedirectAttributes attributes,
                              @NotNull HttpServletRequest request) {
         try {
-            User user = userService.get(id);
+            User user = userService.findById(id);
             if (!user.hasRole("Admin")) {
                 if (user.getPhotos() != null) {
                     FileUploadUtils.removeDir(USER_PHOTOS_DIR + "/" + id);
                 }
 
-                userService.delete(id);
+                userService.deleteById(id);
                 attributes.addFlashAttribute("message", String.format("The user ID %s has been deleted successfully", id));
             } else {
                 attributes.addFlashAttribute("message", "The admin user cannot be deleted");
             }
-        } catch (UsernameNotFoundException e) {
+        } catch (UserNotFoundException e) {
             attributes.addFlashAttribute("message", e.getMessage());
         }
 
@@ -150,8 +150,8 @@ public class UserController {
     public String updateUserEnabledStatus(@PathVariable("id") Integer id,
                                           @PathVariable("status") boolean enabled,
                                           @NotNull RedirectAttributes attributes,
-                                          @NotNull HttpServletRequest request) {
-        User user = userService.get(id);
+                                          @NotNull HttpServletRequest request) throws UserNotFoundException {
+        User user = userService.findById(id);
         if (!user.hasRole("Admin")) {
             userService.updateEnabledStatus(id, enabled);
             attributes.addFlashAttribute("message", String.format("The user ID %s has been %s", id, enabled ? "enabled" : "disabled"));
@@ -167,11 +167,11 @@ public class UserController {
                            @NotNull Model model,
                            RedirectAttributes attributes) {
         try {
-            User user = userService.get(id);
+            User user = userService.findById(id);
             model.addAttribute("user", user);
 
             return "user/user_detail_modal";
-        } catch (UsernameNotFoundException e) {
+        } catch (UserNotFoundException e) {
             attributes.addFlashAttribute("message", e.getMessage());
 
             return defaultRedirectUrl;
@@ -203,7 +203,7 @@ public class UserController {
     public String viewDetails(@AuthenticationPrincipal @NotNull CustomUserDetailsImpl loggedUser,
                               @NotNull Model model) {
         String email = loggedUser.getUsername();
-        User user = userService.getByEmail(email);
+        User user = userService.findByEmail(email);
         model.addAttribute("user", user);
 
         return "user/account_form";

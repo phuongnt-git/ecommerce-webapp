@@ -1,5 +1,6 @@
 package com.ecommerce.site.admin.service;
 
+import com.ecommerce.common.exception.UserNotFoundException;
 import com.ecommerce.site.admin.helper.PagingAndSortingHelper;
 import com.ecommerce.site.admin.repository.RoleRepository;
 import com.ecommerce.site.admin.repository.UserRepository;
@@ -12,10 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Objects;
+import java.util.*;
 
 import static com.ecommerce.site.admin.constant.ApplicationConstant.USERS_PER_PAGE;
 /**
@@ -84,6 +82,7 @@ public class UserService {
         if (isUpdatingUser) {
             User existingUser = userRepository.findById(user.getId()).get();
 
+
             if (user.getPassword().isEmpty()) {
                 user.setPassword(existingUser.getPassword());
 
@@ -119,18 +118,19 @@ public class UserService {
         }
     }
 
-    public User get(Integer id) throws UsernameNotFoundException {
-        try {
-            return userRepository.findById(id).get();
-        } catch (NoSuchElementException e) {
-            throw new UsernameNotFoundException(String.format("Could not find any user with ID %s", id));
+    public User findById(Integer id) throws UserNotFoundException {
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent()) {
+            return user.get();
+        } else {
+            throw new UserNotFoundException(String.format("Could not find any user with ID %s", id));
         }
     }
 
-    public void delete(Integer id) throws UsernameNotFoundException {
+    public void deleteById(Integer id) throws UserNotFoundException {
         Long countById = userRepository.countById(id);
         if (countById == null || countById == 0) {
-            throw new UsernameNotFoundException(String.format("Could not find any user with ID %s", id));
+            throw new UserNotFoundException(String.format("Could not find any user with ID %s", id));
         }
 
         userRepository.deleteById(id);
@@ -140,7 +140,7 @@ public class UserService {
         userRepository.updateEnabledStatus(id, enabled);
     }
 
-    public User getByEmail(String email) {
+    public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
