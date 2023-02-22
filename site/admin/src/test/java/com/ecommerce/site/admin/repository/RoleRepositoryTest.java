@@ -2,12 +2,8 @@ package com.ecommerce.site.admin.repository;
 
 
 import com.ecommerce.common.model.entity.Role;
-import com.ecommerce.site.admin.repository.RoleRepository;
-import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.TestPropertySource;
@@ -22,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 //@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 @TestPropertySource(locations="classpath:application.properties")
-public class RoleRepositoryTests {
+public class RoleRepositoryTest {
 
     @Autowired
     private RoleRepository repository;

@@ -8,13 +8,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * @author Nguyen Thanh Phuong
  */
-public class PasswordEncoderTests {
+public class PasswordEncoderTest {
 
     @Test
     public void testEncodePassword() {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-        String password = "admin@123";
+        String password = "test";
         String encodedPassword = passwordEncoder.encode(password);
 
         System.out.println(encodedPassword);

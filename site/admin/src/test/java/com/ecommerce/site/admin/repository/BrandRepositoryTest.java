@@ -2,7 +2,6 @@ package com.ecommerce.site.admin.repository;
 
 
 import com.ecommerce.common.model.entity.Brand;
-import com.ecommerce.site.admin.repository.BrandRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -19,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(value = false)
-public class BrandRepositoryTests {
+public class BrandRepositoryTest {
 
     @Autowired
     private BrandRepository repository;
