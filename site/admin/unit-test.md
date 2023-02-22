@@ -1,6 +1,5 @@
-# Overview of Unit Testing with JUnit and Mockito
-## Unit Testing for site admin
-### Add dependencies
+# Unit Testing with JUnit and Mockito
+## Dependencies
 ```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>
@@ -31,7 +30,7 @@
 </dependency>
 ```
 
-### Source Test Structure
+## Test Structure
 ```
 ├── <b>src</b>
 │   ├── <b>test</b>
@@ -43,7 +42,7 @@
 │   │   │   │   ├── service
 ```
 
-### Overview Unit Testing
+## Overview
 <a href="src/test/java/com/ecommerce/site/admin">Click here</a> to view all layer
 
 For code detail of specific test classes in each layer:
@@ -53,21 +52,38 @@ For code detail of specific test classes in each layer:
 * <a href="src/test/java/com/ecommerce/site/admin/service">Service</a>
 
 
-#### 1. Test In Repository Layer
-* `testSearchUser` case in `UserRepositoryTest` 
-(<a href="src/test/java/com/ecommerce/site/admin/repository/UserRepositoryTest.java">Click here</a> to view code)
+### 1. Unit Testing In Repository
+* `testSearchUser` case in `UserRepositoryTest` and its result (<a href="src/test/java/com/ecommerce/site/admin/repository/UserRepositoryTest.java">Click here</a> to view code)
+```java
+@Test
+public void testSearchUser() {
+    String keyword = "gmail";
+
+    int pageNumber = 0;
+    int pageSize = 5;
+
+    Pageable pageable = PageRequest.of(pageNumber, pageSize);
+    Page<User> page = repository.findAll(keyword, pageable);
+
+    List<User> listUsers = page.getContent();
+
+    listUsers.forEach(System.out::println);
+
+    assertThat(listUsers.size()).isGreaterThan(0);
+}
+```
 
 <img src="../result/test-search-user.png" alt="">
 
-#### 2. Test In Service Layer
-##### a) Using `@SpringBootTest` and `@TestPropertySource` to test in TEST database connection from `application-test.properties`
+### 2. Unit Testing In Service
+#### a) Using `@SpringBootTest` and `@TestPropertySource` to test in TEST database connection from `application-test.properties`
 ```java
 @TestPropertySource(locations = "/application-test.properties")
 @SpringBootTest
 ```
 
 ###### This demo below from `UserServiceTest` (<a href="src/test/java/com/ecommerce/site/admin/service/UserServiceTest.java">Click here</a> for detail)
-Before each and after each unit testing, `JdbcTemplate` will execute sql script to get data for testing 
+Before each & after each unit testing, `JdbcTemplate` will execute sql script to get data for testing 
 and delete all after finish each unit test.
 ```java
 @Autowired
@@ -115,7 +131,7 @@ public void testDeleteUser() throws UserNotFoundException {
 
 <img src="../result/test-delete-user.png" alt="">
 
-##### Using `Mockito` with annotation `@ExtendWith(MockitoExtension.class)` and `@ExtendWith(SpringExtension.class)` to test in DEFAULT database connection from `application.properties`
+#### b) Using `Mockito` with annotation `@ExtendWith(MockitoExtension.class)` and `@ExtendWith(SpringExtension.class)` to test in DEFAULT database connection from `application.properties`
 ###### This demo below from `CategoryServiceTest` (<a href="src/test/java/com/ecommerce/site/admin/service/CategoryServiceTest.java">Click here</a> to view code)
 
 * Using `@MockBean` and `@InjectsMock`:
@@ -146,8 +162,8 @@ public void testCheckUniqueInNewModeReturnDuplicateName() {
 ```
 <img src="../result/test-check-category-unique.png" alt="">
 
-#### 3. Test In Controller Layer
-##### For unit testing in `@Controller` & `@RestController` layer, set ignore filter through annotation
+### 3. Unit Testing In Controller
+#### For unit testing in `@Controller` & `@RestController` layer, set ignore filter through annotation
 ```java
 @AutoConfigureMockMvc(addFilters = false)
 ```
@@ -212,8 +228,8 @@ public void testCreateState() throws Exception {
 
 <img src="../result/test-create-state.png" alt="">
 
-#### Other Unit Testing
-###### `testEncodePassword` case and its result
+### Other Unit Testing
+* `testEncodePassword` case and its result
 ```java
 @Test
 public void testEncodePassword() {
@@ -232,7 +248,8 @@ public void testEncodePassword() {
 
 <img src="../result/test-encode-password.png" alt="">
 
-# Overview of Spring Boot Actuator
+# Spring Boot Actuator
+## Overview
 ### Config properties in application
 ```properties
 management.server.port=8090
