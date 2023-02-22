@@ -15,15 +15,11 @@ import java.util.List;
 @Service
 public class SettingService {
 
-    private final SettingRepository repository;
-
     @Autowired
-    public SettingService(SettingRepository repository) {
-        this.repository = repository;
-    }
+    private SettingRepository repository;
 
     public List<Setting> listAllSettings() {
-        return (List<Setting>) repository.findAll();
+        return repository.findAll();
     }
 
     public SettingBagService getGeneralSettings() {

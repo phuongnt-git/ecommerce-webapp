@@ -4,7 +4,6 @@ import com.ecommerce.site.admin.utils.PagingAndSortingUtils;
 import com.ecommerce.site.admin.repository.CategoryRepository;
 import com.ecommerce.common.model.entity.Category;
 import com.ecommerce.common.exception.CategoryNotFoundException;
-import jakarta.transaction.Transactional;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -21,15 +21,11 @@ import static com.ecommerce.site.admin.constant.ApplicationConstant.ROOT_CATEGOR
  * @author Nguyen Thanh Phuong
  */
 @Service
-@Transactional(rollbackOn = Exception.class)
+@Transactional(rollbackFor = Exception.class)
 public class CategoryService {
 
-    private final CategoryRepository categoryRepository;
-
     @Autowired
-    public CategoryService(CategoryRepository categoryRepository) {
-        this.categoryRepository = categoryRepository;
-    }
+    private CategoryRepository categoryRepository;
 
     public List<Category> listByPage(PagingAndSortingUtils info, int pageNumber, String sortDir, String keyword) {
         Sort sort = Sort.by("name");

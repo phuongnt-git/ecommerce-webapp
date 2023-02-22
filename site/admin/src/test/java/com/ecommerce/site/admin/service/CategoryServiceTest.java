@@ -20,10 +20,10 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 public class CategoryServiceTest {
 
 	@MockBean
-	private CategoryRepository categoryRepository;
+	private CategoryRepository repository;
 	
 	@InjectMocks
-	private CategoryService categoryService;
+	private CategoryService service;
 	
 	@Test
 	public void testCheckUniqueInNewModeReturnDuplicateName() {
@@ -32,10 +32,10 @@ public class CategoryServiceTest {
 		
 		Category category = new Category(null, name, alias);
 		
-		Mockito.when(categoryRepository.findByName(name)).thenReturn(category);
-		Mockito.when(categoryRepository.findByAlias(alias)).thenReturn(null);
+		Mockito.when(repository.findByName(name)).thenReturn(category);
+		Mockito.when(repository.findByAlias(alias)).thenReturn(null);
 		
-		String result = categoryService.checkUnique(null, name, alias);
+		String result = service.checkUnique(null, name, alias);
 		
 		assertThat(result).isEqualTo("DuplicateName");
 	}
@@ -47,10 +47,10 @@ public class CategoryServiceTest {
 		
 		Category category = new Category(null, name, alias);
 		
-		Mockito.when(categoryRepository.findByName(name)).thenReturn(null);
-		Mockito.when(categoryRepository.findByAlias(alias)).thenReturn(category);
+		Mockito.when(repository.findByName(name)).thenReturn(null);
+		Mockito.when(repository.findByAlias(alias)).thenReturn(category);
 		
-		String result = categoryService.checkUnique(null, name, alias);
+		String result = service.checkUnique(null, name, alias);
 		
 		assertThat(result).isEqualTo("DuplicateAlias");
 	}	
@@ -61,10 +61,10 @@ public class CategoryServiceTest {
 		String name = "NameABC";
 		String alias = "computers";
 		
-		Mockito.when(categoryRepository.findByName(name)).thenReturn(null);
-		Mockito.when(categoryRepository.findByAlias(alias)).thenReturn(null);
+		Mockito.when(repository.findByName(name)).thenReturn(null);
+		Mockito.when(repository.findByAlias(alias)).thenReturn(null);
 		
-		String result = categoryService.checkUnique(null, name, alias);
+		String result = service.checkUnique(null, name, alias);
 		
 		assertThat(result).isEqualTo("OK");
 	}		
@@ -77,10 +77,10 @@ public class CategoryServiceTest {
 		
 		Category category = new Category(2, name, alias);
 		
-		Mockito.when(categoryRepository.findByName(name)).thenReturn(category);
-		Mockito.when(categoryRepository.findByAlias(alias)).thenReturn(null);
+		Mockito.when(repository.findByName(name)).thenReturn(category);
+		Mockito.when(repository.findByAlias(alias)).thenReturn(null);
 		
-		String result = categoryService.checkUnique(id, name, alias);
+		String result = service.checkUnique(id, name, alias);
 		
 		assertThat(result).isEqualTo("DuplicateName");
 	}
@@ -93,10 +93,10 @@ public class CategoryServiceTest {
 		
 		Category category = new Category(2, name, alias);
 		
-		Mockito.when(categoryRepository.findByName(name)).thenReturn(null);
-		Mockito.when(categoryRepository.findByAlias(alias)).thenReturn(category);
+		Mockito.when(repository.findByName(name)).thenReturn(null);
+		Mockito.when(repository.findByAlias(alias)).thenReturn(category);
 		
-		String result = categoryService.checkUnique(id, name, alias);
+		String result = service.checkUnique(id, name, alias);
 		
 		assertThat(result).isEqualTo("DuplicateAlias");
 	}
@@ -109,10 +109,10 @@ public class CategoryServiceTest {
 		
 		Category category = new Category(id, name, alias);
 		
-		Mockito.when(categoryRepository.findByName(name)).thenReturn(null);
-		Mockito.when(categoryRepository.findByAlias(alias)).thenReturn(category);
+		Mockito.when(repository.findByName(name)).thenReturn(null);
+		Mockito.when(repository.findByAlias(alias)).thenReturn(category);
 		
-		String result = categoryService.checkUnique(id, name, alias);
+		String result = service.checkUnique(id, name, alias);
 		
 		assertThat(result).isEqualTo("OK");
 	}		

@@ -24,18 +24,14 @@ import static com.ecommerce.site.admin.constant.ApplicationConstant.CUSTOMERS_PE
 @Service
 public class CustomerService {
 
-    private final CustomerRepository customerRepository;
-
-    private final CountryRepository countryRepository;
-
-    private final PasswordEncoder passwordEncoder;
+    @Autowired
+    private CustomerRepository customerRepository;
 
     @Autowired
-    public CustomerService(CustomerRepository customerRepository, CountryRepository countryRepository, PasswordEncoder passwordEncoder) {
-        this.customerRepository = customerRepository;
-        this.countryRepository = countryRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
+    private CountryRepository countryRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public void listByPage(int pageNumber, @NotNull PagingAndSortingHelper helper) {
         helper.listEntities(pageNumber, CUSTOMERS_PER_PAGE, customerRepository);

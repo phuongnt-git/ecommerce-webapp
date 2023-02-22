@@ -20,45 +20,41 @@ import static com.ecommerce.site.admin.constant.ApplicationConstant.BRANDS_PER_P
 @Service
 public class BrandService {
 
-    private final BrandRepository brandRepository;
-
     @Autowired
-    public BrandService(BrandRepository brandRepository) {
-        this.brandRepository = brandRepository;
-    }
+    private BrandRepository repository;
 
     public List<Brand> listAll() {
-        return brandRepository.findAll();
+        return repository.findAll();
     }
 
     public void listByPage(int pageNumber, @NotNull PagingAndSortingHelper helper) {
-        helper.listEntities(pageNumber, BRANDS_PER_PAGE, brandRepository);
+        helper.listEntities(pageNumber, BRANDS_PER_PAGE, repository);
     }
 
     public Brand save(Brand brand) {
-        return brandRepository.save(brand);
+        return repository.save(brand);
     }
 
     public Brand get(Integer id) throws BrandNotFoundException {
         try {
-            return brandRepository.findById(id).orElse(null);
+            return repository.findById(id).orElse(null);
         } catch (NoSuchElementException e) {
             throw new BrandNotFoundException(String.format("Could not found any brand with ID %s", id));
         }
     }
 
     public void delete(Integer id) throws BrandNotFoundException {
-        Long countById = brandRepository.countById(id);
+        Long countById = repository.countById(id);
         if (countById == null || countById == 0) {
             throw new BrandNotFoundException(String.format("Could not found any brand with ID %s", id));
         }
 
-        brandRepository.deleteById(id);
+        repository.deleteById(id);
     }
 
     public String checkUnique(Integer id, String name) {
         boolean isCreatingNew = id == null;
-        Brand brandByName = brandRepository.findByName(name);
+        Brand brandByName = repository.findByName(name);
 
         if (isCreatingNew) {
             if (brandByName != null) {

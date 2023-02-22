@@ -4,12 +4,12 @@ import com.ecommerce.site.admin.helper.PagingAndSortingHelper;
 import com.ecommerce.site.admin.repository.ProductRepository;
 import com.ecommerce.common.model.entity.Product;
 import com.ecommerce.common.exception.ProductNotFoundException;
-import jakarta.transaction.Transactional;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -21,15 +21,11 @@ import static com.ecommerce.site.admin.constant.ApplicationConstant.PRODUCTS_PER
  * @author Nguyen Thanh Phuong
  */
 @Service
-@Transactional(rollbackOn = Exception.class)
+@Transactional(rollbackFor = Exception.class)
 public class ProductService {
 
-    private final ProductRepository productRepository;
-
     @Autowired
-    public ProductService(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
+    private ProductRepository productRepository;
 
     public List<Product> listAll() {
         return productRepository.findAll();

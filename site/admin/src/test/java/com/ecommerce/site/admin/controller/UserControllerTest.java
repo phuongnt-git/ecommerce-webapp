@@ -24,7 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 @TestPropertySource(locations = "/application-test.properties")
 @AutoConfigureMockMvc(addFilters = false)
 @SpringBootTest
-public class UserControllerIntegrationTest {
+public class UserControllerTest {
 
     private static MockHttpServletRequest request ;
 
@@ -124,7 +124,7 @@ public class UserControllerIntegrationTest {
     }
 
     @Test
-    public void createScienceGradeHttpRequest () throws Exception {
+    public void testSaveUserReturnBadRequest () throws Exception {
         MockMultipartFile mockMultipartFile = new MockMultipartFile(
                 "image",
                 "test.jpg",
@@ -134,7 +134,6 @@ public class UserControllerIntegrationTest {
 
         MvcResult mvcResult = this.mockMvc
                 .perform(MockMvcRequestBuilders.multipart("/users/save")
-                        //.file(mockMultipartFile)
                         .param("image", mockMultipartFile.getContentType())
                         .param("email", "test2@test.com")
                         .param("firstName", "test2")

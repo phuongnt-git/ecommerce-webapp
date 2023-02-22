@@ -46,15 +46,18 @@
 #### Test `testEncodePassword`
 <img src="../result/test-encode-password.png" alt="">
 
-#### Test in Repository layer
+#### Test In Repository Layer
 * Test `testSearchUser` method in `UserRepositoryTest` 
 (<a href="src/test/java/com/ecommerce/site/admin/repository/UserRepositoryTest.java">Click here</a> for detail)
 <img src="../result/test-search-user.png" alt="">
 
-#### Test in Service layer
-##### Using `@SpringBootTest` and `@TestPropertySource` to get TEST database connection from `application-test.properties`
-This demo result from `UserServiceTest`
-(<a href="src/test/java/com/ecommerce/site/admin/repository/UserServiceTest.java">Click here</a> for detail).
+#### Test In Service Layer
+##### Using `@SpringBootTest` and `@TestPropertySource` to test in TEST database connection from `application-test.properties`
+```java
+@TestPropertySource(locations = "/application-test.properties")
+@SpringBootTest
+```
+###### This demo result below from `UserServiceTest` (<a href="src/test/java/com/ecommerce/site/admin/service/UserServiceTest.java">Click here</a> for detail)
 Before each and after each unit test, `JdbcTemplate` will execute sql script to get data for testing 
 and delete all after finish each unit test.
 ```java
@@ -86,7 +89,7 @@ public void setupAfterTransaction() {
 }
 ```
 
-* Test `testDeleteUser`
+* Test `testDeleteUser` and its result
 ```java
 @Test
 @Rollback
@@ -100,7 +103,72 @@ public void testDeleteUser() throws UserNotFoundException {
     Assertions.assertFalse(user.isPresent(), "return false");
 }
 ```
-and its result
+
 <img src="../result/test-delete-user.png" alt="">
 
-#### Using
+##### Using `Mockito` with annotation `@ExtendWith(MockitoExtension.class)` and `@ExtendWith(SpringExtension.class)` to test in VANILLA database connection
+###### This demo result below from `CategoryServiceTest` (<a href="src/test/java/com/ecommerce/site/admin/service/CategoryServiceTest.java">Click here</a> for details)
+* Using `@MockBean` and `@InjectsMock`:
+```java
+@MockBean
+private CategoryRepository repository;
+
+@InjectMocks
+private CategoryService service;
+```
+
+* Test `testCheckUniqueInNewModeReturnDuplicateName` and its result
+```java
+@Test
+public void testCheckUniqueInNewModeReturnDuplicateName() {
+    String name = "Computers";
+    String alias = "abc";
+    
+    Category category = new Category(null, name, alias);
+    
+    Mockito.when(repository.findByName(name)).thenReturn(category);
+    Mockito.when(repository.findByAlias(alias)).thenReturn(null);
+    
+    String result = service.checkUnique(null, name, alias);
+    
+    assertThat(result).isEqualTo("DuplicateName");
+}
+```
+<img src="../result/test-check-category-unique.png" alt="">
+
+#### Test In Controller Layer
+##### Using `@SpringBootTest` and `@TestPropertySource` to test in TEST database connection from `application-test.properties`
+```java
+@TestPropertySource(locations = "/application-test.properties")
+@SpringBootTest
+```
+###### This demo result below from `UserControllerTest` (<a href="src/test/java/com/ecommerce/site/admin/controller/UserControllerTest.java">Click here</a> for details)
+* Test `testSaveUserReturnBadRequest` and it result
+```java
+@Test
+public void testSaveUserReturnBadRequest () throws Exception {
+    MockMultipartFile mockMultipartFile = new MockMultipartFile(
+            "image",
+            "test.jpg",
+            "image/jpeg",
+            new byte[0]
+    );
+
+    MvcResult mvcResult = this.mockMvc
+            .perform(MockMvcRequestBuilders.multipart("/users/save")
+                    .param("image", mockMultipartFile.getContentType())
+                    .param("email", "test2@test.com")
+                    .param("firstName", "test2")
+                    .param("lastName", "test2")
+                    .param("password", "test2"))
+            .andExpect(MockMvcResultMatchers.status().isBadRequest())
+            .andReturn();
+
+    ModelAndView modelAndView = mvcResult.getModelAndView();
+
+    if (modelAndView != null) {
+        ModelAndViewAssert.assertViewName(modelAndView, "users");
+    }
+}
+```
+<img src="../result">
