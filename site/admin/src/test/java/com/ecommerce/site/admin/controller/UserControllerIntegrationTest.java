@@ -134,6 +134,7 @@ public class UserControllerIntegrationTest {
 
         MvcResult mvcResult = this.mockMvc
                 .perform(MockMvcRequestBuilders.multipart("/users/save")
+                        //.file(mockMultipartFile)
                         .param("image", mockMultipartFile.getContentType())
                         .param("email", "test2@test.com")
                         .param("firstName", "test2")

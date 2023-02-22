@@ -69,6 +69,7 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(@NotNull HttpSecurity http) throws Exception {
         /*http.csrf(c -> c.csrfTokenRepository(csrfTokenRepository()));*/
+        http.csrf().disable();
 
         http.authorizeHttpRequests()
                 .requestMatchers("/css/**", "/img/**", "/js/**", "/webjars/**", "/vendors/**").permitAll()
@@ -84,6 +85,9 @@ public class WebSecurityConfig {
                 .requestMatchers("/orders", "/orders/", "/orders/page/**", "/orders/detail/**").hasAnyAuthority("Admin", "Salesperson", "Shipper")
                 .requestMatchers("/orders_shipper/update/**").hasAuthority("Shipper")
                 .requestMatchers("/reviews/**", "/questions/**").hasAnyAuthority("Admin", "Assistant")
+                .requestMatchers("/actuator/**").permitAll()
+                .requestMatchers(EndpointRequest.to(HealthEndpoint.class)).permitAll()
+                .requestMatchers(EndpointRequest.toAnyEndpoint()).hasRole("ACTUATOR")
                 .anyRequest()
                 .authenticated();
 
@@ -112,10 +116,6 @@ public class WebSecurityConfig {
         http.httpBasic();
 
         http.authenticationProvider(daoAuthenticationProvider());
-
-        http.authorizeHttpRequests()
-                .requestMatchers(EndpointRequest.to(HealthEndpoint.class)).permitAll()
-                .requestMatchers(EndpointRequest.toAnyEndpoint()).hasRole("ADMIN");
 
         return http.build();
     }

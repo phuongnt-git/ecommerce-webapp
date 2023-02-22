@@ -192,6 +192,8 @@ But the pom.xml in each site modules will contain specific dependencies that dep
 [Click here](site/admin/README.md) for an overview of the admin page functions and UI.
 ### Shop application
 [Click here](site/shop/README.md) for an overview of the shop page functions and UI.
+### Unit Test
+[Click here](site/admin/unit-test.md) for an overview of unit test case functions
 ***
 ## References
 
