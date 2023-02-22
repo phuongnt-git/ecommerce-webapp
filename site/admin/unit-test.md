@@ -229,4 +229,19 @@ public void testEncodePassword() {
     assertThat(matches).isTrue();
 }
 ```
+
 <img src="../result/test-encode-password.png" alt="">
+
+# Overview of Spring Boot Actuator
+Config properties in application
+```properties
+management.server.port=8090
+management.endpoints.web.exposure.include=*
+management.endpoint.shutdown.enabled=true
+```
+
+Access Actuator using Postman
+<img src="../result/access-actuator.png" alt="">
+
+Shutdown application through Actuator
+<img src="../result/shutdown-application.png" alt="">
