@@ -1,19 +1,21 @@
 package com.ecommerce.site.admin.service;
 
 import com.ecommerce.common.exception.UserNotFoundException;
+import com.ecommerce.common.model.entity.Role;
+import com.ecommerce.common.model.entity.User;
 import com.ecommerce.site.admin.helper.PagingAndSortingHelper;
 import com.ecommerce.site.admin.repository.RoleRepository;
 import com.ecommerce.site.admin.repository.UserRepository;
-import com.ecommerce.common.model.entity.Role;
-import com.ecommerce.common.model.entity.User;
-import jakarta.transaction.Transactional;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 import static com.ecommerce.site.admin.constant.ApplicationConstant.USERS_PER_PAGE;
 /**
@@ -21,7 +23,7 @@ import static com.ecommerce.site.admin.constant.ApplicationConstant.USERS_PER_PA
  */
 
 @Service
-@Transactional(rollbackOn = Exception.class)
+@Transactional
 public class UserService {
 
     private final UserRepository userRepository;
@@ -35,6 +37,11 @@ public class UserService {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
+    }
+
+    public boolean checkUserExists(Integer id) {
+        Optional<User> user = userRepository.findById(id);
+        return user.isPresent();
     }
 
     public void updateFailedAttempts(@NotNull User user) {
@@ -102,7 +109,7 @@ public class UserService {
         user.setPassword(encodedPassword);
     }
 
-    public boolean isEmailUnique(Integer id, String email) {
+    public boolean checkEmailUnique(Integer id, String email) {
         User userByEmail = userRepository.findByEmail(email);
 
         if (userByEmail == null) {
@@ -128,12 +135,11 @@ public class UserService {
     }
 
     public void deleteById(Integer id) throws UserNotFoundException {
-        Long countById = userRepository.countById(id);
-        if (countById == null || countById == 0) {
+        if (checkUserExists(id)) {
+            userRepository.deleteById(id);
+        } else {
             throw new UserNotFoundException(String.format("Could not find any user with ID %s", id));
         }
-
-        userRepository.deleteById(id);
     }
 
     public void updateEnabledStatus(Integer id, boolean enabled) {

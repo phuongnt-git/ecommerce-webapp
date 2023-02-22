@@ -12,8 +12,10 @@
     <name>admin</name>
     <description>admin</description>
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>17</java.version>
     </properties>
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/net.sf.supercsv/super-csv -->
         <dependency>
@@ -33,6 +35,7 @@
             <artifactId>openpdf</artifactId>
             <version>1.3.30</version>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.webjars.npm/summernote -->
         <dependency>
             <groupId>org.webjars.npm</groupId>
@@ -47,15 +50,8 @@
         </dependency>
 
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.8.1</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
     </dependencies>
 
@@ -67,5 +63,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
