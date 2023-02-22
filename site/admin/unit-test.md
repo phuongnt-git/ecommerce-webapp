@@ -43,7 +43,7 @@
 │   │   │   │   ├── service
 ```
 
-### Overview
+### Overview Unit Testing
 <a href="src/test/java/com/ecommerce/site/admin">Click here</a> to view all layer
 
 For code detail of specific test classes in each layer:
@@ -146,7 +146,7 @@ public void testCheckUniqueInNewModeReturnDuplicateName() {
 ```
 <img src="../result/test-check-category-unique.png" alt="">
 
-#### Test In Controller Layer
+#### 3. Test In Controller Layer
 ##### For unit testing in `@Controller` & `@RestController` layer, set ignore filter through annotation
 ```java
 @AutoConfigureMockMvc(addFilters = false)
@@ -233,15 +233,15 @@ public void testEncodePassword() {
 <img src="../result/test-encode-password.png" alt="">
 
 # Overview of Spring Boot Actuator
-Config properties in application
+### Config properties in application
 ```properties
 management.server.port=8090
 management.endpoints.web.exposure.include=*
 management.endpoint.shutdown.enabled=true
 ```
 
-Access Actuator using Postman
+### Access Actuator using Postman
 <img src="../result/access-actuator.png" alt="">
 
-Shutdown application through Actuator
+### Shutdown application through Actuator
 <img src="../result/shutdown-application.png" alt="">
