@@ -1,5 +1,5 @@
-# Unit Test and Actuator
-## Unit Test for site admin
+# Overview of Unit Testing with JUnit and Mockito
+## Unit Testing for site admin
 ### Add dependencies
 ```xml
 <dependency>
@@ -39,26 +39,35 @@
 │   │   │   ├── <b>com.ecommerce.site.admin</b>
 │   │   │   │   ├── controller
 │   │   │   │   ├── repository
+│   │   │   │   ├── rest
 │   │   │   │   ├── service
 ```
 
-### Result
-#### Test `testEncodePassword`
-<img src="../result/test-encode-password.png" alt="">
+### Overview
+<a href="src/test/java/com/ecommerce/site/admin">Click here</a> to view all layer
 
-#### Test In Repository Layer
-* Test `testSearchUser` method in `UserRepositoryTest` 
-(<a href="src/test/java/com/ecommerce/site/admin/repository/UserRepositoryTest.java">Click here</a> for detail)
+For code detail of specific test classes in each layer:
+* <a href="src/test/java/com/ecommerce/site/admin/controller">Controller</a>
+* <a href="src/test/java/com/ecommerce/site/admin/repository">Repository</a>
+* <a href="src/test/java/com/ecommerce/site/admin/rest">Rest Controller</a>
+* <a href="src/test/java/com/ecommerce/site/admin/service">Service</a>
+
+
+#### 1. Test In Repository Layer
+* `testSearchUser` case in `UserRepositoryTest` 
+(<a href="src/test/java/com/ecommerce/site/admin/repository/UserRepositoryTest.java">Click here</a> to view code)
+
 <img src="../result/test-search-user.png" alt="">
 
-#### Test In Service Layer
-##### Using `@SpringBootTest` and `@TestPropertySource` to test in TEST database connection from `application-test.properties`
+#### 2. Test In Service Layer
+##### a) Using `@SpringBootTest` and `@TestPropertySource` to test in TEST database connection from `application-test.properties`
 ```java
 @TestPropertySource(locations = "/application-test.properties")
 @SpringBootTest
 ```
-###### This demo result below from `UserServiceTest` (<a href="src/test/java/com/ecommerce/site/admin/service/UserServiceTest.java">Click here</a> for detail)
-Before each and after each unit test, `JdbcTemplate` will execute sql script to get data for testing 
+
+###### This demo below from `UserServiceTest` (<a href="src/test/java/com/ecommerce/site/admin/service/UserServiceTest.java">Click here</a> for detail)
+Before each and after each unit testing, `JdbcTemplate` will execute sql script to get data for testing 
 and delete all after finish each unit test.
 ```java
 @Autowired
@@ -89,7 +98,7 @@ public void setupAfterTransaction() {
 }
 ```
 
-* Test `testDeleteUser` and its result
+* `testDeleteUser` case and its result
 ```java
 @Test
 @Rollback
@@ -106,8 +115,9 @@ public void testDeleteUser() throws UserNotFoundException {
 
 <img src="../result/test-delete-user.png" alt="">
 
-##### Using `Mockito` with annotation `@ExtendWith(MockitoExtension.class)` and `@ExtendWith(SpringExtension.class)` to test in VANILLA database connection
-###### This demo result below from `CategoryServiceTest` (<a href="src/test/java/com/ecommerce/site/admin/service/CategoryServiceTest.java">Click here</a> for details)
+##### Using `Mockito` with annotation `@ExtendWith(MockitoExtension.class)` and `@ExtendWith(SpringExtension.class)` to test in DEFAULT database connection from `application.properties`
+###### This demo below from `CategoryServiceTest` (<a href="src/test/java/com/ecommerce/site/admin/service/CategoryServiceTest.java">Click here</a> to view code)
+
 * Using `@MockBean` and `@InjectsMock`:
 ```java
 @MockBean
@@ -117,7 +127,7 @@ private CategoryRepository repository;
 private CategoryService service;
 ```
 
-* Test `testCheckUniqueInNewModeReturnDuplicateName` and its result
+* `testCheckUniqueInNewModeReturnDuplicateName` case and its result
 ```java
 @Test
 public void testCheckUniqueInNewModeReturnDuplicateName() {
@@ -137,13 +147,13 @@ public void testCheckUniqueInNewModeReturnDuplicateName() {
 <img src="../result/test-check-category-unique.png" alt="">
 
 #### Test In Controller Layer
-##### Using `@SpringBootTest` and `@TestPropertySource` to test in TEST database connection from `application-test.properties`
+##### For unit testing in `@Controller` & `@RestController` layer, set ignore filter through annotation
 ```java
-@TestPropertySource(locations = "/application-test.properties")
-@SpringBootTest
+@AutoConfigureMockMvc(addFilters = false)
 ```
-###### This demo result below from `UserControllerTest` (<a href="src/test/java/com/ecommerce/site/admin/controller/UserControllerTest.java">Click here</a> for details)
-* Test `testSaveUserReturnBadRequest` and it result
+
+###### This demo below from `UserControllerTest` (<a href="src/test/java/com/ecommerce/site/admin/controller/UserControllerTest.java">Click here</a> to view code)
+* `testSaveUserReturnBadRequest` case and its result
 ```java
 @Test
 public void testSaveUserReturnBadRequest () throws Exception {
@@ -171,4 +181,52 @@ public void testSaveUserReturnBadRequest () throws Exception {
     }
 }
 ```
-<img src="../result">
+
+<img src="../result/test-save-user-return-bad-request.png" alt="">
+
+###### This demo below from `StateRestControllerTest` (<a href="src/test/java/com/ecommerce/site/admin/controller/UserControllerTest.java">Click here</a> to view code)
+* `testCreateState` case and its result
+```java
+@Test
+@WithMockUser(username = "something", password = "something", roles = "Admin")
+public void testCreateState() throws Exception {
+    String url = "/states/save";
+    Integer countryId = 2;
+    Country country = countryRepository.findById(countryId).get();
+    State state = new State("Arizona", country);
+    
+    MvcResult result = mockMvc.perform(post(url).contentType("application/json")
+            .content(objectMapper.writeValueAsString(state))
+            .with(csrf()))
+        .andDo(print())
+        .andExpect(status().isOk())
+        .andReturn();
+    
+    String response = result.getResponse().getContentAsString();
+    Integer stateId = Integer.parseInt(response);
+    Optional<State> findById = stateRepository.findById(stateId);
+    
+    assertThat(findById.isPresent());		
+}
+```
+
+<img src="../result/test-create-state.png" alt="">
+
+#### Other Unit Testing
+###### `testEncodePassword` case and its result
+```java
+@Test
+public void testEncodePassword() {
+    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+    String password = "test";
+    String encodedPassword = passwordEncoder.encode(password);
+
+    System.out.println(encodedPassword);
+
+    boolean matches = passwordEncoder.matches(password, encodedPassword);
+
+    assertThat(matches).isTrue();
+}
+```
+<img src="../result/test-encode-password.png" alt="">

@@ -43,4 +43,9 @@ public class State implements Serializable {
     @ToString.Exclude
     private Country country;
 
+    public State(String name, Country country) {
+        this.name = name;
+        this.country = country;
+    }
+
 }

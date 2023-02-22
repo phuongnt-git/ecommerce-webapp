@@ -47,4 +47,15 @@ public class Country implements Serializable {
     @JsonIgnore
     private Set<State> states;
 
+    public Country(String name, String code) {
+        this.name = name;
+        this.code = code;
+    }
+
+    public Country(Integer id, String name, String code) {
+        this.id = id;
+        this.name = name;
+        this.code = code;
+    }
+
 }

@@ -42,6 +42,12 @@ public class Currency implements Serializable {
     @Column(name = "CURRENCY_CODE", nullable = false, length = 4)
     private String code;
 
+    public Currency(String name, String symbol, String code) {
+        this.name = name;
+        this.symbol = symbol;
+        this.code = code;
+    }
+
     @Override
     public String toString() {
         return name + " - " + code + " - " + symbol;

@@ -6,15 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="316a79c4-43ba-47a0-8e7d-b6ac146bfef7" name="Changes" comment="Write unit-test.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/Country.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/Currency.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/Currency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/State.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/admin/log/backend-logger.log" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/log/backend-logger.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/service/BrandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/service/BrandService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/service/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/service/CustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/service/SettingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/service/SettingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/controller/UserControllerIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/controller/UserControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/service/CategoryServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/service/CategoryServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/repository/PasswordEncoderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/PasswordEncoderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/repository/RoleRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/repository/RoleRepositoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/admin/unit-test.md" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/unit-test.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,8 +103,10 @@
       <recent name="$PROJECT_DIR$/site/result" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.ecommerce.site.admin.service" />
+      <recent name="com.ecommerce.site.admin.rest" />
       <recent name="com.ecommerce.site.admin.repository" />
+      <recent name="com.ecommerce.site.admin" />
+      <recent name="com.ecommerce.site.admin.service" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -117,49 +116,50 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.UserControllerTest.testSaveUserReturnBadRequest">
-    <configuration name="BrandServiceTest.testCheckUniqueInNewModeReturnDuplicate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.StateRestControllerTest.testCreateState">
+    <configuration name="StateRestControllerTest.testCreateState" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="admin" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ecommerce.site.admin.service.*" />
+          <option name="PATTERN" value="com.ecommerce.site.admin.rest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ecommerce.site.admin.service" />
-      <option name="MAIN_CLASS_NAME" value="com.ecommerce.site.admin.service.BrandServiceTest" />
-      <option name="METHOD_NAME" value="testCheckUniqueInNewModeReturnDuplicate" />
+      <option name="PACKAGE_NAME" value="com.ecommerce.site.admin.rest" />
+      <option name="MAIN_CLASS_NAME" value="com.ecommerce.site.admin.rest.StateRestControllerTest" />
+      <option name="METHOD_NAME" value="testCreateState" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CategoryServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="StateRestControllerTest.testListByCountries" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="admin" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ecommerce.site.admin.service.*" />
+          <option name="PATTERN" value="com.ecommerce.site.admin.rest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ecommerce.site.admin.service" />
-      <option name="MAIN_CLASS_NAME" value="com.ecommerce.site.admin.service.CategoryServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="com.ecommerce.site.admin.rest" />
+      <option name="MAIN_CLASS_NAME" value="com.ecommerce.site.admin.rest.StateRestControllerTest" />
+      <option name="METHOD_NAME" value="testListByCountries" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CategoryServiceTest.testCheckUniqueInNewModeReturnDuplicateName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="StateRestControllerTest.testUpdateState" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="admin" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ecommerce.site.admin.service.*" />
+          <option name="PATTERN" value="com.ecommerce.site.admin.rest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ecommerce.site.admin.service" />
-      <option name="MAIN_CLASS_NAME" value="com.ecommerce.site.admin.service.CategoryServiceTest" />
-      <option name="METHOD_NAME" value="testCheckUniqueInNewModeReturnDuplicateName" />
+      <option name="PACKAGE_NAME" value="com.ecommerce.site.admin.rest" />
+      <option name="MAIN_CLASS_NAME" value="com.ecommerce.site.admin.rest.StateRestControllerTest" />
+      <option name="METHOD_NAME" value="testUpdateState" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -218,21 +218,21 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.BrandServiceTest.testCheckUniqueInNewModeReturnDuplicate" />
-      <item itemvalue="JUnit.CategoryServiceTest" />
+      <item itemvalue="JUnit.StateRestControllerTest.testCreateState" />
+      <item itemvalue="JUnit.StateRestControllerTest.testListByCountries" />
+      <item itemvalue="JUnit.StateRestControllerTest.testUpdateState" />
       <item itemvalue="JUnit.UserControllerTest.createScienceGradeHttpRequest" />
       <item itemvalue="JUnit.UserControllerTest.testSaveUserReturnBadRequest" />
-      <item itemvalue="JUnit.CategoryServiceTest.testCheckUniqueInNewModeReturnDuplicateName" />
       <item itemvalue="Spring Boot.AdminApplication" />
       <item itemvalue="Spring Boot.ShopApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.StateRestControllerTest.testCreateState" />
+        <item itemvalue="JUnit.StateRestControllerTest.testListByCountries" />
+        <item itemvalue="JUnit.StateRestControllerTest.testUpdateState" />
         <item itemvalue="JUnit.UserControllerTest.testSaveUserReturnBadRequest" />
         <item itemvalue="JUnit.UserControllerTest.createScienceGradeHttpRequest" />
-        <item itemvalue="JUnit.CategoryServiceTest" />
-        <item itemvalue="JUnit.CategoryServiceTest.testCheckUniqueInNewModeReturnDuplicateName" />
-        <item itemvalue="JUnit.BrandServiceTest.testCheckUniqueInNewModeReturnDuplicate" />
       </list>
     </recent_temporary>
   </component>
@@ -251,7 +251,7 @@
       <workItem from="1676962461261" duration="3285000" />
       <workItem from="1676966511833" duration="36508000" />
       <workItem from="1677051483865" duration="11817000" />
-      <workItem from="1677065344405" duration="3897000" />
+      <workItem from="1677065344405" duration="9237000" />
     </task>
     <task id="LOCAL-00001" summary="Write unit test case and add Actuator">
       <created>1677059387804</created>
@@ -281,7 +281,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677066937453</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Write unit-test.md">
+      <created>1677069272498</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1677069272498</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
