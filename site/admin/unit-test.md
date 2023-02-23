@@ -3,10 +3,6 @@
 ```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-actuator</artifactId>
-</dependency>
-<dependency>
-    <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-test</artifactId>
     <scope>test</scope>
     <exclusions>
@@ -43,9 +39,9 @@
 ```
 
 ## Overview
-<a href="src/test/java/com/ecommerce/site/admin">Click here</a> to view all layer
+<a href="src/test/java/com/ecommerce/site/admin">Click here</a> to view details
 
-For code detail of specific test classes in each layer:
+To view details of test classes in each layers:
 * <a href="src/test/java/com/ecommerce/site/admin/controller">Controller</a>
 * <a href="src/test/java/com/ecommerce/site/admin/repository">Repository</a>
 * <a href="src/test/java/com/ecommerce/site/admin/rest">Rest Controller</a>
@@ -131,10 +127,13 @@ public void testDeleteUser() throws UserNotFoundException {
 
 <img src="../result/test-delete-user.png" alt="">
 
-#### b) Using `Mockito` with annotation `@ExtendWith(MockitoExtension.class)` and `@ExtendWith(SpringExtension.class)` to test in DEFAULT database connection from `application.properties`
+#### b) Using `Mockito` with `@ExtendWith` and `@ExtendWith` to test in DEFAULT database connection from `application.properties`
+```java
+@ExtendWith(MockitoExtension.class)
+@ExtendWith(SpringExtension.class)
+```
 ###### This demo below from `CategoryServiceTest` (<a href="src/test/java/com/ecommerce/site/admin/service/CategoryServiceTest.java">Click here</a> to view code)
-
-* Using `@MockBean` and `@InjectsMock`:
+* `@MockBean` and `@InjectsMock` to inject application context:
 ```java
 @MockBean
 private CategoryRepository repository;
@@ -163,7 +162,7 @@ public void testCheckUniqueInNewModeReturnDuplicateName() {
 <img src="../result/test-check-category-unique.png" alt="">
 
 ### 3. Unit Testing In Controller
-#### For unit testing in `@Controller` & `@RestController` layer, set ignore filter through annotation
+#### For Unit Testing in `@Controller` & `@RestController` layer, set ignore filter
 ```java
 @AutoConfigureMockMvc(addFilters = false)
 ```
@@ -249,6 +248,13 @@ public void testEncodePassword() {
 <img src="../result/test-encode-password.png" alt="">
 
 # Spring Boot Actuator
+## Dependencies
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+```
 ## Overview
 ### Config properties in application
 ```properties
@@ -262,3 +268,20 @@ management.endpoint.shutdown.enabled=true
 
 ### Shutdown application through Actuator
 <img src="../result/shutdown-application.png" alt="">
+
+# Spring Boot Devtools
+## Dependencies
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtools</artifactId>
+    <scope>runtime</scope>
+    <optional>true</optional>
+</dependency>
+```
+## Config in IntelliJ to auto-make reload
+* Check `Build project automatically` in `Build, Execution, Deployment > Compiler`
+<img src="../result/compiler.png" alt="">
+
+* Check `Allow auto-make to start even if developed application is currently running` in `Advanced Settings`
+<img src="../result/advanced-settings.png" alt="">
