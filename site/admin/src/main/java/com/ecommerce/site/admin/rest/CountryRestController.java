@@ -13,12 +13,8 @@ import java.util.List;
 @RestController
 public class CountryRestController {
 
-    private final CountryRepository countryRepository;
-
     @Autowired
-    public CountryRestController(CountryRepository countryRepository) {
-        this.countryRepository = countryRepository;
-    }
+    private CountryRepository countryRepository;
 
     @GetMapping("/countries/list")
     public List<Country> listAll() {

@@ -11,12 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CustomerRestController {
 
-    private final CustomerService customerService;
-
     @Autowired
-    public CustomerRestController(CustomerService customerService) {
-        this.customerService = customerService;
-    }
+    private CustomerService customerService;
 
     @PostMapping("/customers/check-email")
     public String checkDuplicateEmail(Integer id, String email) {

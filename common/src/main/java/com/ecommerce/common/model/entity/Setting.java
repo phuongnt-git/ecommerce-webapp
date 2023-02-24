@@ -25,10 +25,10 @@ public class Setting implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "KEY", nullable = false, length = 128)
+    @Column(name = "SETTING_KEY", nullable = false, length = 128)
     private String key;
 
-    @Column(name = "VALUE", nullable = false, length = 1024)
+    @Column(name = "SETTING_VALUE", nullable = false, length = 1024)
     private String value;
 
     @Enumerated(EnumType.STRING)

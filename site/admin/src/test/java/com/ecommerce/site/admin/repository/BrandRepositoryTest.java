@@ -24,19 +24,15 @@ public class BrandRepositoryTest {
     private BrandRepository repository;
 
     @Test
-    public void testCreateBrand() {
-    }
-
-    @Test
     public void testFindAll() {
-        Iterable<Brand> brands = repository.findAll();
-        brands.forEach(System.out::println);
+        Iterable<Brand> iterable = repository.findAll();
+        iterable.forEach(System.out::println);
 
-        assertThat(brands).isNotEmpty();
+        assertThat(iterable).isNotEmpty();
     }
 
     @Test
-    public void testGetById() {
+    public void testFindById() {
         Brand brand = repository.findById(1).orElse(null);
 
         assert brand != null;
@@ -52,13 +48,12 @@ public class BrandRepositoryTest {
         assertThat(test.getName()).isEqualTo(newTest);
     }
 
-    @SuppressWarnings("ResultOfMethodCallIgnored")
     @Test
     public void testDelete() {
-        Brand test = repository.save(new Brand("test"));
-        repository.deleteById(test.getId());
+        Brand brand = repository.save(new Brand("test"));
+        repository.deleteById(brand.getId());
 
-        Optional<Brand> result = repository.findById(test.getId());
+        Optional<Brand> result = repository.findById(brand.getId());
 
         assertThat(result.isEmpty());
     }

@@ -153,6 +153,7 @@ public class Product implements Serializable {
         }
         return this.price;
     }
+
     @Transient
     public String getUri() {
         return "/p/" + this.alias + "/";

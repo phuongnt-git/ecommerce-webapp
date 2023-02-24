@@ -35,15 +35,11 @@ public class BrandController {
 
     private final String defaultRedirectUrl = "redirect:/brands/page/1?sortField=name&sortDir=asc";
 
-    private final BrandService brandService;
-
-    private final CategoryService categoryService;
+    @Autowired
+    private BrandService brandService;
 
     @Autowired
-    public BrandController(BrandService brandService, CategoryService categoryService) {
-        this.brandService = brandService;
-        this.categoryService = categoryService;
-    }
+    private CategoryService categoryService;
 
     @GetMapping("/brands")
     public String listFirstPage() {

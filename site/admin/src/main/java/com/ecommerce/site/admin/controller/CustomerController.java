@@ -28,15 +28,11 @@ public class CustomerController {
 
     private final String defaultRedirectUrl = "redirect:/customers/page/1?sortField=firstName&sortDir=asc";
 
-    private final CustomerService customerService;
-
-    private final StateRepository stateRepository;
+    @Autowired
+    private CustomerService customerService;
 
     @Autowired
-    public CustomerController(CustomerService customerService, StateRepository stateRepository) {
-        this.customerService = customerService;
-        this.stateRepository = stateRepository;
-    }
+    private StateRepository stateRepository;
 
     @GetMapping("/customers")
     public String listFirstPage() {

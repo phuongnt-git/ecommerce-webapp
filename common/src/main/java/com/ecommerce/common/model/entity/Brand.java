@@ -20,6 +20,7 @@ import static com.ecommerce.common.constant.ImagePath.BRAND_LOGOS_DIR;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @ToString(exclude = {"logo"})
 public class Brand implements Serializable {
 

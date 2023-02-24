@@ -1,11 +1,11 @@
 package com.ecommerce.common.model.entity;
 
-import com.ecommerce.common.model.entity.Country;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * @author Nguyen Thanh Phuong
@@ -39,9 +39,28 @@ public class State implements Serializable {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "COUNTRY_ID")
+    @JoinColumn(name = "COUNTRY_ID", foreignKey = @ForeignKey(name = "FK_STATE_COUNTRY"))
     @ToString.Exclude
     private Country country;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        State state = (State) o;
+
+        return Objects.equals(id, state.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
 
     public State(String name, Country country) {
         this.name = name;

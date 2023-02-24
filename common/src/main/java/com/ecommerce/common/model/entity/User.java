@@ -27,11 +27,6 @@ import static com.ecommerce.common.constant.ImagePath.USER_PHOTOS_DIR;
                 field = "password",
                 fieldMatch = "confirmPassword",
                 message = "Password do not match"
-        ),
-        @FieldsValueMatch(
-                field = "email",
-                fieldMatch = "confirmEmail",
-                message = "Email do not match"
         )
 })*/
 @Getter
@@ -57,37 +52,31 @@ public class User implements Serializable {
     private Integer id;
 
     @Column(name = "USER_EMAIL", nullable = false, length = 128)
-    @NotBlank(message = "Email must not be blank")
-    @Email(message = "Please provide a valid email address" )
+    @NotBlank(message = "User email is required")
+    @Email(message = "User email must be a valid email address")
     private String email;
 
-    /*@Transient
-    @JsonIgnore
-    @NotBlank(message = "Confirm email must not be blank")
-    @Email(message = "Please provide a valid confirm email address" )
-    private String confirmEmail;*/
-
     @Column(name = "USER_PASSWORD", nullable = false, length = 64)
-    @NotBlank(message = "Password must not be blank")
-    @Size(min = 5, message = "Password must be at least 5 characters long")
+    @NotBlank(message = "User password is required")
+    @Size(min = 6, max = 64, message = "User password must be between 6 and 64 characters")
     @PasswordValidator
     @JsonIgnore
     private String password;
 
     /*@Transient
     @JsonIgnore
-    @NotBlank(message = "Confirm Password must not be blank")
-    @Size(min = 5, message = "Confirm Password must be at least 5 characters long")
+    @NotBlank(message = "Confirm password is required")
+    @Size(min = 6, max = 64, message = "Confirm password must be between 6 and 64 characters")
     private String confirmPassword;*/
 
     @Column(name = "FIRST_NAME", nullable = false, length = 64)
-    @NotBlank(message = "User name must not be blank")
-    @Size(min = 3, message = "User name must be at least 3 characters long")
+    @NotBlank(message = "First name is required")
+    @Size(min = 3, max = 64, message = "First name must be between 3 and 64 characters")
     private String firstName;
 
     @Column(name = "LAST_NAME", nullable = false, length = 64)
-    @NotBlank(message = "User last name must not be blank")
-    @Size(min = 3, message = "User last name must be at least 3 characters long")
+    @NotBlank(message = "Last name is required")
+    @Size(min = 3, max = 64, message = "Last name must be between 3 and 64 characters")
     private String lastName;
 
     @Transient
@@ -98,7 +87,7 @@ public class User implements Serializable {
     @Column(name = "USER_PHOTO", length = 64)
     private String photos;
 
-    @Column(name = "IS_ACTIVE")
+    @Column(name = "IS_ACTIVE", nullable = false, columnDefinition = "NUMBER(1, 0) DEFAULT 1")
     private boolean enabled;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -110,16 +99,16 @@ public class User implements Serializable {
             uniqueConstraints = {@UniqueConstraint(columnNames = {"USER_ID", "ROLE_ID"}, name = "UQ_USER_ROLE")})
     private Set<Role> roles = new HashSet<>();
 
-    @Column(name = "ACCOUNT_NON_EXPIRED", nullable = false, insertable = false, columnDefinition = "number(1, 0) default 1")
+    @Column(name = "ACCOUNT_NON_EXPIRED", nullable = false, insertable = false, columnDefinition = "NUMBER(1, 0) DEFAULT 1")
     private boolean accountNonExpired;
 
-    @Column(name = "ACCOUNT_NON_LOCKED", nullable = false, insertable = false, columnDefinition = "number(1, 0) default 1")
+    @Column(name = "ACCOUNT_NON_LOCKED", nullable = false, insertable = false, columnDefinition = "NUMBER(1, 0) DEFAULT 1")
     private boolean accountNonLocked;
 
-    @Column(name = "CREDENTIALS_NON_EXPIRED", nullable = false, insertable = false, columnDefinition = "number(1, 0) default 1")
+    @Column(name = "CREDENTIALS_NON_EXPIRED", nullable = false, insertable = false, columnDefinition = "NUMBER(1, 0) DEFAULT 1")
     private boolean credentialsNonExpired;
 
-    @Column(name = "FAILED_ATTEMPT", nullable = false, insertable = false, columnDefinition = "number(1, 0) default 0")
+    @Column(name = "FAILED_ATTEMPT", nullable = false, insertable = false, columnDefinition = "NUMBER(1, 0) DEFAULT 0")
     private int failedAttempt;
 
     @Column(name = "LAST_MODIFIED")

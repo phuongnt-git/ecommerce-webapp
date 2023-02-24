@@ -16,12 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ProductRestController {
 
-    private final ProductService productService;
-
     @Autowired
-    public ProductRestController(ProductService productService) {
-        this.productService = productService;
-    }
+    private ProductService productService;
 
     @PostMapping("/products/check-unique")
     public String checkUnique(Integer id, String name) {

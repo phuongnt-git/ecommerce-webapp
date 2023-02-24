@@ -2,6 +2,8 @@ package com.ecommerce.common.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.NaturalIdCache;
 
 import java.io.Serial;
 import java.io.Serializable;

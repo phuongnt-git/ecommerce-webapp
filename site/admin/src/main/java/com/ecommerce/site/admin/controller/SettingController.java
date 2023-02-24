@@ -31,15 +31,11 @@ import static com.ecommerce.site.admin.constant.ApplicationConstant.SITE_LOGO_DI
 @Controller
 public class SettingController {
 
-    private final SettingService settingService;
-
-    private final CurrencyRepository currencyRepository;
+    @Autowired
+    private SettingService settingService;
 
     @Autowired
-    public SettingController(SettingService settingService, CurrencyRepository currencyRepository) {
-        this.settingService = settingService;
-        this.currencyRepository = currencyRepository;
-    }
+    private CurrencyRepository currencyRepository;
 
     @GetMapping("/settings")
     public String listAll(@NotNull Model model) {

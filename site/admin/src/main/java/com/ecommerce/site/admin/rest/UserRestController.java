@@ -12,12 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserRestController {
 
-    private final UserService userService;
-
     @Autowired
-    public UserRestController(UserService userService) {
-        this.userService = userService;
-    }
+    private UserService userService;
 
     @PostMapping("/users/check-email")
     public String checkDuplicateEmail(@Param("id") Integer id,

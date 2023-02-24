@@ -38,18 +38,14 @@ public class ProductController {
 
     private final String defaultRedirectUrl = "redirect:/products/page/1?sortField=name&sortDir=asc&categoryId=0";
 
-    private final ProductService productService;
-
-    private final BrandService brandService;
-
-    private final CategoryService categoryService;
+    @Autowired
+    private ProductService productService;
 
     @Autowired
-    public ProductController(ProductService productService, BrandService brandService, CategoryService categoryService) {
-        this.productService = productService;
-        this.brandService = brandService;
-        this.categoryService = categoryService;
-    }
+    private BrandService brandService;
+
+    @Autowired
+    private CategoryService categoryService;
 
     @GetMapping("/products")
     public String listFirstPage() {

@@ -16,12 +16,8 @@ import java.util.List;
 @RestController
 public class StateRestController {
 
-    private final StateRepository repository;
-
     @Autowired
-    public StateRestController(StateRepository repository) {
-        this.repository = repository;
-    }
+    private StateRepository repository;
 
     @GetMapping("/states/list-by-country/{id}")
     public List<StateDto> listByCountry(@PathVariable("id") Integer countryId) {

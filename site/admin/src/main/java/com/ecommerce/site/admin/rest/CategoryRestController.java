@@ -12,12 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CategoryRestController {
 
-    private final CategoryService categoryService;
-
     @Autowired
-    public CategoryRestController(CategoryService categoryService) {
-        this.categoryService = categoryService;
-    }
+    private CategoryService categoryService;
 
     @PostMapping("categories/check-unique")
     public String checkUnique(@Param("id") Integer id,

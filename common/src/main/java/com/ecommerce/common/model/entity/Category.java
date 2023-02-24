@@ -2,10 +2,14 @@ package com.ecommerce.common.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.NaturalId;
+import org.hibernate.annotations.NaturalIdCache;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import static com.ecommerce.common.constant.ImagePath.CATEGORY_IMAGES_DIR;
@@ -21,6 +25,10 @@ import static com.ecommerce.common.constant.ImagePath.CATEGORY_IMAGES_DIR;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@org.hibernate.annotations.Cache(
+        usage = CacheConcurrencyStrategy.READ_WRITE
+)
+@NaturalIdCache
 public class Category implements Serializable {
 
     @Serial
@@ -40,6 +48,7 @@ public class Category implements Serializable {
     @Column(name = "CATEGORY_NAME", nullable = false, length = 128)
     private String name;
 
+    @NaturalId
     @Column(name = "CATEGORY_ALIAS", nullable = false, length = 128)
     private String alias;
 
@@ -53,7 +62,7 @@ public class Category implements Serializable {
     private String allParentIds;
 
     @OneToOne
-    @JoinColumn(name = "PARENT_ID")
+    @JoinColumn(name = "PARENT_ID", foreignKey = @ForeignKey(name = "FK_CATEGORY_ID"))
     private Category parent;
 
     @OneToMany(mappedBy = "parent")
@@ -145,12 +154,11 @@ public class Category implements Serializable {
 
         Category category = (Category) o;
 
-        return id.equals(category.id);
+        return Objects.equals(alias, category.alias);
     }
 
     @Override
     public int hashCode() {
-        return id.hashCode();
+        return alias != null ? alias.hashCode() : 0;
     }
-
 }

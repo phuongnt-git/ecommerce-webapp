@@ -40,12 +40,8 @@ public class UserController {
 
     private final String defaultRedirectUrl = "redirect:/users/page/1?sortField=email&sortDir=asc";
 
-    private final UserService userService;
-
     @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+    private UserService userService;
 
     @GetMapping("/users")
     public String listAll() {

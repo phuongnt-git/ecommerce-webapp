@@ -4,9 +4,56 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="316a79c4-43ba-47a0-8e7d-b6ac146bfef7" name="Changes" comment="Write unit-test.md">
+    <list default="true" id="316a79c4-43ba-47a0-8e7d-b6ac146bfef7" name="Changes" comment="Refactor code">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/842f35fc-03c0-416b-9eb3-bd7a2c30d3d8/storage_v2/_src_/schema/CTXSYS.Rqsddw.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/842f35fc-03c0-416b-9eb3-bd7a2c30d3d8/storage_v2/_src_/schema/DBSNMP.vILSdw.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/842f35fc-03c0-416b-9eb3-bd7a2c30d3d8/storage_v2/_src_/schema/DVF.9AkBAA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/842f35fc-03c0-416b-9eb3-bd7a2c30d3d8/storage_v2/_src_/schema/GSMCATUSER.gPg8XQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/842f35fc-03c0-416b-9eb3-bd7a2c30d3d8/storage_v2/_src_/schema/LBACSYS.lR-tKA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/842f35fc-03c0-416b-9eb3-bd7a2c30d3d8/storage_v2/_src_/schema/MDDATA.wU1Dhw.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/842f35fc-03c0-416b-9eb3-bd7a2c30d3d8/storage_v2/_src_/schema/OJVMSYS.mw8z1g.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/842f35fc-03c0-416b-9eb3-bd7a2c30d3d8/storage_v2/_src_/schema/OLAPSYS.YTB22A.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/842f35fc-03c0-416b-9eb3-bd7a2c30d3d8/storage_v2/_src_/schema/ORACLE_OCM.uGKsng.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/842f35fc-03c0-416b-9eb3-bd7a2c30d3d8/storage_v2/_src_/schema/ORDSYS.TIxyiw.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/842f35fc-03c0-416b-9eb3-bd7a2c30d3d8/storage_v2/_src_/schema/PDBADMIN.IafZ9w.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/842f35fc-03c0-416b-9eb3-bd7a2c30d3d8/storage_v2/_src_/schema/REMOTE_SCHEDULER_AGENT.SFS5PQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/842f35fc-03c0-416b-9eb3-bd7a2c30d3d8/storage_v2/_src_/schema/SCHEMA.oSl0kQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/842f35fc-03c0-416b-9eb3-bd7a2c30d3d8/storage_v2/_src_/schema/SYS_UMF.N8onww.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/842f35fc-03c0-416b-9eb3-bd7a2c30d3d8/storage_v2/_src_/schema/WMSYS.F0DuBA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/842f35fc-03c0-416b-9eb3-bd7a2c30d3d8/storage_v2/_src_/schema/XDB.1lIBAA.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/842f35fc-03c0-416b-9eb3-bd7a2c30d3d8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/842f35fc-03c0-416b-9eb3-bd7a2c30d3d8.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/unit-test.md" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/unit-test.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/Brand.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/Brand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/Currency.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/Currency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/ProductDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/ProductDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/ProductImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/ProductImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/Setting.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/Setting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/log/backend-logger.log" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/log/backend-logger.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/controller/BrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/controller/BrandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/controller/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/controller/SettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/controller/SettingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/rest/BrandRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/rest/BrandRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/rest/CategoryRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/rest/CategoryRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/rest/CountryRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/rest/CountryRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/rest/CustomerRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/rest/CustomerRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/rest/ProductRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/rest/ProductRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/rest/StateRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/rest/StateRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/rest/UserRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/rest/UserRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/PasswordEncoderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/other/PasswordEncoderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/repository/BrandRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/test/java/com/ecommerce/site/admin/repository/BrandRepositoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,14 +67,28 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="UML Sequence" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="827e5448-1916-48b5-8e85-f935651edf4f" />
+        <option name="url" value="https://github.com/phuongnt-git/ecommerce-webapp.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="JRebelWorkspace">
     <option name="jrebelEnabledAutocompile" value="true" />
@@ -60,6 +121,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;DefaultPlantUmlFileTemplate&quot;: &quot;UML Sequence&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
@@ -68,13 +130,14 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;database.data.extractors.current.export.id&quot;: &quot;Pretty-Groovy.txt.groovy&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/nguyenthanhphuong/Documents/GitHub/ecommerce-webapp/site/result&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;profiler.jvm&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;95dd8201140415f882bb49649ab4eb8b&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -250,6 +313,8 @@
       <workItem from="1677121300602" duration="976000" />
       <workItem from="1677122307390" duration="27000" />
       <workItem from="1677122372409" duration="155000" />
+      <workItem from="1677142569352" duration="6498000" />
+      <workItem from="1677149378404" duration="2513000" />
     </task>
     <task id="LOCAL-00001" summary="Write unit test case and add Actuator">
       <created>1677059387804</created>
@@ -334,6 +399,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Write unit test case and add Actuator" />
     <MESSAGE value="Write unit-test.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Write unit-test.md" />
+    <MESSAGE value="Refactor code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor code" />
   </component>
 </project>

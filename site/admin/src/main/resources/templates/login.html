@@ -4,7 +4,7 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
     <meta content="width=device-width,initial-scale=1.0, minimum-scale=1.0" name="viewport">
 
-    <title>Sign In -  Homepage</title>
+    <title>Sign In - Admin Homepage</title>
 
     <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon">
 
@@ -25,7 +25,7 @@
                         </div>
 
                         <form th:action="@{/login}" method="post" style="margin: unset">
-                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                            <!--<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
 
                             <div th:if="${param.error}" class="text-center">
                                 <p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>

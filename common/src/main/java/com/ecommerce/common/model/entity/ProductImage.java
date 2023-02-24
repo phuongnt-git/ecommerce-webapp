@@ -17,7 +17,7 @@ import static com.ecommerce.common.constant.ImagePath.PRODUCT_IMAGES_DIR;
  */
 @Entity
 @Table(name = "PRODUCT_IMAGE",
-        indexes = {@Index(columnList = "PRODUCT_IMAGE_ID", name = "PRODUCT_IMAGE_IDX", unique = true)})
+        indexes = {@Index(columnList = "ID", name = "PRODUCT_IMAGE_IDX", unique = true)})
 @Getter
 @Setter
 @NoArgsConstructor
@@ -28,7 +28,7 @@ public class ProductImage implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "PRODUCT_IMAGE_ID", nullable = false)
+    @Column(name = "ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "PRODUCT_IMAGE_GEN")
     @TableGenerator(name = "PRODUCT_IMAGE_GEN",
             table = "SEQUENCER",

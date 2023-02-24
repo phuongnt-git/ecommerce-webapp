@@ -22,12 +22,8 @@ import java.util.Set;
 @RestController
 public class BrandRestController {
 
-    private final BrandService brandService;
-
     @Autowired
-    public BrandRestController(BrandService brandService) {
-        this.brandService = brandService;
-    }
+    private BrandService brandService;
 
     @PostMapping("/brands/check-unique")
     public String checkUnique(Integer id, String name) {

@@ -14,17 +14,18 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "PRODUCT_DETAIL",
-        indexes = {@Index(columnList = "PRODUCT_DETAIL_ID", name = "PRODUCT_DETAIL_IDX", unique = true)})
+        indexes = {@Index(columnList = "ID", name = "PRODUCT_DETAIL_IDX", unique = true)})
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductDetail implements Serializable {
+
     @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "PRODUCT_DETAIL_ID", nullable = false)
+    @Column(name = "ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "PRODUCT_DETAIL_GEN")
     @TableGenerator(name = "PRODUCT_DETAIL_GEN",
             table = "SEQUENCER",
