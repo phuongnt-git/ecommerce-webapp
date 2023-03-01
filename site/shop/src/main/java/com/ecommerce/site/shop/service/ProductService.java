@@ -9,6 +9,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * @author Nguyen Thanh Phuong
  */
@@ -19,29 +21,29 @@ public class ProductService {
 
     public static final int SEARCH_RESULTS_PER_PAGE = 10;
 
-    private final ProductRepository productRepository;
-
     @Autowired
-    public ProductService(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
+    private ProductRepository productRepository;
 
     public Page<Product> listByCategory(int pageNum, Integer categoryId) {
         String categoryIdMatch = "-" + categoryId + "-";
         Pageable pageable = PageRequest.of(pageNum - 1, PRODUCTS_PER_PAGE);
+
         return productRepository.listByCategory(categoryId, categoryIdMatch, pageable);
     }
 
     public Product getProduct(String alias) throws ProductNotFoundException {
-        Product product = productRepository.findByAlias(alias);
-        if (product == null) {
-            throw new ProductNotFoundException(String.format("Could not find any products with alias %s", alias));
+        Optional<Product> product = productRepository.findByAlias(alias);
+
+        if (product.isPresent()) {
+            return product.get();
         }
-        return product;
+
+        throw new ProductNotFoundException(String.format("Could not find any products with alias %s", alias));
     }
 
     public Page<Product> search(String keyword, int pageNum) {
         Pageable pageable = PageRequest.of(pageNum - 1, SEARCH_RESULTS_PER_PAGE);
+
         return productRepository.search(keyword, pageable);
     }
 

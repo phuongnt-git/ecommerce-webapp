@@ -12,8 +12,6 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import static com.ecommerce.common.constant.ImagePath.CATEGORY_IMAGES_DIR;
-
 /**
  * @author Nguyen Thanh Phuong
  */
@@ -130,9 +128,9 @@ public class Category implements Serializable {
     @Transient
     public String getImagePath() {
         if (this.id == null) {
-            return "/img/image-thumbnail.png";
+            return "/images/image-thumbnail.png";
         }
-        return CATEGORY_IMAGES_DIR + this.id + "/" + this.image;
+        return "/images/category-images/" + this.id + "/" + this.image;
     }
 
     public boolean isHasChildren() {

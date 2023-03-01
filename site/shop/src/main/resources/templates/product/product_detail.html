@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head th:replace="~{fragment :: page_head(${pageTitle}, 'tag')}"></head>
+    <!--<link media="all" rel="stylesheet" th:href="@{/star-rating/css/star-rating.css}" type="text/css"/>
+    <script th:src="@{/star-rating/js/star-rating.js}" type="text/javascript"></script>
+    <link media="all" rel="stylesheet" th:href="@{/star-rating/themes/krajee-svg/theme.css}" type="text/css"/>
+    <script th:src="@{/star-rating/themes/krajee-svg/theme.js}"></script>-->
+    <title></title>
+</head>
+<body class="inner">
+<!-- preloader begin -->
+<div class="preloader">
+    <img alt="Gif" th:src="@{/img/loader.gif}">
+</div>
+<!-- preloader end -->
+
+
+<!--------------------------------- HEADER SECTION START --------------------------------->
+<span th:replace="~{header_section2 :: content}"></span>
+<!--------------------------------- HEADER SECTION END --------------------------------->
+
+
+<!--------------------------------- SHOP SECTION START --------------------------------->
+<div class="shop-details py-120">
+    <div class="container">
+        <div class="product-view-area">
+            <div class="row">
+                <div class="col-xl-6 col-lg-5 col-md-6">
+                    <div class="part-img">
+                        <div class="img-box">
+                            <img alt="Image" id="bigImage" index="0" th:src="@{${product.mainImagePath}}"
+                                 width="500px;">
+                        </div>
+                        <div class="btn-box">
+                            <th:block th:each="extraImage, status : ${product.images}">
+                                <button class="small-thumb active">
+                                    <img alt="image" class="image-thumbnail"
+                                         th:index="${status.count}" th:src="@{${extraImage.imagePath}}">
+                                </button>
+                            </th:block>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6 col-lg-7 col-md-6">
+                    <div class="part-txt">
+                        <h2 class="main-product-title">[[${product.name}]]</h2>
+                        <div class="row">
+                            <div class="col-xs">
+					            <span>
+                                    <input class="product-detail-rating-star" data-size="md" dir="ltr"
+                                           th:value="${product.averageRating}" type="text"/>
+                                </span>
+
+                                <span class="rating-amount"><a th:href="@{${product.uri} + '#review'}">[[${product.reviewCount}]] rating(s)</a></span>
+                                &nbsp;
+                                <span class="rating-amount"><a th:href="@{${product.uri} + '#qa'}">[[${numberOfAnsweredQuestions}]] answered questions</a></span>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div>
+                            <b style="color: Chocolate;">Digital List Price:</b>
+                            <span th:if="${product.discountPercent <= 0}">
+                                <div th:replace="~{product/product_fragment :: price_fragment(${product.price})}"></div>
+                            </span>
+                            <del class="price" th:if="${product.discountPercent > 0}">
+                                <span>
+                                    <div th:replace="~{product/product_fragment :: price_fragment(${product.price})}"></div>
+                                </span>
+                            </del>
+                        </div>
+
+                        <div th:if="${product.discountPercent > 0}">
+                            <b style="color: IndianRed;">Kindle Price:</b>
+                            <span style="font-size: larger; color: darkred">
+                                <div th:replace="~{product/product_fragment :: price_fragment(${product.discountPrice})}"></div>
+                            </span>
+                            ([[${#numbers.formatDecimal(product.discountPercent, 1, THOUSANDS_POINT_TYPE,
+                            DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]] % off includes free international wireless delivery
+                            via Amazon)
+                        </div>
+
+                        <ul class="short-details">
+                            <li>Availability: <span class="text-success" th:if="${product.inStock}">In stock</span>
+                                <span class="text-danger" th:unless="${product.inStock}">Out of Stock</span>
+                            </li>
+                            <!--/* <li>Shop: <span>[[${product.shop.name}]]</span></li> */-->
+                            <li>Brands: <span>[[${product.brand.name}]]</span></li>
+                        </ul>
+
+                        <p class="dscr" th:utext="${product.shortDescription}"></p>
+                        <th:block th:if="${product.inStock}">
+                            <!--/* <div th:replace="~{cart/quantity_control :: quantity_control(1, ${product.id})}"></div> */-->
+                            <div class="btn-box">
+                                <button id="buttonAdd2Cart">
+                                    <span><i class="fa-light fa-cart-shopping"></i></span> add to cart
+                                </button>
+
+                                <button id="addToWishList">
+                                    <span><i class="fa-light fa-heart"></i></span> add to wishlist
+                                </button>
+                            </div>
+                        </th:block>
+
+                        <div class="product-share">
+                            <span>Share Link:</span>
+                            <div class="social">
+                                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="#"><i class="fa-brands fa-google-plus-g"></i></a>
+                                <a href="#"><i class="fa-solid fa-rss"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-area">
+            <nav>
+                <div class="nav" id="nav-tab" role="tablist">
+                    <button aria-controls="nav-dscr" aria-selected="true" class="nav-link active"
+                            data-bs-target="#nav-dscr"
+                            data-bs-toggle="tab" id="nav-dscr-tab" role="tab" type="button">Description
+                    </button>
+
+                    <button aria-controls="nav-info" aria-selected="false" class="nav-link" data-bs-target="#nav-info"
+                            data-bs-toggle="tab" id="nav-info-tab" role="tab" type="button">Information
+                    </button>
+
+                    <button aria-controls="nav-review" aria-selected="false" class="nav-link"
+                            data-bs-target="#nav-review"
+                            data-bs-toggle="tab" id="nav-review-tab" role="tab" type="button">Reviews
+                    </button>
+                </div>
+            </nav>
+
+            <div class="tab-content" id="nav-tabContent">
+                <div aria-labelledby="nav-dscr-tab" class="tab-pane fade show active" id="nav-dscr" role="tabpanel"
+                     tabindex="0">
+                    <div class="product-dscr">
+                        <div th:utext="${product.fullDescription}"></div>
+                    </div>
+                </div>
+
+                <div aria-labelledby="nav-info-tab" class="tab-pane fade" id="nav-info" role="tabpanel" tabindex="0">
+                    <div class="product-information">
+                        <ul>
+                            <th:block th:each="detail : ${product.details}">
+                                <li><span>[[${detail.name}]]</span>[[${detail.value}]]</li>
+                            </th:block>
+                        </ul>
+                    </div>
+                </div>
+
+                <div aria-labelledby="nav-review-tab" class="tab-pane fade" id="nav-review" role="tabpanel"
+                     tabindex="0">
+                    <div class="product-review">
+                        <div class="review-overview" id="review">
+                            <div class="left">
+                                <input class="product-detail-rating-star" data-size="md" dir="ltr"
+                                       th:value="${product.averageRating}" type="text"/>
+                                <br>
+                                <h2>[[${product.averageRating}]]<span>/5</span></h2>
+                                <a style="color: red;" th:href="@{'/ratings/' + ${product.alias}}">View all
+                                    [[${product.reviewCount}]] ratings</a>
+                                <div class="row" th:if="${customerReviewed}">
+                                    <span class="text-success">You already reviewed this product.</span>
+                                </div>
+                                <div class="row" th:if="${customerCanReview}">
+                                    <span class="text-info">
+                                        You purchased and got this product.
+                                        <b>
+                                            <a th:href="@{'/write_review/product/' + ${product.id}}">Write Your Review Now</a>
+                                        </b>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="right">
+                                <ul>
+                                    <li>
+                                        <div class="stars">
+                                            <i class="fa-solid fa-star-sharp rated"></i>
+                                            <i class="fa-solid fa-star-sharp rated"></i>
+                                            <i class="fa-solid fa-star-sharp rated"></i>
+                                            <i class="fa-solid fa-star-sharp rated"></i>
+                                            <i class="fa-solid fa-star-sharp rated"></i>
+                                        </div>
+                                        <div class="review-line">
+                                            <div class="progress">
+                                                <div aria-label="Basic example" aria-valuemax="100" aria-valuemin="0"
+                                                     aria-valuenow="41" class="progress-bar" role="progressbar"
+                                                     style="width: 41%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="percentage">
+                                            <span>[[${numberOf5Star}]]</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="stars">
+                                            <i class="fa-solid fa-star-sharp rated"></i>
+                                            <i class="fa-solid fa-star-sharp rated"></i>
+                                            <i class="fa-solid fa-star-sharp rated"></i>
+                                            <i class="fa-solid fa-star-sharp rated"></i>
+                                            <i class="fa-solid fa-star-sharp"></i>
+                                        </div>
+                                        <div class="review-line">
+                                            <div class="progress">
+                                                <div aria-label="Basic example" aria-valuemax="100" aria-valuemin="0"
+                                                     aria-valuenow="29" class="progress-bar" role="progressbar"
+                                                     style="width: 29%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="percentage">
+                                            <span>[[${numberOf4Star}]]</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="stars">
+                                            <i class="fa-solid fa-star-sharp rated"></i>
+                                            <i class="fa-solid fa-star-sharp rated"></i>
+                                            <i class="fa-solid fa-star-sharp rated"></i>
+                                            <i class="fa-solid fa-star-sharp"></i>
+                                            <i class="fa-solid fa-star-sharp"></i>
+                                        </div>
+                                        <div class="review-line">
+                                            <div class="progress">
+                                                <div aria-label="Basic example" aria-valuemax="100" aria-valuemin="0"
+                                                     aria-valuenow="16" class="progress-bar" role="progressbar"
+                                                     style="width: 16%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="percentage">
+                                            <span>[[${numberOf3Star}]]</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="stars">
+                                            <i class="fa-solid fa-star-sharp rated"></i>
+                                            <i class="fa-solid fa-star-sharp rated"></i>
+                                            <i class="fa-solid fa-star-sharp"></i>
+                                            <i class="fa-solid fa-star-sharp"></i>
+                                            <i class="fa-solid fa-star-sharp"></i>
+                                        </div>
+                                        <div class="review-line">
+                                            <div class="progress">
+                                                <div aria-label="Basic example" aria-valuemax="100" aria-valuemin="0"
+                                                     aria-valuenow="11" class="progress-bar" role="progressbar"
+                                                     style="width: 11%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="percentage">
+                                            <span>[[${numberOf2Star}]]</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="stars">
+                                            <i class="fa-solid fa-star-sharp rated"></i>
+                                            <i class="fa-solid fa-star-sharp"></i>
+                                            <i class="fa-solid fa-star-sharp"></i>
+                                            <i class="fa-solid fa-star-sharp"></i>
+                                            <i class="fa-solid fa-star-sharp"></i>
+                                        </div>
+                                        <div class="review-line">
+                                            <div class="progress">
+                                                <div aria-label="Basic example" aria-valuemax="100" aria-valuemin="0"
+                                                     aria-valuenow="3" class="progress-bar" role="progressbar"
+                                                     style="width: 3%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="percentage">
+                                            <span>[[${numberOf1Star}]]</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--/* <div th:replace="~{product/question_answer :: content}"></div>
+                        <div th:replace="~{reviews/reviews_votes :: content}"></div> */-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------------------------- SHOP SECTION END --------------------------------->
+<div th:replace="~{modal_dialog :: warning_modal}"></div>
+
+
+<!--------------------------------- FOOTER SECTION START --------------------------------->
+<span th:replace="~{footer :: footer}"></span>
+<!--------------------------------- FOOTER SECTION END --------------------------------->
+
+
+<script type="text/javascript">
+    contextPath = "[[@{/}]]";
+    //productId = "[[${product.id}]]";
+    let csrfHeaderName = "[[${_csrf.headerName}]]";
+    let csrfValue = "[[${_csrf.token}]]";
+
+    decimalSeparator = "[[${DECIMAL_POINT_TYPE == 'COMMA' ? ',' : '.'}]]";
+    thousandSeparator = "[[${THOUSANDS_POINT_TYPE == 'COMMA' ? ',' : '.'}]]";
+
+    $(document).ready(function () {
+        let bigImage = $("#bigImage");
+
+        $(".image-thumbnail").mouseover(function () {
+            let currentimgource = $(this).attr("src");
+            let currentImageIndex = $(this).attr("index");
+
+            bigImage.attr("src", currentimgource);
+            bigImage.attr("index", currentImageIndex);
+        });
+
+        bigImage.on("click", function () {
+            $("#carouselModal").modal("show");
+            let imageIndex = parseInt(bigImage.attr("index"));
+            $("#carouselExampleIndicators").carousel(imageIndex);
+        });
+
+        $(".linkVoteReview").on("click", function (e) {
+            e.preventDefault();
+            doVote($(this), "review");
+        });
+
+        $(".linkVoteQuestion").on("click", function (e) {
+            e.preventDefault();
+            doVote($(this), "question");
+        });
+    });
+</script>
+<script th:src="@{/js/jquery.number.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/common_rating.js}" type="text/javascript"></script>
+<script th:src="@{/js/common_modal.js}" type="text/javascript"></script>
+<script th:src="@{/js/quantity_control.js}" type="text/javascript"></script>
+<script th:src="@{/js/add_to_cart.js}" type="text/javascript"></script>
+<script th:src="@{/js/common_vote.js}" type="text/javascript"></script>
+<script th:src="@{/js/question_post.js}" type="text/javascript"></script>
+<script th:src="@{/vendor/js/jquery.nice-select.min.js}"></script>
+<script th:src="@{/vendor/js/jquery.flagstrap.min.js}"></script>
+<script th:src="@{/vendor/js/slick.min.js}"></script>
+<script th:src="@{/vendor/js/owl.carousel.min.js}"></script>
+<script th:src="@{/vendor/js/jquery.syotimer.min.js}"></script>
+<script th:src="@{/vendor/js/jquery-modal-video.min.js}"></script>
+<script th:src="@{/vendor/js/nouislider.min.js}"></script>
+<script th:src="@{/vendor/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+</body>
+</html>

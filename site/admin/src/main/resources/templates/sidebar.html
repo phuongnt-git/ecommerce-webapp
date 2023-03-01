@@ -80,7 +80,8 @@
 
                         <ul class="submenu">
                             <li>
-                                <a class="sidebar-link" th:href="@{/products/new}" sec:authorize="hasAnyAuthority('Admin', 'Editor')">[[#{sidebar.create}]]</a>
+                                <a class="sidebar-link" th:href="@{/products/new}"
+                                   sec:authorize="hasAnyAuthority('Admin', 'Editor')">[[#{sidebar.create}]]</a>
                                 <a class="sidebar-link" th:href="@{/products}">[[#{sidebar.view}]]</a>
                             </li>
                         </ul>

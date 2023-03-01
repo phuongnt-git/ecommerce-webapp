@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <head th:replace="fragments :: page_head(${pageTitle}, 'tag')"/>
+    <link media="all" rel="stylesheet" th:href="@{/star-rating/css/star-rating.css}" type="text/css"/>
+    <script th:src="@{/star-rating/js/star-rating.js}" type="text/javascript"></script>
+    <link media="all" rel="stylesheet" th:href="@{/star-rating/themes/krajee-svg/theme.css}" type="text/css"/>
+    <script th:src="@{/star-rating/themes/krajee-svg/theme.js}"></script>
+</head>
+<body class="inner">
+<!-- preloader begin -->
+<div class="preloader">
+    <img alt="Gif" th:src="@{/img/loader.gif}" src="">
+</div>
+<!-- preloader end -->
+
+<!--------------------------------- PRODUCT QUICK VIEW PANEL START --------------------------------->
+<div class="product-quick-view-panel">
+    <div class="img">
+        <img alt="image" class="quick-view-image" th:src="@{/img/}" src="">
+    </div>
+</div>
+<!--------------------------------- PRODUCT QUICK VIEW PANEL END --------------------------------->
+
+
+<!--------------------------------- HEADER SECTION START --------------------------------->
+<span th:replace="~{header_section2 :: content}"></span>
+<!--------------------------------- HEADER SECTION END --------------------------------->
+
+
+<!--------------------------------- BANNER SECTION START --------------------------------->
+<div class="banner banner-inner">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-lg-6 col-md-9 col-8">
+                <div class="breadcrumb-txt">
+                    <h1>Shop Details</h1>
+                    <ul>
+                        <li><a th:href="@{/}"><i class="fa-regular fa-house"></i></a></li>
+                        <li>/</li>
+                        <li>Shop Details</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-3 col-4">
+                <div class="part-img">
+                    <img alt="Image" th:src="@{/img/breadcrumb-img.png}" src="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------------------------- BANNER SECTION END --------------------------------->
+
+
+<!--------------------------------- SHOP SECTION START --------------------------------->
+<div class="shop-wrap py-120">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-xl-3 col-lg-4 sidebar-col">
+                <div class="shop-sidebar">
+                    <div class="sidebar-box">
+                        <div class="title-wrap">
+                            <h3 class="sidebar-title">New Arrival</h3>
+                            <div class="new-arrival-nav"></div>
+                        </div>
+                        <ul class="new-arrival-slider">
+                            <th:block th:each="product : ${listProducts}">
+                                <li>
+                                    <div class="part-img">
+                                        <img alt="Image" th:src="@{${product.mainImagePath}}" src="">
+                                    </div>
+                                    <div class="part-txt">
+                                        <a class="title" href="shop-details.html">[[${product.shortName}]]</a>
+                                        <div th:replace="~{product/product_fragment :: product_price}"></div>
+                                    </div>
+                                </li>
+                            </th:block>
+                        </ul>
+                    </div>
+                    <div class="sidebar-new-arrival">
+                        <div class="part-img">
+                            <img alt="Image" th:src="@{/img/new-arrival-4.jpg}" src="">
+                        </div>
+                        <div class="part-txt">
+                            <p>Season Sale!</p>
+                            <h3>New Arrivals</h3>
+                            <a th:href="@{/}">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-9 col-lg-8">
+                <div class="shop-top-bar">
+                    <div class="row align-items-center">
+                        <div class="col-md-3 d-md-block d-none">
+                            <h3 id="shopViewType">Shop Grid</h3>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="top-bar-right">
+                                <div class="view-wrap">
+                                    <button class="active" id="gridView"><i class="flaticon-apps"></i></button>
+                                    <button id="listView"><i class="flaticon-menu"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-lg-4 g-3">
+                    <th:block th:each="product : ${listProducts}">
+                        <div class="product-col col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-6">
+                            <div class="single-product-card">
+                                <div class="part-img">
+                                    <span class="off-tag">[[${product.discountPercent}]]</span>
+                                    <img alt="Product" style="height: 250px;" th:src="@{${product.mainImagePath}}"
+                                         width="250px;" src="">
+                                </div>
+
+                                <div class="d-flex justify-content-center">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <input class="product-detail-rating-star" data-size="xs" dir="ltr"
+                                                       th:value="${product.averageRating}" type="text"/>
+                                            </td>
+                                            <td><small>[[${product.reviewCount}]]</small></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="part-txt">
+                                    <h4 class="product-name"><a th:href="@{${product.URI}}">[[${product.shortName}]]</a>
+                                    </h4>
+                                    <div th:replace="~{product/product_fragment :: product_price}"></div>
+                                    <button class="add-to-cart-btn">Add to Cart</button>
+                                </div>
+
+                                <div class="cart-option">
+                                    <ul>
+                                        <li>
+                                            <a class="add-to-cart" role="button">
+                                                <i class="fa-light fa-cart-shopping"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="add-to-wish" role="button">
+                                                <i class="fa-light fa-heart"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="quick-view" role="button">
+                                                <i class="fa-light fa-image"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="view-product" th:href="@{/}">
+                                                <i class="fa-light fa-eye"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
+                </div>
+                <div th:replace="~{fragment :: pagination('/c/' + ${category.alias}, 'product')}"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------------------------- SHOP SECTION END --------------------------------->
+
+
+<!--------------------------------- FEATURES SECTION START --------------------------------->
+<div class="features" id="feature">
+    <div class="container">
+        <div class="panel panel-shadow px-0">
+            <div class="custom-row">
+                <div class="custom-col">
+                    <div class="single-feature">
+                        <div class="part-icon">
+                            <span><i class="flaticon-money-saving"></i></span>
+                        </div>
+                        <div class="part-txt">
+                            <h4>Free Delivery</h4>
+                            <p>For all order over $99</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-col">
+                    <div class="single-feature">
+                        <div class="part-icon">
+                            <span><i class="flaticon-dollar"></i></span>
+                        </div>
+                        <div class="part-txt">
+                            <h4>30 Days Return</h4>
+                            <p>If goods have Problems</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-col">
+                    <div class="single-feature">
+                        <div class="part-icon">
+                            <span><i class="flaticon-credit-card"></i></span>
+                        </div>
+                        <div class="part-txt">
+                            <h4>Secure Payment</h4>
+                            <p>100% secure payment</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-col">
+                    <div class="single-feature">
+                        <div class="part-icon">
+                            <span><i class="flaticon-call-center"></i></span>
+                        </div>
+                        <div class="part-txt">
+                            <h4>24/7 Support</h4>
+                            <p>Dedicated support</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------------------------- FEATURES SECTION END --------------------------------->
+
+
+<!--------------------------------- FOOTER SECTION START --------------------------------->
+<span th:replace="~{footer:: footer}"></span>
+<!--------------------------------- FOOTER SECTION END --------------------------------->
+
+
+<script type="text/javascript">
+    $(".product-detail-rating-star").rating({
+        displayOnly: true,
+        hoverOnClera: false,
+        showCaption: false,
+        theme: 'krajee-svg'
+    });
+
+    $("#listView").on('click', function () {
+        $(this).addClass("active").siblings().removeClass("active");
+        $(".product-col").removeClass("col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-6").addClass("col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12").find(".single-product-card").addClass("product-card-list");
+        $('#shopViewType').text('Shop List');
+    });
+
+    $("#gridView").on('click', function () {
+        $(this).addClass("active").siblings().removeClass("active");
+        $(".product-col").addClass("col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-6").removeClass("col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12").find(".single-product-card").removeClass("product-card-list");
+        $('#shopViewType').text('Shop Grid');
+    });
+</script>
+<script th:src="@{/vendor/js/jquery.nice-select.min.js}"></script>
+<script th:src="@{/vendor/js/jquery.flagstrap.min.js}"></script>
+<script th:src="@{/vendor/js/slick.min.js}"></script>
+<script th:src="@{/vendor/js/owl.carousel.min.js}"></script>
+<script th:src="@{/vendor/js/jquery.syotimer.min.js}"></script>
+<script th:src="@{/vendor/js/jquery-modal-video.min.js}"></script>
+<script th:src="@{/vendor/js/nouislider.min.js}"></script>
+<script th:src="@{/vendor/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+</body>
+</html>

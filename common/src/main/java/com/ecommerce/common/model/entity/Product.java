@@ -7,8 +7,6 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.*;
 
-import static com.ecommerce.common.constant.ImagePath.PRODUCT_IMAGES_DIR;
-
 /**
  * @author Nguyen Thanh Phuong
  */
@@ -123,9 +121,9 @@ public class Product implements Serializable {
     @Transient
     public String getMainImagePath() {
         if (id == null || mainImage == null) {
-            return "/img/image-thumbnail.png";
+            return "/images/image-thumbnail.png";
         }
-        return PRODUCT_IMAGES_DIR + this.id + "/" + this.mainImage;
+        return "/images/product-images/" + this.id + "/" + this.mainImage;
     }
 
     public boolean containsImageName(String imageName) {
@@ -137,7 +135,6 @@ public class Product implements Serializable {
         return false;
     }
 
-    @SuppressWarnings("AlibabaUndefineMagicConstant")
     @Transient
     public String getShortName() {
         if (name.length() > 70) {

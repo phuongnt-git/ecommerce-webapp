@@ -7,11 +7,11 @@ import com.ecommerce.common.model.entity.Country;
 import com.ecommerce.common.model.entity.Customer;
 import com.ecommerce.common.model.entity.State;
 import com.ecommerce.common.model.enums.AuthenticationType;
-import com.ecommerce.site.shop.utils.EmailSettingBagUtils;
-import com.ecommerce.site.shop.utils.EmailUtils;
 import com.ecommerce.site.shop.repository.CountryRepository;
 import com.ecommerce.site.shop.repository.CustomerRepository;
 import com.ecommerce.site.shop.repository.StateRepository;
+import com.ecommerce.site.shop.utils.EmailSettingBagUtils;
+import com.ecommerce.site.shop.utils.EmailUtils;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpServletRequest;
@@ -48,16 +48,16 @@ public class CustomerService {
     private SettingService settingService;
 
     public List<Country> findAllCountry() {
-        return countryRepository.findAllByOrderByName();
+        return countryRepository.findAllByOrderByNameAsc();
     }
 
-    public List<State> findStateByCountry(Integer countryId) {
-        return stateRepository.findAllByCountry_IdOrderByName(countryId);
+    public List<State> findStateByCountry(Country country) {
+        return stateRepository.findByCountryOrderByNameAsc(country);
     }
 
     public String checkEmail(String email) {
         Optional<Customer> optCustomer = customerRepository.findByEmail(email);
-        if(optCustomer.isPresent()) {
+        if (optCustomer.isPresent()) {
             return "Duplicated";
         }
         return "OK";
@@ -104,7 +104,7 @@ public class CustomerService {
 
     public boolean verifyCustomer(String verifyCode) {
         Optional<Customer> optionalCustomer = customerRepository.findByVerificationCode(verifyCode);
-        if(optionalCustomer.isPresent()) {
+        if (optionalCustomer.isPresent()) {
             customerRepository.updateEnabledStatus(optionalCustomer.get().getId(), true);
             return true;
         }
@@ -112,7 +112,7 @@ public class CustomerService {
     }
 
     public void updateAuthenticationType(Customer customer, AuthenticationType type) {
-        if(!customer.getAuthenticationType().equals(type)) {
+        if (!customer.getAuthenticationType().equals(type)) {
             customerRepository.updateAuthenticationType(customer.getId(), type);
         }
     }
@@ -139,7 +139,7 @@ public class CustomerService {
 
     private void setName(Customer customer, String name) {
         String[] split = name.split(" ");
-        if(split.length < 2) {
+        if (split.length < 2) {
             customer.setFirstName(name);
             customer.setLastName("");
         } else {
@@ -150,7 +150,7 @@ public class CustomerService {
 
     public void updateAccountInformation(@NotNull Customer customerInForm) {
         Customer customerInDb = customerRepository.findById(customerInForm.getId()).get();
-        if(customerInForm.getPassword() == null || customerInForm.getPassword().isEmpty()) {
+        if (customerInForm.getPassword() == null || customerInForm.getPassword().isEmpty()) {
             customerInForm.setPassword(customerInDb.getPassword());
         } else {
             customerInForm.setPassword(passwordEncoder.encode(customerInForm.getPassword()));
@@ -164,7 +164,7 @@ public class CustomerService {
 
     public String updateResetPasswordToken(String email) throws CustomerNotFoundException {
         Optional<Customer> optionalCustomer = customerRepository.findByEmail(email);
-        if(optionalCustomer.isPresent()) {
+        if (optionalCustomer.isPresent()) {
             Customer customer = optionalCustomer.get();
             String random = RandomStringUtils.random(30, true, true);
             customer.setResetPasswordToken(random);
@@ -172,13 +172,13 @@ public class CustomerService {
             customerRepository.save(customer);
             return random;
         } else {
-            throw new CustomerNotFoundException("Could not found any customer with email: "+email);
+            throw new CustomerNotFoundException("Could not found any customer with email: " + email);
         }
     }
 
     public Customer getByResetPasswordToken(String token) throws CustomerNotFoundException {
         Optional<Customer> optionalCustomer = customerRepository.findByResetPasswordToken(token);
-        if(optionalCustomer.isPresent()) {
+        if (optionalCustomer.isPresent()) {
             return optionalCustomer.get();
         }
         throw new CustomerNotFoundException("Invalid token");

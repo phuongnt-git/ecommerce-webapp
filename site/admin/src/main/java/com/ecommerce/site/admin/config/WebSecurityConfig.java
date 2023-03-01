@@ -55,6 +55,7 @@ public class WebSecurityConfig {
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+
         provider.setUserDetailsService(userDetailsService());
         provider.setPasswordEncoder(passwordEncoder());
 
@@ -68,9 +69,6 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(@NotNull HttpSecurity http) throws Exception {
-        /*http.csrf(c -> c.csrfTokenRepository(csrfTokenRepository()));*/
-        http.csrf().disable();
-
         http.authorizeHttpRequests()
                 .requestMatchers("/css/**", "/img/**", "/js/**", "/webjars/**", "/vendors/**").permitAll()
                 .requestMatchers("/users/**", "/settings/**", "/countries/**", "/states/**").hasAuthority("Admin")
@@ -85,7 +83,7 @@ public class WebSecurityConfig {
                 .requestMatchers("/orders", "/orders/", "/orders/page/**", "/orders/detail/**").hasAnyAuthority("Admin", "Salesperson", "Shipper")
                 .requestMatchers("/orders_shipper/update/**").hasAuthority("Shipper")
                 .requestMatchers("/reviews/**", "/questions/**").hasAnyAuthority("Admin", "Assistant")
-                .requestMatchers("/actuator/**").permitAll()
+                .requestMatchers("/actuator/**").hasAuthority("Admin")
                 .requestMatchers(EndpointRequest.to(HealthEndpoint.class)).permitAll()
                 .requestMatchers(EndpointRequest.toAnyEndpoint()).hasRole("ACTUATOR")
                 .anyRequest()

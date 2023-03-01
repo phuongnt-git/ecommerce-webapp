@@ -1,0 +1,194 @@
+@font-face {
+  font-family: "flaticon";
+  src: url("./flaticon.ttf?1345f8b6410ff345565912db8148e624") format("truetype"), url("./flaticon.woff?1345f8b6410ff345565912db8148e624") format("woff"), url("./flaticon.woff2?1345f8b6410ff345565912db8148e624") format("woff2"), url("./flaticon.eot?1345f8b6410ff345565912db8148e624#iefix") format("embedded-opentype"), url("./flaticon.svg?1345f8b6410ff345565912db8148e624#flaticon") format("svg");
+}
+i[class^=flaticon-]:before, i[class*=" flaticon-"]:before {
+  font-family: flaticon !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-money-saving:before {
+  content: "\f101";
+}
+
+.flaticon-dollar:before {
+  content: "\f102";
+}
+
+.flaticon-credit-card:before {
+  content: "\f103";
+}
+
+.flaticon-call-center:before {
+  content: "\f104";
+}
+
+.flaticon-map:before {
+  content: "\f105";
+}
+
+.flaticon-email:before {
+  content: "\f106";
+}
+
+.flaticon-telephone:before {
+  content: "\f107";
+}
+
+.flaticon-wedding-dress:before {
+  content: "\f108";
+}
+
+.flaticon-heels:before {
+  content: "\f109";
+}
+
+.flaticon-watch:before {
+  content: "\f10a";
+}
+
+.flaticon-television:before {
+  content: "\f10b";
+}
+
+.flaticon-refrigerator:before {
+  content: "\f10c";
+}
+
+.flaticon-speaker:before {
+  content: "\f10d";
+}
+
+.flaticon-cooking:before {
+  content: "\f10e";
+}
+
+.flaticon-air-conditioner:before {
+  content: "\f10f";
+}
+
+.flaticon-season:before {
+  content: "\f110";
+}
+
+.flaticon-baby-boy:before {
+  content: "\f111";
+}
+
+.flaticon-rocking-horse:before {
+  content: "\f112";
+}
+
+.flaticon-baby-dress:before {
+  content: "\f113";
+}
+
+.flaticon-travel-luggage:before {
+  content: "\f114";
+}
+
+.flaticon-shirt:before {
+  content: "\f115";
+}
+
+.flaticon-ring:before {
+  content: "\f116";
+}
+
+.flaticon-smartphone:before {
+  content: "\f117";
+}
+
+.flaticon-smart-watch:before {
+  content: "\f118";
+}
+
+.flaticon-toaster:before {
+  content: "\f119";
+}
+
+.flaticon-coffee-maker:before {
+  content: "\f11a";
+}
+
+.flaticon-hard-hat:before {
+  content: "\f11b";
+}
+
+.flaticon-game-pad:before {
+  content: "\f11c";
+}
+
+.flaticon-headphone:before {
+  content: "\f11d";
+}
+
+.flaticon-handwash:before {
+  content: "\f11e";
+}
+
+.flaticon-stethoscope:before {
+  content: "\f11f";
+}
+
+.flaticon-sneaker:before {
+  content: "\f120";
+}
+
+.flaticon-water-filter:before {
+  content: "\f121";
+}
+
+.flaticon-water-bottle:before {
+  content: "\f122";
+}
+
+.flaticon-dslr-camera:before {
+  content: "\f123";
+}
+
+.flaticon-play:before {
+  content: "\f124";
+}
+
+.flaticon-apps:before {
+  content: "\f125";
+}
+
+.flaticon-menu:before {
+  content: "\f126";
+}
+
+.flaticon-shopping-cart:before {
+  content: "\f127";
+}
+
+.flaticon-delivery-truck:before {
+  content: "\f128";
+}
+
+.flaticon-dashboard:before {
+  content: "\f129";
+}
+
+.flaticon-invoice:before {
+  content: "\f12a";
+}
+
+.flaticon-chat:before {
+  content: "\f12b";
+}
+
+.flaticon-wallet-with-card-sticking-out:before {
+  content: "\f12c";
+}
+
+.flaticon-man:before {
+  content: "\f12d";
+}

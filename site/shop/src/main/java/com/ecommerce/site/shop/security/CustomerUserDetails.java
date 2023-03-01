@@ -8,8 +8,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-@AllArgsConstructor
+
 @Getter
+@AllArgsConstructor
 public class CustomerUserDetails implements UserDetails {
 
     private Customer customer;
@@ -52,4 +53,5 @@ public class CustomerUserDetails implements UserDetails {
     public String getFullName() {
         return customer.getFullName();
     }
+
 }

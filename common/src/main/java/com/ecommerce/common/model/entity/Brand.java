@@ -8,8 +8,6 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.ecommerce.common.constant.ImagePath.BRAND_LOGOS_DIR;
-
 /**
  * @author Nguyen Thanh Phuong
  */
@@ -73,9 +71,9 @@ public class Brand implements Serializable {
     @Transient
     public String getLogoPath() {
         if (this.id == null) {
-            return "/img/image-thumbnail.png";
+            return "/images/image-thumbnail.png";
         }
-        return BRAND_LOGOS_DIR + this.id + "/" + this.logo;
+        return "/images/brand-logos/" + this.id + "/" + this.logo;
     }
 
 }

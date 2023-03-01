@@ -10,8 +10,6 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
-import static com.ecommerce.common.constant.ImagePath.PRODUCT_IMAGES_DIR;
-
 /**
  * @author Nguyen Thanh Phuong
  */
@@ -53,7 +51,7 @@ public class ProductImage implements Serializable {
 
     @Transient
     public String getImagePath() {
-        return PRODUCT_IMAGES_DIR + product.getId() + "/extras/" + this.name;
+        return "/images/product-images/" + product.getId() + "/extras/" + this.name;
     }
 
     @Override

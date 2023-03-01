@@ -1,11 +1,11 @@
 package com.ecommerce.site.admin.controller;
 
+import com.ecommerce.common.exception.CategoryNotFoundException;
+import com.ecommerce.common.model.entity.Category;
 import com.ecommerce.site.admin.export.CategoryCsvExporter;
-import com.ecommerce.site.admin.utils.PagingAndSortingUtils;
 import com.ecommerce.site.admin.service.CategoryService;
 import com.ecommerce.site.admin.utils.FileUploadUtils;
-import com.ecommerce.common.model.entity.Category;
-import com.ecommerce.common.exception.CategoryNotFoundException;
+import com.ecommerce.site.admin.utils.PagingAndSortingUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.jetbrains.annotations.NotNull;
@@ -34,7 +34,7 @@ import static com.ecommerce.site.admin.constant.ApplicationConstant.ROOT_CATEGOR
 public class CategoryController {
 
     @Autowired
-    private  CategoryService service;
+    private CategoryService service;
 
     @GetMapping("/categories")
     public String listFirstPage(String sortDir, Model model) {

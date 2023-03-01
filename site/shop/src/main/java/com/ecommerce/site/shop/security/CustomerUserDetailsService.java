@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.function.Supplier;
 
+/**
+ * @author Nguyen Thanh Phuong
+ */
 @Service
 public class CustomerUserDetailsService implements UserDetailsService {
 
@@ -22,4 +25,5 @@ public class CustomerUserDetailsService implements UserDetailsService {
         Customer customer = customerRepository.findByEmail(username).orElseThrow(s);
         return new CustomerUserDetails(customer);
     }
+
 }

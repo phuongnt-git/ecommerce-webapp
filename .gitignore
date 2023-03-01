@@ -3,3 +3,5 @@
 /site/admin/target/
 /site/shop/target/
 /site/admin/log
+/.idea
+/.gitignore

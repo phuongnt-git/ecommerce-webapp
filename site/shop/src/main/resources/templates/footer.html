@@ -1,22 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-<footer th:fragment="footer">
-    <div class="footer clearfix mb-0 text-muted">
-        <div class="float-start">
-            <p>Copyright &copy; My eCommerce 2023</p>
-        </div>
-        <div class="float-end">
-            <p>
-                Crafted with <span class='text-danger'>
-                <i data-feather="heart"></i></span> by <a href="#">me</a>
-            </p>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<div class="footer" th:fragment="footer">
+    <div class="main-footer">
+        <div class="container">
+            <div class="custom-row">
+                <div class="custom-col-2">
+                    <div class="footer-about">
+                        <div class="footer-logo">
+                            <img alt="Logo" th:src="@{${SITE_LOGO}}" src="">
+                        </div>
+                        <p>Amazon internal data, FY2021 survey of 21.2K U.S. multichannel sellers</p>
+                        <ul>
+                            <li>
+                                <div class="icon">
+                                    <span><i class="flaticon-map"></i></span>
+                                </div>
+                                <div class="txt">
+                                    <span>Amazon Payment Products</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <span><i class="flaticon-email"></i></span>
+                                </div>
+                                <div class="txt">
+                                    <a href="#">shopme@contact.com</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <span><i class="flaticon-telephone"></i></span>
+                                </div>
+                                <div class="txt">
+                                    <a href="#">+123 456 789</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="custom-col-2">
+                    <div class="link-wrap">
+                        <div class="footer-link">
+                            <h3 class="footer-title">Get to Know Us</h3>
+                            <ul>
+                                <th:block th:each="footerMenu : ${footerMenuItems}">
+                                    <li><a th:href="@{'/m/' + ${footerMenu.alias}}">[[${footerMenu.title}]]</a></li>
+                                </th:block>
+                            </ul>
+                        </div>
+                        <div class="footer-link">
+                            <h3 class="footer-title">Information</h3>
+                            <ul>
+                                <li><a th:href="@{/}">My Order</a></li>
+                                <li><a th:href="@{/}">Wishlist</a></li>
+                                <li><a th:href="@{/}">My Credit</a></li>
+                                <li><a th:href="@{/login}">Login</a></li>
+                                <li><a th:href="@{/}">Personal Info</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="custom-col">
+                    <div class="footer-gallery">
+                        <h3 class="footer-title">Instagram</h3>
+                        <ul>
+                            <li>
+                                <a href="https://instagram.com" target="_blank">
+                                    <img alt="image" th:src="@{/img/gl-1.png}" src="">
+                                    <span><i class="fa-brands fa-instagram"></i></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://instagram.com" target="_blank">
+                                    <img alt="image" th:src="@{/img/gl-2.png}" src="">
+                                    <span><i class="fa-brands fa-instagram"></i></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://instagram.com" target="_blank">
+                                    <img alt="image" th:src="@{/img/gl-3.png}" src="">
+                                    <span><i class="fa-brands fa-instagram"></i></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://instagram.com" target="_blank">
+                                    <img alt="image" th:src="@{/img/gl-4.png}" src="">
+                                    <span><i class="fa-brands fa-instagram"></i></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://instagram.com" target="_blank">
+                                    <img alt="image" th:src="@{/img/gl-5.png}" src="">
+                                    <span><i class="fa-brands fa-instagram"></i></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://instagram.com" target="_blank">
+                                    <img alt="image" th:src="@{/img/gl-6.png}" src="">
+                                    <span><i class="fa-brands fa-instagram"></i></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="custom-col">
+                    <div class="footer-subscribe">
+                        <h3 class="footer-title">Subscribe</h3>
+                        <p>Registration is easy, free, and the first step to growing your business with Amazon devices
+                            and services.
+                        </p>
+                        <form>
+                            <input name="email" placeholder="Your Email" type="email">
+                            <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                        </form>
+                        <div class="btn-box">
+                            <a href="#"><img alt="Play Store" th:src="@{/img/play-store.png}" src=""></a>
+                            <a href="#"><img alt="App Store" th:src="@{/img/app-store.png}" src=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</footer>
-</body>
-</html>
+
+    <div class="copyright">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p>Conditions of UsePrivacy | NoticeInterest-Based Ads&copy; 1996-2022, Inc or its affiliates</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="part-img d-flex justify-content-md-end justify-content-center">
+                        <img alt="Image" th:src="@{/img/payment-gateway.png}" src="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

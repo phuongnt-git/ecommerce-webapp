@@ -6,6 +6,9 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import java.util.Properties;
 
+/**
+ * @author Nguyen Thanh Phuong
+ */
 public class EmailUtils {
 
     public static @NotNull String getSiteUrl(@NotNull HttpServletRequest request) {

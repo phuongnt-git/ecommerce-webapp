@@ -1,11 +1,14 @@
 package com.ecommerce.site.shop.utils;
 
 
-
 import com.ecommerce.common.model.SettingBag;
 import com.ecommerce.common.model.entity.Setting;
 
 import java.util.List;
+
+/**
+ * @author Nguyen Thanh Phuong
+ */
 public class EmailSettingBagUtils extends SettingBag {
 
     public EmailSettingBagUtils(List<Setting> listSettings) {

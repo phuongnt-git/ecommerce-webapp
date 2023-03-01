@@ -3,12 +3,18 @@ package com.ecommerce.site.shop.repository;
 
 import com.ecommerce.common.model.entity.Country;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * @author Nguyen Thanh Phuong
+ */
+@Repository
 public interface CountryRepository extends JpaRepository<Country, Integer> {
 
-    List<Country> findAllByOrderByName();
+    List<Country> findAllByOrderByNameAsc();
 
-    Country findByCode(String countryCode);
+    Country findByCode(String code);
+
 }

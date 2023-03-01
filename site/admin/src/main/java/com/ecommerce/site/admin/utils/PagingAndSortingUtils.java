@@ -24,5 +24,5 @@ public class PagingAndSortingUtils {
     public void setTotalElements(long totalElements) {
         this.totalElements = totalElements;
     }
-    
+
 }

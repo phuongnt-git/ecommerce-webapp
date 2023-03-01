@@ -6,10 +6,11 @@ import com.ecommerce.common.model.entity.Country;
 import com.ecommerce.common.model.entity.Customer;
 import com.ecommerce.common.model.entity.State;
 import com.ecommerce.site.shop.security.CustomerUserDetails;
-import com.ecommerce.site.shop.security.oauth2.CustomOAuth2User;
+import com.ecommerce.site.shop.security.oauth.CustomOAuth2User;
 import com.ecommerce.site.shop.service.CustomerService;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.RememberMeAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -33,43 +34,47 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping("/register")
-    public String customerRegister(ModelMap model) {
+    public String customerRegister(@NotNull ModelMap model) {
         Customer customer = new Customer();
         List<Country> countryList = customerService.findAllCountry();
 
         model.put("customer", customer);
         model.put("countryList", countryList);
         model.put("pageTitle", "Registration");
+
         return "customer/register_form";
     }
 
     @GetMapping("/verify/{verifyCode}")
     public String verifyCustomer(@PathVariable String verifyCode, ModelMap model) {
         boolean verifyCustomer = customerService.verifyCustomer(verifyCode);
-        if(verifyCustomer) {
+
+        if (verifyCustomer) {
             model.put("pageTitle", "Verify successfully");
+
             return "customer/verify_success";
         }
+
         model.put("pageTitle", "Verify failed");
         return "customer/verify_fail";
     }
 
-    @PostMapping ("/create")
+    @PostMapping("/create")
     public String createCustomer(Customer customer,
                                  HttpServletRequest request,
-                                 ModelMap model) throws MessagingException {
+                                 @NotNull ModelMap model) throws MessagingException {
         model.put("pageTitle", "Congratulations!!");
         customerService.registerCustomer(customer, request);
         return "customer/register_success";
     }
 
     @GetMapping("/account")
-    public String accountEdit(ModelMap model, HttpServletRequest request) {
+    public String accountEdit(@NotNull ModelMap model, HttpServletRequest request) {
         String email = getEmailOfAuthenticatedCustomer(request);
 
         Optional<Customer> customerByEmail = customerService.findCustomerByEmail(email);
         List<Country> countryList = customerService.findAllCountry();
-        List<State> stateList = customerService.findStateByCountry(customerByEmail.get().getCountry().getId());
+        List<State> stateList = customerService.findStateByCountry(customerByEmail.get().getCountry());
 
         model.put("customer", customerByEmail.get());
         model.put("countryList", countryList);
@@ -82,7 +87,7 @@ public class CustomerController {
     public String saveUpdateAccountInformation(HttpServletRequest request, Customer customer) {
         customerService.updateAccountInformation(customer);
         updateNameForAuthenticatedCustomer(request, customer);
-        return "home";
+        return "index";
     }
 
     @GetMapping("/set_password")
@@ -111,7 +116,7 @@ public class CustomerController {
     private void updateNameForAuthenticatedCustomer(HttpServletRequest request, Customer customer) {
         Principal userPrincipal = request.getUserPrincipal();
         String fullName = customer.getFirstName() + " " + customer.getLastName();
-        if(userPrincipal instanceof UsernamePasswordAuthenticationToken ||
+        if (userPrincipal instanceof UsernamePasswordAuthenticationToken ||
                 userPrincipal instanceof RememberMeAuthenticationToken) {
             CustomerUserDetails userDetails = getCustomerUserDetails(userPrincipal);
 
@@ -126,7 +131,7 @@ public class CustomerController {
 
     private CustomerUserDetails getCustomerUserDetails(Principal principal) {
         CustomerUserDetails userDetails;
-        if(principal instanceof UsernamePasswordAuthenticationToken token) {
+        if (principal instanceof UsernamePasswordAuthenticationToken token) {
             userDetails = (CustomerUserDetails) token.getPrincipal();
         } else {
             var token = (RememberMeAuthenticationToken) principal;
@@ -138,8 +143,8 @@ public class CustomerController {
     private String getEmailOfAuthenticatedCustomer(HttpServletRequest request) {
         Principal userPrincipal = request.getUserPrincipal();
         String email = "";
-        if(userPrincipal instanceof UsernamePasswordAuthenticationToken ||
-        userPrincipal instanceof RememberMeAuthenticationToken) {
+        if (userPrincipal instanceof UsernamePasswordAuthenticationToken ||
+                userPrincipal instanceof RememberMeAuthenticationToken) {
             email = userPrincipal.getName();
         } else if (userPrincipal instanceof OAuth2AuthenticationToken oAuth2AuthenticationToken) {
             CustomOAuth2User oAuth2User = (CustomOAuth2User) oAuth2AuthenticationToken.getPrincipal();

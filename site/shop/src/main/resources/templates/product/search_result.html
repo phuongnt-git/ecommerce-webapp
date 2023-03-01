@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment :: page_head(${pageTitle}, 'tag')}">
+    <link media="all" rel="stylesheet" th:href="@{/star-rating/css/star-rating.css}" type="text/css"/>
+    <script th:src="@{/star-rating/js/star-rating.js}" type="text/javascript"></script>
+    <link media="all" rel="stylesheet" th:href="@{/star-rating/themes/krajee-svg/theme.css}" type="text/css"/>
+    <script th:src="@{/star-rating/themes/krajee-svg/theme.js}"></script>
+    <title></title>
+</head>
+<body class="inner">
+<!-- preloader begin -->
+<div class="preloader">
+    <img alt="Gif" src="" th:src="@{/img/loader.gif}">
+</div>
+<!-- preloader end -->
+
+<!--------------------------------- PRODUCT QUICK VIEW PANEL START --------------------------------->
+<div class="product-quick-view-panel">
+    <div class="img">
+        <img alt="image" class="quick-view-image" src="" th:src="@{/img/}">
+    </div>
+</div>
+<div class="product-quick-view-panel-2">
+    <div class="panel-content">
+        <div class="img">
+            <img alt="image" class="quick-view-image" src="" th:src="@{/img/}">
+        </div>
+    </div>
+</div>
+<!--------------------------------- PRODUCT QUICK VIEW PANEL END --------------------------------->
+
+
+<!--------------------------------- HEADER SECTION START --------------------------------->
+<span th:replace="~{header_section2 :: content}"></span>
+<!--------------------------------- HEADER SECTION END --------------------------------->
+
+
+<!--------------------------------- BANNER SECTION START --------------------------------->
+<div class="banner banner-inner">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-lg-6 col-md-9 col-8">
+                <div class="breadcrumb-txt">
+                    <h1>Shop Details</h1>
+                    <ul>
+                        <li><a th:href="@{/}"><i class="fa-regular fa-house"></i></a></li>
+                        <li>/</li>
+                        <li th:if="${totalItems > 0}">Search Results for '[[${keyword}]]'</li>
+                        <li th:unless="${totalItems > 0}">No match found for '[[${keyword}]]'</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-3 col-4">
+                <div class="part-img">
+                    <img alt="Image" src="" th:src="@{/img/breadcrumb-img.png}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------------------------- BANNER SECTION END --------------------------------->
+
+<br>
+
+<!--------------------------------- RELATED PRODUCT SECTION START --------------------------------->
+<div class="featured-product py-25" th:fragment="content">
+    <div class="container">
+        <div class="panel">
+            <div class="panel-header">
+                <div class="row">
+                    <div class="col-8">
+                        <h2 class="title">[[${pageTitle}]]</h2>
+                    </div>
+                    <div class="col-4">
+                        <div class="text-end">
+                            <a class="explore-section" th:href="@{/}">View more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="product-custom-row">
+                    <th:block th:each="product : ${listResult}">
+                        <div class="custom-col">
+                            <div class="single-product-card">
+                                <div class="part-img">
+                                    <img alt="Product" src=""
+                                         style="width: 250px; height: 300px;" th:src="@{${product.mainImagePath}}">
+                                </div>
+
+                                <div class="text-center">
+                                    <input class="product-detail-rating-star" data-size="xs" dir="ltr"
+                                           th:value="${product.averageRating}"
+                                           type="text"/>
+                                    <span style="color: red;">&nbsp;&nbsp;&nbsp;[[${product.reviewCount}]] rating(s)</span>
+                                </div>
+
+                                <div class="part-txt">
+                                    <h4 class="product-name"><a th:href="@{${product.uri}}" th:title="${product.name}">[[${product.shortName}]]</a>
+                                    </h4>
+                                    <div th:replace="~{product/product_fragment :: product_price}"></div>
+                                </div>
+
+                                <div class="cart-option">
+                                    <ul>
+                                        <li>
+                                            <a class="add-to-cart" role="button">
+                                                <i class="fa-light fa-cart-shopping"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="add-to-wish" role="button">
+                                                <i class="fa-light fa-heart"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="quick-view" role="button">
+                                                <i class="fa-light fa-image"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="view-product" href="shop-details.html">
+                                                <i class="fa-light fa-eye"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
+                </div>
+            </div>
+            <br>
+            <div th:replace="~{fragment :: pagination('/search', 'product')}"></div>
+        </div>
+    </div>
+</div>
+<!--------------------------------- RELATED PRODUCT SECTION END --------------------------------->
+
+<!--------------------------------- FEATURES SECTION START --------------------------------->
+<div class="features" id="feature">
+    <div class="container">
+        <div class="panel panel-shadow px-0">
+            <div class="custom-row">
+                <div class="custom-col">
+                    <div class="single-feature">
+                        <div class="part-icon">
+                            <span><i class="flaticon-money-saving"></i></span>
+                        </div>
+                        <div class="part-txt">
+                            <h4>Free Delivery</h4>
+                            <p>For all order over $99</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-col">
+                    <div class="single-feature">
+                        <div class="part-icon">
+                            <span><i class="flaticon-dollar"></i></span>
+                        </div>
+                        <div class="part-txt">
+                            <h4>30 Days Return</h4>
+                            <p>If goods have Problems</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-col">
+                    <div class="single-feature">
+                        <div class="part-icon">
+                            <span><i class="flaticon-credit-card"></i></span>
+                        </div>
+                        <div class="part-txt">
+                            <h4>Secure Payment</h4>
+                            <p>100% secure payment</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-col">
+                    <div class="single-feature">
+                        <div class="part-icon">
+                            <span><i class="flaticon-call-center"></i></span>
+                        </div>
+                        <div class="part-txt">
+                            <h4>24/7 Support</h4>
+                            <p>Dedicated support</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------------------------- FEATURES SECTION END --------------------------------->
+
+
+<!--------------------------------- FOOTER SECTION START --------------------------------->
+<span th:replace="~{footer :: footer}"></span>
+<!--------------------------------- FOOTER SECTION END --------------------------------->
+
+
+<script type="text/javascript">
+    $(".product-detail-rating-star").rating({
+        displayOnly: true,
+        hoverOnClera: false,
+        showCaption: false,
+        theme: 'krajee-svg'
+    });
+</script>
+<script th:src="@{/vendor/js/jquery.nice-select.min.js}"></script>
+<script th:src="@{/vendor/js/jquery.flagstrap.min.js}"></script>
+<script th:src="@{/vendor/js/slick.min.js}"></script>
+<script th:src="@{/vendor/js/owl.carousel.min.js}"></script>
+<script th:src="@{/vendor/js/jquery.syotimer.min.js}"></script>
+<script th:src="@{/vendor/js/jquery-modal-video.min.js}"></script>
+<script th:src="@{/vendor/js/nouislider.min.js}"></script>
+<script th:src="@{/vendor/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script>
+</script>
+</body>
+</html>

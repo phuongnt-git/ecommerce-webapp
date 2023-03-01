@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment :: page_head('Error - Revel eCommerce', 'none')}">
+    <title></title>
+</head>
+<body class="inner">
+<!-- preloader begin -->
+<div class="preloader">
+    <img alt="Gif" src="" th:src="@{/img/loader.gif}">
+</div>
+<!-- preloader end -->
+
+
+<!--------------------------------- HEADER SECTION START --------------------------------->
+<span th:replace="~{top_header2 :: top_header2}"></span>
+<!--------------------------------- HEADER SECTION END --------------------------------->
+
+
+<!--------------------------------- BANNER SECTION START --------------------------------->
+<div class="banner banner-inner">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-lg-6 col-md-9 col-8">
+                <div class="breadcrumb-txt">
+                    <h3 class="text-center">Sorry. The requested page could not be found</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------------------------- BANNER SECTION END --------------------------------->
+
+
+<!--------------------------------- FEATURES SECTION START --------------------------------->
+<span th:replace="~{section/feature_section :: content}">Feature Section</span>
+<!--------------------------------- FEATURES SECTION END --------------------------------->
+
+
+<!--------------------------------- FOOTER SECTION START --------------------------------->
+<span th:replace="~{footer :: footer}"></span>
+<!--------------------------------- FOOTER SECTION END --------------------------------->
+
+
+<script th:src="@{/vendor/js/jquery-3.6.0.min.js}"></script>
+<script th:src="@{/vendor/js/jquery.nice-select.min.js}"></script>
+<script th:src="@{/vendor/js/jquery.flagstrap.min.js}"></script>
+<script th:src="@{/vendor/js/slick.min.js}"></script>
+<script th:src="@{/vendor/js/owl.carousel.min.js}"></script>
+<script th:src="@{/vendor/js/jquery.syotimer.min.js}"></script>
+<script th:src="@{/vendor/js/jquery-modal-video.min.js}"></script>
+<script th:src="@{/vendor/js/nouislider.min.js}"></script>
+<script th:src="@{/vendor/js/jquery-ui.min.js}"></script>
+<script th:src="@{/vendor/js/MonthPicker.min.js}"></script>
+<script th:src="@{/vendor/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+</body>
+</html>

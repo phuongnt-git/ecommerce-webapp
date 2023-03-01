@@ -1,88 +1,97 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="~{fragment :: page_head('Setting - Admin Homepage', 'none')}">
-	<title></title>
+    <title></title>
 </head>
 <body>
 <div id="app">
-	<div th:replace="~{sidebar :: sidebar}"></div>
+    <div th:replace="~{sidebar :: sidebar}"></div>
 
-	<div id="main">
-		<div th:replace="~{header :: header}"></div>
+    <div id="main">
+        <div th:replace="~{header :: header}"></div>
 
-		<div class="main-content container-fluid">
-			<section class="section">
-				<div class="card">
-					<div class="card-header">
-						<h3 class="text-center">Site Setting</h3>
-					</div>
+        <div class="main-content container-fluid">
+            <section class="section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Site Setting</h3>
+                    </div>
 
-					<div class="card-body">
-						<div th:if="${message != null}" class="alert alert-success text-center">
-							[[${message}]]
-						</div>
+                    <div class="card-body">
+                        <div th:if="${message != null}" class="alert alert-success text-center">
+                            [[${message}]]
+                        </div>
 
-						<ul class="nav nav-tabs" id="settingTab" role="tablist">
-							<li class="nav-item" role="presentation">
-								<a class="nav-link active" id="general-tab" data-bs-toggle="tab" th:href="@{/#general}" role="tab" aria-controls="general" aria-selected="true">General</a>
-							</li>
-							<li class="nav-item" role="presentation">
-								<a type="button" class="nav-link" id="countries-tab" data-bs-toggle="tab" th:href="@{/#countries}" role="tab" aria-controls="countries" aria-selected="false">Countries</a>
-							</li>
-							<li class="nav-item" role="presentation">
-								<a type="button" class="nav-link" id="states-tab" data-bs-toggle="tab" href="#states" role="tab" aria-controls="states" aria-selected="false">States</a>
-							</li>
-							<li class="nav-item" role="presentation">
-								<a type="button" class="nav-link" id="mail-server-tab" data-bs-toggle="tab" href="#mailServer" role="tab" aria-controls="mail-server" aria-selected="false">Mail Server</a>
-							</li>
-							<li class="nav-item" role="presentation">
-								<a type="button" class="nav-link" id="mail-templates-tab" data-bs-toggle="tab" href="#mailTemplates" role="tab" aria-controls="mail-templates" aria-selected="false">Mail Templates</a>
-							</li>
-							<li class="nav-item" role="presentation">
-								<a type="button" class="nav-link" id="payment-tab" data-bs-toggle="tab" href="#payment" role="tab" aria-controls="payment" aria-selected="false">Payment</a>
-							</li>
-						</ul>
+                        <ul class="nav nav-tabs" id="settingTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="general-tab" data-bs-toggle="tab" th:href="@{/#general}"
+                                   role="tab" aria-controls="general" aria-selected="true">General</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a type="button" class="nav-link" id="countries-tab" data-bs-toggle="tab"
+                                   th:href="@{/#countries}" role="tab" aria-controls="countries" aria-selected="false">Countries</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a type="button" class="nav-link" id="states-tab" data-bs-toggle="tab" href="#states"
+                                   role="tab" aria-controls="states" aria-selected="false">States</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a type="button" class="nav-link" id="mail-server-tab" data-bs-toggle="tab"
+                                   href="#mailServer" role="tab" aria-controls="mail-server" aria-selected="false">Mail
+                                    Server</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a type="button" class="nav-link" id="mail-templates-tab" data-bs-toggle="tab"
+                                   href="#mailTemplates" role="tab" aria-controls="mail-templates"
+                                   aria-selected="false">Mail Templates</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a type="button" class="nav-link" id="payment-tab" data-bs-toggle="tab" href="#payment"
+                                   role="tab" aria-controls="payment" aria-selected="false">Payment</a>
+                            </li>
+                        </ul>
 
-						<div class="tab-content">
-							<div class="tab-pane active p-3" id="general" role="tabpanel" aria-labelledby="general-tab">
-								<div th:replace="~{setting/general :: content}"></div>
-							</div>
+                        <div class="tab-content">
+                            <div class="tab-pane active p-3" id="general" role="tabpanel" aria-labelledby="general-tab">
+                                <div th:replace="~{setting/general :: content}"></div>
+                            </div>
 
-							<div class="tab-pane p-3" id="countries" role="tabpanel" aria-labelledby="countries-tab">
-								<div th:replace="~{setting/countries :: content}"></div>
-							</div>
+                            <div class="tab-pane p-3" id="countries" role="tabpanel" aria-labelledby="countries-tab">
+                                <div th:replace="~{setting/countries :: content}"></div>
+                            </div>
 
-							<div class="tab-pane p-3" id="states" role="tabpanel" aria-labelledby="states-tab">
-								<div th:replace="~{setting/states :: content}"></div>
-							</div>
+                            <div class="tab-pane p-3" id="states" role="tabpanel" aria-labelledby="states-tab">
+                                <div th:replace="~{setting/states :: content}"></div>
+                            </div>
 
-							<div class="tab-pane p-3" id="mailServer" role="tabpanel" aria-labelledby="mail-server-tab">
-								<div th:replace="~{setting/mail_server :: content}"></div>
-							</div>
+                            <div class="tab-pane p-3" id="mailServer" role="tabpanel" aria-labelledby="mail-server-tab">
+                                <div th:replace="~{setting/mail_server :: content}"></div>
+                            </div>
 
-							<div class="tab-pane p-3" id="mailTemplates" role="tabpanel" aria-labelledby="mail-templates-tab">
-								<!--<div th:replace="~{setting/mail_templates :: content}"></div>-->
-							</div>
+                            <div class="tab-pane p-3" id="mailTemplates" role="tabpanel"
+                                 aria-labelledby="mail-templates-tab">
+                                <!--<div th:replace="~{setting/mail_templates :: content}"></div>-->
+                            </div>
 
-							<div class="tab-pane p-3" id="payment" role="tabpanel" aria-labelledby="payment-tab">
-								<div th:replace="~{setting/payment :: content}"></div>
-							</div>
-						</div>
+                            <div class="tab-pane p-3" id="payment" role="tabpanel" aria-labelledby="payment-tab">
+                                <div th:replace="~{setting/payment :: content}"></div>
+                            </div>
+                        </div>
 
-						<div class="toast justify-content-center d-flex" role="alert" aria-live="polite" aria-atomic="true" data-delay="3000">
-							<div role="alert" aria-live="assertive" aria-atomic="true">
-								<div class="toast-body">
-									<span id="toastMessage"></span>
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</section>
-		</div>
-		<div th:replace="~{footer :: footer}"></div>
-	</div>
+                        <div class="toast justify-content-center d-flex" role="alert" aria-live="polite"
+                             aria-atomic="true" data-delay="3000">
+                            <div role="alert" aria-live="assertive" aria-atomic="true">
+                                <div class="toast-body">
+                                    <span id="toastMessage"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div th:replace="~{footer :: footer}"></div>
+    </div>
 </div>
 
 <link th:href="@{/webjars/summernote/0.8.20/dist/summernote.css}" rel="stylesheet">
@@ -95,14 +104,14 @@
 <script th:src="@{/js/countries_setting.js}"></script>
 <script th:src="@{/js/states_setting.js}"></script>
 <script type="text/javascript">
-	contextPath = "[[@{/}]]";
-	let csrfHeaderName = "[[${_csrf.headerName}]]";
-	let csrfValue = "[[${_csrf.token}]]";
+    contextPath = "[[@{/}]]";
+    let csrfHeaderName = "[[${_csrf.headerName}]]";
+    let csrfValue = "[[${_csrf.token}]]";
 
-	$(document).ready(function() {
-		$("#customerVerificationContent").summernote();
-		$("#orderConfirmationContent").summernote({height: 400});
-	});
+    $(document).ready(function () {
+        $("#customerVerificationContent").summernote();
+        $("#orderConfirmationContent").summernote({height: 400});
+    });
 </script>
 </body>
 </html>

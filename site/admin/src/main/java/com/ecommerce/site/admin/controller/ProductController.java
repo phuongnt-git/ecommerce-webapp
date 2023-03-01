@@ -1,17 +1,17 @@
 package com.ecommerce.site.admin.controller;
 
-import com.ecommerce.site.admin.helper.ProductSaveHelper;
+import com.ecommerce.common.exception.ProductNotFoundException;
+import com.ecommerce.common.model.entity.Brand;
+import com.ecommerce.common.model.entity.Category;
+import com.ecommerce.common.model.entity.Product;
 import com.ecommerce.site.admin.helper.PagingAndSortingHelper;
-import com.ecommerce.site.admin.annotation.PagingAndSortingParam;
+import com.ecommerce.site.admin.helper.ProductSaveHelper;
+import com.ecommerce.site.admin.paging.PagingAndSortingParam;
 import com.ecommerce.site.admin.security.CustomUserDetailsImpl;
 import com.ecommerce.site.admin.service.BrandService;
 import com.ecommerce.site.admin.service.CategoryService;
 import com.ecommerce.site.admin.service.ProductService;
 import com.ecommerce.site.admin.utils.FileUploadUtils;
-import com.ecommerce.common.exception.ProductNotFoundException;
-import com.ecommerce.common.model.entity.Brand;
-import com.ecommerce.common.model.entity.Category;
-import com.ecommerce.common.model.entity.Product;
 import jakarta.servlet.http.HttpServletRequest;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,7 +87,7 @@ public class ProductController {
     @PostMapping("/products/save")
     public String saveProduct(Product product, RedirectAttributes attributes,
                               @RequestParam(value = "fileImage", required = false) MultipartFile mainImageMultipart,
-                              @RequestParam(value = "extraImage", required = false) MultipartFile[] extraImageMultiparts,
+                              @RequestParam(value = "extraImageMultipart", required = false) MultipartFile[] extraImageMultipart,
                               @RequestParam(name = "detailIds", required = false) String[] detailIds,
                               @RequestParam(name = "detailNames", required = false) String[] detailNames,
                               @RequestParam(name = "detailValues", required = false) String[] detailValues,
@@ -104,12 +104,12 @@ public class ProductController {
         }
         ProductSaveHelper.setMainImageName(mainImageMultipart, product);
         ProductSaveHelper.setExistingExtraImageNames(imageIds, imageNames, product);
-        ProductSaveHelper.setNewExtraImageNames(extraImageMultiparts, product);
+        ProductSaveHelper.setNewExtraImageNames(extraImageMultipart, product);
         ProductSaveHelper.setProductDetails(detailIds, detailNames, detailValues, product);
 
         Product savedProduct = productService.save(product);
 
-        ProductSaveHelper.saveUploadedImages(mainImageMultipart, extraImageMultiparts, savedProduct);
+        ProductSaveHelper.saveUploadedImages(mainImageMultipart, extraImageMultipart, savedProduct);
         ProductSaveHelper.deleteExtraImagesRemovedOnForm(product);
 
         attributes.addFlashAttribute("message", "The product has been saved successfully");

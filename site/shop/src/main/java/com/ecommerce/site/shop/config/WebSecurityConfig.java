@@ -1,7 +1,7 @@
 package com.ecommerce.site.shop.config;
 
-import com.ecommerce.site.shop.security.oauth2.CustomOAuth2UserService;
-import com.ecommerce.site.shop.security.oauth2.OAuth2LoginSuccessHandler;
+import com.ecommerce.site.shop.security.oauth.CustomOAuth2UserService;
+import com.ecommerce.site.shop.security.oauth.OAuth2LoginSuccessHandler;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -34,9 +34,11 @@ public class WebSecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider dao = new DaoAuthenticationProvider();
+
         dao.setPasswordEncoder(passwordEncoder());
         dao.setUserDetailsService(userDetailsService);
 
@@ -46,8 +48,7 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(@NotNull HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
-                .requestMatchers("/css/**", "/img/**", "/js/**", "/webjars/**")
-                .permitAll()
+                .requestMatchers("/css/**", "/img/**", "/js/**", "/webjars/**").permitAll()
                 .requestMatchers("/customers/account_update", "/customers/account").authenticated()
                 .requestMatchers("/**").permitAll()
                 .anyRequest().permitAll();

@@ -1,80 +1,133 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
 <body>
-<nav class="navbar navbar-header navbar-expand navbar-light" th:fragment="header">
+<div class="header header-inner" th:fragment="content">
+    <div class="top-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-6 col-xl-7 col-lg-7">
+                    <ul class="top-header-link d-lg-flex d-none">
+                        <li>
+                            <a href="#">SHOP EVENTS & SAVE UP TO 65% OFF!</a>
+                        </li>
 
-    <form th:action="@{/logout}" method="post" th:hidden="true" name="logoutForm">
-        <input type="submit"/>
-    </form>
+                        <li>
+                            <a href="#">Call Us: 001-1234-88888</a>
+                        </li>
 
-    <a class="sidebar-toggler" href="#"><span class="navbar-toggler-icon"></span></a>
-    <button class="btn navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav d-flex align-items-center navbar-light ms-auto">
-            <li class="dropdown nav-icon">
-                <a href="#" data-bs-toggle="dropdown" class="nav-link  dropdown-toggle nav-link-lg nav-link-user">
-                    <div class="d-lg-inline-block">
-                        <i data-feather="bell"></i>
-                    </div>
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-end dropdown-menu-large">
-                    <h6 class='py-2 px-4'>Notifications</h6>
-                    <ul class="list-group rounded-none">
-                        <li class="list-group-item border-0 align-items-start">
-                            <div class="avatar bg-success me-3">
-                                <span class="avatar-content">
-                                    <i data-feather="shopping-cart"></i>
-                                </span>
-                            </div>
-
-                            <div>
-                                <h6 class='text-bold'>Welcome</h6>
-                                <p sec:authorize="isAuthenticated()" class='text-xs'>
-                                    <a th:href="@{/customers/account}"
-                                       sec:authentication="principal.fullName"></a> -
-                                    <span sec:authentication="principal.authorities"></span>
-                                </p>
-                            </div>
+                        <li>
+                            <a th:href="@{/shops}">Seller Centre </a>
                         </li>
                     </ul>
                 </div>
-            </li>
 
-            <li sec:authorize="isAuthenticated()" class="dropdown">
-                <a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                    <div class="avatar me-1">
-                        <img th:src="@{/img/avatar/avatar-s-1.png}" alt="Image Preview" srcset="" src="">
-                    </div>
+                <div class="col-xxl-6 col-xl-5 col-lg-5">
+                    <ul class="top-header-link justify-content-lg-end justify-content-center">
 
-                    <div class="d-none d-md-block d-lg-inline-block">
-                        Hi, <b sec:authentication="principal.fullName"></b>
-                    </div>
-                </a>
 
-                <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" th:href="@{/customers/account}">
-                        <i data-feather="user"></i> Account
-                    </a>
+                        <th:block sec:authorize="isAuthenticated()">
 
-                    <div class="dropdown-divider"></div>
+                            <li>
+                                <a th:href="@{/reviews}"><i class="fa fa-comment"></i>
+                                    Recommendations</a>
+                            </li>
 
-                    <a class="dropdown-item" id="logoutLink" href="/logout">
-                        <i data-feather="log-out"></i> Logout
-                    </a>
+                            <li>
+                                <a th:href="@{/customer/questions}"><i class="fa fa-question-circle"></i>
+                                    Questions & Answer</a>
+                            </li>
+                            <li>
+                                <span style="color: white;">Hi,&nbsp;<b><a style="color: white;"
+                                                                           th:href="@{/dashboards}"
+                                                                           sec:authentication="principal.fullName"></a></b></span>
+                            </li>
+                        </th:block>
+                    </ul>
                 </div>
-            </li>
-        </ul>
+            </div>
+        </div>
     </div>
-</nav>
+    <div class="bottom-header">
+        <div class="container">
+            <div class="category-list-2">
+                <ul>
+                    <th:block th:each="section : ${listSections}">
+                        <li class="category-item" th:each="catSection : ${section.categorySections}"
+                            th:with="cat = ${catSection.category}">
+                            <a href="#">
+                                <div class="icon">
+                                    <span><i class="fa-solid fa-star-sharp rated"></i></span>
+                                </div>
+                                <span>[[${cat.name}]]</span>
+                            </a>
+                        </li>
+                    </th:block>
+                </ul>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-xxl-2 col-lg-3 col-6">
+                    <div class="logo-wrap">
+                        <div class="logo">
+                            <a th:href="@{/}">
+                                <img th:src="@{/images/logo.png}" alt="logo" src="">
+                            </a>
+                        </div>
+                        <button class="category-list-btn d-lg-block d-none"><i class="fa-light fa-bars"></i></button>
+                    </div>
+                </div>
+
+                <div class="col-xxl-9 col-lg-7 d-lg-block d-none">
+                    <nav class="navbar navbar-expand-lg">
+                        <div class="container-fluid">
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link" th:href="@{/}">
+                                            Home
+                                        </a>
+                                    </li>
+
+                                    <th:block th:each="headerMenu : ${headerMenuItems}">
+                                        <li class="nav-item">
+                                            <a class="nav-link" th:href="@{'/m/' + ${headerMenu.alias}}">[[${headerMenu.title}]]</a>
+                                        </li>
+                                    </th:block>
+                                    <!-- End of Dynamic Header Menu Items -->
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" th:href="@{/contacts}">Contact</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+
+                <th:block sec:authorize="!isAuthenticated()">
+                    <div class="col-lg-2">
+                        <div class="account-link">
+                            <a th:href="@{/register}">Register</a>
+                            <span>/</span>
+                            <a th:href="@{/login}">Sign in</a>
+                        </div>
+                    </div>
+                </th:block>
+
+                <th:block sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" method="post" th:hidden="true" name="logoutForm">
+                        <input type="submit" value="Logout"/>
+                    </form>
+                </th:block>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

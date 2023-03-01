@@ -1,5 +1,6 @@
 package com.ecommerce.common.model.entity;
 
+import com.ecommerce.common.annotation.FieldsValueMatch;
 import com.ecommerce.common.annotation.PasswordValidator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -14,21 +15,19 @@ import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.ecommerce.common.constant.ImagePath.USER_PHOTOS_DIR;
-
 /**
  * @author Nguyen Thanh Phuong
  */
 @Entity
 @Table(name = "USERS",
         uniqueConstraints = {@UniqueConstraint(columnNames = {"USER_EMAIL"}, name = "UQ_USER_EMAIL")})
-/*@FieldsValueMatch.List({
+@FieldsValueMatch.List({
         @FieldsValueMatch(
                 field = "password",
                 fieldMatch = "confirmPassword",
-                message = "Password do not match"
+                message = "User password do not match"
         )
-})*/
+})
 @Getter
 @Setter
 @NoArgsConstructor
@@ -63,11 +62,11 @@ public class User implements Serializable {
     @JsonIgnore
     private String password;
 
-    /*@Transient
+    @Transient
     @JsonIgnore
     @NotBlank(message = "Confirm password is required")
     @Size(min = 6, max = 64, message = "Confirm password must be between 6 and 64 characters")
-    private String confirmPassword;*/
+    private String confirmPassword;
 
     @Column(name = "FIRST_NAME", nullable = false, length = 64)
     @NotBlank(message = "First name is required")
@@ -130,9 +129,9 @@ public class User implements Serializable {
     @Transient
     public String getPhotosPath() {
         if (id == null || photos == null) {
-            return USER_PHOTOS_DIR + "default-user.png";
+            return "/images/default-user.png";
         }
-        return USER_PHOTOS_DIR + this.id + "/" + this.photos;
+        return "/images/user-photos/" + this.id + "/" + this.photos;
     }
 
 }

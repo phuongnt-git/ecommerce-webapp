@@ -1,6 +1,7 @@
 package com.ecommerce.site.shop.config;
 
 import org.jetbrains.annotations.NotNull;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -10,6 +11,7 @@ import java.nio.file.Paths;
 /**
  * @author Nguyen Thanh Phuong
  */
+@Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
@@ -17,6 +19,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         exposeDirectory("../images/category-images", registry);
         exposeDirectory("../images/brand-logos", registry);
         exposeDirectory("../images/product-images", registry);
+        exposeDirectory("../images/site-logo", registry);
     }
 
     private void exposeDirectory(String pathPattern, @NotNull ResourceHandlerRegistry registry) {

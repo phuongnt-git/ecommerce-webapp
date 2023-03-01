@@ -43,7 +43,8 @@
                 </div>
 
                 <input type="hidden" name="imageIDs" th:id="'imageId' + ${status.index}" th:value="${productImage.id}"/>
-                <input type="hidden" name="imageNames" th:id="'imageName' + ${status.index}" th:value="${productImage.name}"/>
+                <input type="hidden" name="imageNames" th:id="'imageName' + ${status.index}"
+                       th:value="${productImage.name}"/>
             </div>
         </th:block>
 
@@ -55,7 +56,7 @@
             <div class="m-2">
                 <img th:id="'extraThumbnail' + ${numberOfExistingExtraImages}"
                      th:alt="'Extra image #' + ${numberOfExistingExtraImages} + ' preview'" class="img-fluid"
-                     th:src="@{/img/image-thumbnail.png}" src="" alt=""/>
+                     th:src="@{/images/image-thumbnail.png}" src="" alt=""/>
             </div>
 
             <div>
