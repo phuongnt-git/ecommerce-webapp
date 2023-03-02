@@ -63,7 +63,7 @@ public class Category implements Serializable {
     @JoinColumn(name = "PARENT_ID", foreignKey = @ForeignKey(name = "FK_CATEGORY_ID"))
     private Category parent;
 
-    @OneToMany(mappedBy = "parent")
+    @OneToMany(mappedBy = "parent", fetch = FetchType.EAGER)
     private Set<Category> children = new HashSet<>();
 
     @Transient

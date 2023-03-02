@@ -48,9 +48,7 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(@NotNull HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
-                .requestMatchers("/css/**", "/img/**", "/js/**", "/webjars/**").permitAll()
                 .requestMatchers("/customers/account_update", "/customers/account").authenticated()
-                .requestMatchers("/**").permitAll()
                 .anyRequest().permitAll();
 
         http.formLogin()

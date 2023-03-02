@@ -52,14 +52,18 @@
                                         </th:block>
                                     </td>
                                     <td>
-                                        <div th:replace="~{fragment :: status(${user.enabled}, 'user', '/users/' + ${user.id})}"></div>
+                                        <th:block th:if="${not user.hasRole('Admin')}">
+                                            <div th:replace="~{fragment :: status(${user.enabled}, 'user', '/users/' + ${user.id})}"></div>
+                                        </th:block>
                                     </td>
                                     <td>
                                         <a class="fa-solid fa-file-alt fa-2x link-detail text-secondary" th:href="@{'/users/detail/' + ${user.id}}" title="View details of this user"></a>
                                         &nbsp;&nbsp;
                                         <div th:replace="~{fragment :: edit('user', '/users/edit/' + ${user.id})}"></div>
                                         &nbsp;
-                                        <div th:replace="~{fragment :: delete('user', ${user.id}, '/users/delete/' + ${user.id}, true)}"></div>
+                                        <th:block th:if="${not user.hasRole('Admin')}">
+                                            <div th:replace="~{fragment :: delete('user', ${user.id}, '/users/delete/' + ${user.id}, true)}"></div>
+                                        </th:block>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -75,16 +79,21 @@
                                     <div>[[${user.fullName}]]</div>
                                     <div>[[${user.roles}]]</div>
                                     <div class="mt-2">
-                                        <div th:replace="~{fragment :: status(${user.enabled}, 'user', '/users/' + ${user.id})}"></div>
+                                        <th:block th:if="${not user.hasRole('Admin')}">
+                                            <div th:replace="~{fragment :: status(${user.enabled}, 'user', '/users/' + ${user.id})}"></div>
+                                        </th:block>
                                         &nbsp;
                                         <div th:replace="~{fragment :: edit('user', '/users/edit/' + ${user.id})}"></div>
                                         &nbsp;
-                                        <div th:replace="~{fragment :: delete('user', ${user.id}, '/users/delete/' + ${user.id}, true)}"></div>
+                                        <th:block th:if="${not user.hasRole('Admin')}">
+                                            <div th:replace="~{fragment :: delete('user', ${user.id}, '/users/delete/' + ${user.id}, true)}"></div>
+                                        </th:block>
                                     </div>
                                 </div>
                                 <div>&nbsp;</div>
                             </div>
                         </div>
+
                         <div th:replace="~{fragment :: pagination('users')}"></div>
 
                         <div th:replace="~{modal_dialog :: delete_modal}"></div>

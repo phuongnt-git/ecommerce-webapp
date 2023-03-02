@@ -28,12 +28,6 @@
                     </li>
                     <li><hr class="dropdown-divider" /></li>
                     <li>
-                        <a class="dropdown-item" th:href="@{?lang=fr}">
-                            <i class="flag-icon flag-icon-fr"></i>
-                            <span>Français</span>
-                        </a>
-                    </li>
-                    <li>
                         <a class="dropdown-item" th:href="@{?lang=vn}">
                             <i class="flag-icon flag-icon-vn"></i>
                             <span>Vietnam</span>
@@ -72,8 +66,6 @@
                 </div>
             </div>
 
-
-
             <div class="dropdown" sec:authorize="hasAuthority('Admin')">
                 <button id="dropdownMenu" data-bs-toggle="dropdown" class="btn btn-secondary dropdown-toggle">
                     <span class="d-lg-inline-block">
@@ -85,23 +77,18 @@
                     <a type="button" class="dropdown-item" th:href="@{/settings#general}">
                         <i data-feather="home"></i> General
                     </a>
-
                     <a type="button" class="dropdown-item" th:href="@{/settings#countries}">
                         <i data-feather="map-pin"></i>Countries
                     </a>
-
                     <a type="button" class="dropdown-item" th:href="@{/settings#states}">
                         <i data-feather="navigation"></i>States
                     </a>
-
                     <a type="button" class="dropdown-item" th:href="@{/settings#mailServer}">
                         <i data-feather="mail"></i>Mail Server
                     </a>
-
                     <a type="button" class="dropdown-item" th:href="@{/settings#mailTemplate}">
                         <i data-feather="mail"></i>Mail Templates
                     </a>
-
                     <a type="button" class="dropdown-item" th:href="@{/settings#payment}">
                         <i data-feather="heart"></i>Payment
                     </a>

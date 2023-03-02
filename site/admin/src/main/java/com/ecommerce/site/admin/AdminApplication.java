@@ -10,9 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 /**
  * @author Nguyen Thanh Phuong
  */
-@EnableJpaRepositories("com.ecommerce.site.admin.repository")
-@EntityScan("com.ecommerce.common.model")
-@EncryptablePropertySource(name = "EncryptedProperties", value = "classpath:encrypted.properties")
+@EntityScan("com.ecommerce.common.model.entity")
 @SpringBootApplication
 @EnableAspectJAutoProxy
 public class AdminApplication {

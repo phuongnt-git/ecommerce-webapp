@@ -84,8 +84,6 @@ public class WebSecurityConfig {
                 .requestMatchers("/orders_shipper/update/**").hasAuthority("Shipper")
                 .requestMatchers("/reviews/**", "/questions/**").hasAnyAuthority("Admin", "Assistant")
                 .requestMatchers("/actuator/**").hasAuthority("Admin")
-                .requestMatchers(EndpointRequest.to(HealthEndpoint.class)).permitAll()
-                .requestMatchers(EndpointRequest.toAnyEndpoint()).hasRole("ACTUATOR")
                 .anyRequest()
                 .authenticated();
 

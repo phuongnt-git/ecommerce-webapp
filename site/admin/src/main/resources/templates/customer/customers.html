@@ -26,9 +26,10 @@
                                 <thead class="table-dark">
                                 <tr>
                                     <th th:replace="~{fragment :: column_link('id', 'ID', 'none')}"></th>
-                                    <th th:replace="~{fragment :: column_link('firstName', 'Full Name', 'none')}"></th>
+                                    <th th:replace="~{fragment :: column_link('firstName', 'First Name', 'none')}"></th>
+                                    <th th:replace="~{fragment :: column_link('lastName', 'Last Name', 'none')}"></th>
                                     <th class="hideable-column" th:replace="~{fragment :: column_link('email', 'Email', 'none')}"></th>
-                                    <!--<th class="hideable-column" th:replace="~{fragment :: column_link('city', 'City', 'none')}">-->
+                                    <th class="hideable-column" th:replace="~{fragment :: column_link('city', 'City', 'none')}">
                                     <th class="hideable-column" th:replace="~{fragment :: column_link('state', 'State', 'none')}">
                                     <th th:replace="~{fragment :: column_link('country', 'Country', 'none')}"></th>
                                     <th th:replace="~{fragment :: column_link('enabled', 'Enabled', 'none')}"></th>
@@ -39,9 +40,10 @@
                                 <tbody>
                                 <tr th:each="customer : ${listCustomers}">
                                     <td>[[${customer.id}]]</td>
-                                    <td>[[${customer.fullName}]]</td>
+                                    <td>[[${customer.firstName}]]</td>
+                                    <td>[[${customer.lastName}]]</td>
                                     <td class="hideable-column">[[${customer.email}]]</td>
-                                    <!--<td class="hideable-column">[[${customer.city}]]</td>-->
+                                    <td class="hideable-column">[[${customer.city}]]</td>
                                     <td class="hideable-column">[[${customer.state}]]</td>
                                     <td>[[${customer.country.name}]]</td>
                                     <td>

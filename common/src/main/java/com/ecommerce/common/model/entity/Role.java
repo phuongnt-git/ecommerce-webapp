@@ -59,4 +59,9 @@ public class Role implements Serializable {
         return id != null ? id.hashCode() : 0;
     }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
 }
