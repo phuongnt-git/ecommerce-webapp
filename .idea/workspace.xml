@@ -4,36 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="316a79c4-43ba-47a0-8e7d-b6ac146bfef7" name="Changes" comment="Refactor code">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/842f35fc-03c0-416b-9eb3-bd7a2c30d3d8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/842f35fc-03c0-416b-9eb3-bd7a2c30d3d8.xml" afterDir="false" />
+    <list default="true" id="316a79c4-43ba-47a0-8e7d-b6ac146bfef7" name="Changes" comment="Code Order Management Module (Part 1)">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/ProductDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/ProductDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/ProductImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/ProductImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/entity/Token.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/enums/AuthenticationType.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/enums/AuthenticationType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/enums/SettingCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/ecommerce/common/model/enums/SettingCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/data.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/admin/log/backend-logger.log" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/log/backend-logger.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/constant/ApplicationConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/constant/ApplicationConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/helper/PagingAndSortingHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/helper/PagingAndSortingHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/repository/BrandRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/repository/BrandRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/repository/CustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/repository/PagingAndSortingCustomRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/repository/CustomPagingAndSortingRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/repository/TokenRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/security/CustomCsrfTokenRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/security/CustomLoginSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/security/CustomLoginSuccessHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/security/CustomUserDetailsImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/security/UserDetailsImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/security/CustomUserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/java/com/ecommerce/site/admin/security/UserDetailsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/resources/templates/customer/customers.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/resources/templates/customer/customers.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/admin/src/main/resources/templates/fragment.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/admin/src/main/resources/templates/fragment.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,7 +230,7 @@
       <workItem from="1677745990674" duration="10220000" />
       <workItem from="1677819055238" duration="1196000" />
       <workItem from="1677853406767" duration="29000" />
-      <workItem from="1677922808469" duration="16700000" />
+      <workItem from="1677922808469" duration="16885000" />
     </task>
     <task id="LOCAL-00001" summary="Write unit test case and add Actuator">
       <created>1677059387804</created>
@@ -342,7 +316,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677765693114</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Code Order Management Module (Part 1)">
+      <created>1678012459581</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1678012459581</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -364,7 +345,8 @@
     <MESSAGE value="Write unit-test.md" />
     <MESSAGE value="Refactor code and implement shop UI" />
     <MESSAGE value="Refactor code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor code" />
+    <MESSAGE value="Code Order Management Module (Part 1)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code Order Management Module (Part 1)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

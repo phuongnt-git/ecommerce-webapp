@@ -5829,3 +5829,6 @@ org.hibernate.LazyInitializationException: failed to lazily initialize a collect
 2023-03-05 16:55:35,148 [http-nio-8080-exec-1] INFO  o.hibernate.jpa.internal.util.LogHelper            - HHH000204: Processing PersistenceUnitInfo [name: default]
 2023-03-05 16:55:35,165 [http-nio-8080-exec-1] INFO  SQL dialect                                        - HHH000400: Using dialect: org.hibernate.dialect.OracleDialect
 2023-03-05 16:55:35,522 [http-nio-8080-exec-1] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator                 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-03-05 17:34:34,422 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean     - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-03-05 17:34:34,426 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource                 - HikariPool-1 - Shutdown initiated...
+2023-03-05 17:34:34,428 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource                 - HikariPool-1 - Shutdown completed.
