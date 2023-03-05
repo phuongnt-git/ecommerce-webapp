@@ -19,6 +19,8 @@ public class ApplicationConstant {
 
     public static final int CUSTOMERS_PER_PAGE = 5;
 
+    public static final int ORDERS_PER_PAGE = 10;
+
     public static final String USER_PHOTOS_DIR = "../images/user-photos";
 
     public static final String CATEGORY_IMAGES_DIR = "../images/category-images";

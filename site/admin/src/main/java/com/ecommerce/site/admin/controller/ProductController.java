@@ -7,7 +7,7 @@ import com.ecommerce.common.model.entity.Product;
 import com.ecommerce.site.admin.helper.PagingAndSortingHelper;
 import com.ecommerce.site.admin.helper.ProductSaveHelper;
 import com.ecommerce.site.admin.paging.PagingAndSortingParam;
-import com.ecommerce.site.admin.security.CustomUserDetailsImpl;
+import com.ecommerce.site.admin.security.UserDetailsImpl;
 import com.ecommerce.site.admin.service.BrandService;
 import com.ecommerce.site.admin.service.CategoryService;
 import com.ecommerce.site.admin.service.ProductService;
@@ -93,7 +93,7 @@ public class ProductController {
                               @RequestParam(name = "detailValues", required = false) String[] detailValues,
                               @RequestParam(name = "imageIds", required = false) String[] imageIds,
                               @RequestParam(name = "imageNames", required = false) String[] imageNames,
-                              @AuthenticationPrincipal @NotNull CustomUserDetailsImpl loggedUser
+                              @AuthenticationPrincipal @NotNull UserDetailsImpl loggedUser
     ) throws IOException {
         if (!loggedUser.hasRole("Admin") && !loggedUser.hasRole("Editor")) {
             if (loggedUser.hasRole("Salesperson")) {
@@ -154,7 +154,7 @@ public class ProductController {
     public String editProduct(@PathVariable("id") Integer id,
                               Model model,
                               RedirectAttributes attributes,
-                              @AuthenticationPrincipal @NotNull CustomUserDetailsImpl loggedUser) {
+                              @AuthenticationPrincipal @NotNull UserDetailsImpl loggedUser) {
         try {
             Product product = productService.get(id);
             List<Brand> listBrands = brandService.listAll();

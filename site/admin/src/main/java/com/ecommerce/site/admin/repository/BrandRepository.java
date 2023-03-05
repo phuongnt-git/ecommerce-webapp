@@ -13,7 +13,7 @@ import java.util.List;
  * @author Nguyen Thanh Phuong
  */
 @Repository
-public interface BrandRepository extends PagingAndSortingCustomRepository<Brand, Integer>, JpaRepository<Brand, Integer> {
+public interface BrandRepository extends CustomPagingAndSortingRepository<Brand, Integer>, JpaRepository<Brand, Integer> {
 
     Long countById(Integer id);
 

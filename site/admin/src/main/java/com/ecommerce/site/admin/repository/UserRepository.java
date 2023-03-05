@@ -14,7 +14,7 @@ import java.util.Date;
  * @author Nguyen Thanh Phuong
  */
 @Repository
-public interface UserRepository extends PagingAndSortingCustomRepository<User, Integer>, JpaRepository<User, Integer>  {
+public interface UserRepository extends CustomPagingAndSortingRepository<User, Integer>, JpaRepository<User, Integer>  {
 
     User findByEmail(String email);
 

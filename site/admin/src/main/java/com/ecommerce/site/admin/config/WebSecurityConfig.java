@@ -1,12 +1,9 @@
 package com.ecommerce.site.admin.config;
 
-import com.ecommerce.site.admin.security.CustomCsrfTokenRepository;
 import com.ecommerce.site.admin.security.CustomLoginFailureHandler;
 import com.ecommerce.site.admin.security.CustomLoginSuccessHandler;
-import com.ecommerce.site.admin.security.CustomUserDetailsServiceImpl;
+import com.ecommerce.site.admin.security.UserDetailsServiceImpl;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
-import org.springframework.boot.actuate.health.HealthEndpoint;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -39,17 +36,12 @@ public class WebSecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return new CustomUserDetailsServiceImpl();
+        return new UserDetailsServiceImpl();
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public CsrfTokenRepository csrfTokenRepository() {
-        return new CustomCsrfTokenRepository();
     }
 
     @Bean
@@ -108,8 +100,6 @@ public class WebSecurityConfig {
                 .userDetailsService(userDetailsService())
                 .key("MyRememberMeKey")
                 .tokenValiditySeconds(7 * 24 * 60 * 60);
-
-        http.httpBasic();
 
         http.authenticationProvider(daoAuthenticationProvider());
 

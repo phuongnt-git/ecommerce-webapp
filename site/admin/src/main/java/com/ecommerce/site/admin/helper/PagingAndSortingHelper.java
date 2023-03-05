@@ -1,6 +1,6 @@
 package com.ecommerce.site.admin.helper;
 
-import com.ecommerce.site.admin.repository.PagingAndSortingCustomRepository;
+import com.ecommerce.site.admin.repository.CustomPagingAndSortingRepository;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -51,7 +51,7 @@ public class PagingAndSortingHelper {
         container.addAttribute(listName, listItems);
     }
 
-    public void listEntities(int pageNumber, int pageSize, PagingAndSortingCustomRepository<?, Integer> repository) {
+    public void listEntities(int pageNumber, int pageSize, CustomPagingAndSortingRepository<?, Integer> repository) {
         Pageable pageable = createPageable(pageSize, pageNumber);
         Page<?> page;
 

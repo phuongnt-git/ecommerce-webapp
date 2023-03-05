@@ -8,7 +8,7 @@ import com.ecommerce.site.admin.export.UserExcelExporter;
 import com.ecommerce.site.admin.export.UserPdfExporter;
 import com.ecommerce.site.admin.helper.PagingAndSortingHelper;
 import com.ecommerce.site.admin.paging.PagingAndSortingParam;
-import com.ecommerce.site.admin.security.CustomUserDetailsImpl;
+import com.ecommerce.site.admin.security.UserDetailsImpl;
 import com.ecommerce.site.admin.service.UserService;
 import com.ecommerce.site.admin.utils.FileUploadUtils;
 import jakarta.servlet.http.HttpServletRequest;
@@ -196,7 +196,7 @@ public class UserController {
     }
 
     @GetMapping("/account")
-    public String viewDetails(@AuthenticationPrincipal @NotNull CustomUserDetailsImpl loggedUser,
+    public String viewDetails(@AuthenticationPrincipal @NotNull UserDetailsImpl loggedUser,
                               @NotNull Model model) {
         String email = loggedUser.getUsername();
         User user = userService.findByEmail(email);
@@ -208,7 +208,7 @@ public class UserController {
     @PostMapping("/account/update")
     public String saveDetails(User user,
                               RedirectAttributes attributes,
-                              @AuthenticationPrincipal CustomUserDetailsImpl loggedUser,
+                              @AuthenticationPrincipal UserDetailsImpl loggedUser,
                               @RequestParam("image") @NotNull MultipartFile multipartFile) throws IOException {
         if (!multipartFile.isEmpty()) {
             String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));

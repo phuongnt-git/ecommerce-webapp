@@ -15,7 +15,7 @@ import java.util.Set;
 /**
  * @author Nguyen Thanh Phuong
  */
-public record CustomUserDetailsImpl(User user) implements UserDetails {
+public record UserDetailsImpl(User user) implements UserDetails {
 
     @Override
     public @NotNull Collection<? extends GrantedAuthority> getAuthorities() {

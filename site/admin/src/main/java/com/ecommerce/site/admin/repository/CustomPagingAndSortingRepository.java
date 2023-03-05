@@ -9,7 +9,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * @author Nguyen Thanh Phuong
  */
 @NoRepositoryBean
-public interface PagingAndSortingCustomRepository<T, ID> extends PagingAndSortingRepository<T, ID> {
+public interface CustomPagingAndSortingRepository<T, ID> extends PagingAndSortingRepository<T, ID> {
 
     Page<T> findAll(String keyword, Pageable pageable);
 

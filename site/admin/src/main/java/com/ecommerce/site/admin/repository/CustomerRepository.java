@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
  * @author Nguyen Thanh Phuong
  */
 @Repository
-public interface CustomerRepository extends PagingAndSortingCustomRepository<Customer, Integer>, JpaRepository<Customer, Integer> {
+public interface CustomerRepository extends CustomPagingAndSortingRepository<Customer, Integer>, JpaRepository<Customer, Integer> {
 
     Customer findByEmail(String email);
 

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * @author Nguyen Thanh Phuong
  */
 @Service
-public class CustomUserDetailsServiceImpl implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
@@ -22,7 +22,7 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
         User user = userRepository.findByEmail(email);
 
         if (user != null) {
-            return new CustomUserDetailsImpl(user);
+            return new UserDetailsImpl(user);
         }
 
         throw new UsernameNotFoundException(String.format("Could not find user with email %s", email));

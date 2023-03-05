@@ -164,4 +164,12 @@ public class Product implements Serializable {
         this.details.add(new ProductDetail(id, name, value, this));
     }
 
+    public Product(String name) {
+        this.name = name;
+    }
+
+    public Product(Integer id) {
+        this.id = id;
+    }
+
 }

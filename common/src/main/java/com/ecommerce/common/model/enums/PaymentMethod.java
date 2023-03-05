@@ -3,6 +3,6 @@ package com.ecommerce.common.model.enums;
 /**
  * @author Nguyen Thanh Phuong
  */
-public enum AuthenticationType {
-    DATABASE, GOOGLE, FACEBOOK
+public enum PaymentMethod {
+    COD, CREDIT_CARD, PAYPAL
 }

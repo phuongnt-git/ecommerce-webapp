@@ -14,7 +14,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "PRODUCT_DETAIL",
-        indexes = {@Index(columnList = "ID", name = "PRODUCT_DETAIL_IDX", unique = true)})
+        indexes = {@Index(columnList = "PRODUCT_DETAIL_ID", name = "PRODUCT_DETAIL_IDX", unique = true)})
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,7 +25,7 @@ public class ProductDetail implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "ID", nullable = false)
+    @Column(name = "PRODUCT_DETAIL_ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "PRODUCT_DETAIL_GEN")
     @TableGenerator(name = "PRODUCT_DETAIL_GEN",
             table = "SEQUENCER",
